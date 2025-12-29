@@ -1,13 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Helmet } from "react-helmet-async";
+import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <>
+      <Helmet>
+        <title>Rayuela - Fiestas Infantiles y Eventos Creativos</title>
+        <meta
+          name="description"
+          content="Rayuela organiza fiestas infantiles únicas y eventos creativos llenos de color, diversión y magia. Conoce nuestros paquetes y cotiza tu evento especial."
+        />
+        <meta
+          name="keywords"
+          content="fiestas infantiles, eventos creativos, decoración de fiestas, animación infantil, paquetes de fiestas"
+        />
+        <link rel="canonical" href="https://rayuela.com" />
+      </Helmet>
+
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main>
+          <HeroSection />
+        </main>
       </div>
-    </div>
+    </>
   );
 };
 
