@@ -47,10 +47,8 @@ const NosotrosSection = () => {
           <img 
             src={mascotasImage} 
             alt="Ela y Ray - Mascotas de Rayuela" 
-            className={`h-[28vh] lg:h-[70vh] w-auto object-contain transition-all duration-700 ${
-              isVisible 
-                ? "opacity-100 translate-x-0" 
-                : "opacity-0 -translate-x-20"
+            className={`h-[28vh] lg:h-[70vh] w-auto object-contain transition-transform duration-500 ${
+              isVisible ? "scale-105" : "scale-100"
             }`}
           />
         </div>
