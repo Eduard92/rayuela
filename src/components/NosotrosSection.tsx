@@ -1,11 +1,33 @@
+import { useEffect, useRef, useState } from "react";
 import mascotasImage from "@/assets/mascotas-nosotros.png";
 import tituloImage from "@/assets/nosotros-titulo.png";
 import logo from "@/assets/rayuela-logo.png";
 import backgroundNosotros from "@/assets/background-nosotros.jpg";
 
 const NosotrosSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section 
+      ref={sectionRef}
       className="relative min-h-screen w-full overflow-hidden px-6 md:px-12"
       style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
@@ -25,7 +47,11 @@ const NosotrosSection = () => {
           <img 
             src={mascotasImage} 
             alt="Ela y Ray - Mascotas de Rayuela" 
-            className="h-[28vh] lg:h-[70vh] w-auto object-contain animate-fade-in"
+            className={`h-[28vh] lg:h-[70vh] w-auto object-contain transition-all duration-700 ${
+              isVisible 
+                ? "opacity-100 translate-x-0" 
+                : "opacity-0 -translate-x-20"
+            }`}
           />
         </div>
 
