@@ -30,7 +30,7 @@ const NosotrosSection = () => {
         </div>
 
         {/* Content - Right Side */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-end gap-6">
+        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center gap-6">
 
           {/* Card con texto */}
           <div 
