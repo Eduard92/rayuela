@@ -19,7 +19,7 @@ const HeroSection = () => {
       />
 
       {/* Content Overlay - Full Screen Grid */}
-      <div className="relative z-10 min-h-screen w-full grid grid-cols-3 grid-rows-2 gap-2 p-4 pt-24">
+      <div className="relative z-10 min-h-screen w-full grid grid-cols-3 grid-rows-2 gap-4 p-6 pt-28">
         {/* Row 1: Nosotros, Paquetes, Fotos */}
         <div className="flex items-center justify-center animate-fade-in-up-1">
           <NavigationButton
@@ -27,7 +27,7 @@ const HeroSection = () => {
             image={nosotrosImage}
             alt="Nosotros"
             animationClass="float-animation"
-            className="w-full max-w-[280px]"
+            className="w-full max-w-[400px]"
           />
         </div>
 
@@ -37,7 +37,7 @@ const HeroSection = () => {
             image={paquetesImage}
             alt="Paquetes"
             animationClass="float-animation-delayed"
-            className="w-full max-w-[280px]"
+            className="w-full max-w-[400px]"
           />
         </div>
 
@@ -47,7 +47,7 @@ const HeroSection = () => {
             image={fotosImage}
             alt="Fotos"
             animationClass="float-animation"
-            className="w-full max-w-[280px]"
+            className="w-full max-w-[400px]"
           />
         </div>
 
@@ -58,7 +58,7 @@ const HeroSection = () => {
             image={calendarioImage}
             alt="Calendario"
             animationClass="float-animation-delayed"
-            className="w-full max-w-[280px]"
+            className="w-full max-w-[400px]"
           />
         </div>
 
@@ -68,7 +68,7 @@ const HeroSection = () => {
             image={cotizaImage}
             alt="Cotiza"
             animationClass="float-animation"
-            className="w-full max-w-[280px]"
+            className="w-full max-w-[400px]"
           />
         </div>
 
@@ -78,7 +78,7 @@ const HeroSection = () => {
             image={contactoImage}
             alt="Contacto"
             animationClass="float-animation-delayed"
-            className="w-full max-w-[280px]"
+            className="w-full max-w-[400px]"
           />
         </div>
       </div>
