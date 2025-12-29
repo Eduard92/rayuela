@@ -19,7 +19,7 @@ const NosotrosSection = () => {
       </div>
 
       {/* Content - Bottom */}
-      <div className="absolute bottom-4 left-6 right-6 md:left-12 md:right-12 top-20 flex flex-col lg:flex-row items-center gap-2 lg:gap-12">
+      <div className="absolute bottom-4 left-2 right-2 md:left-12 md:right-12 top-20 flex flex-col lg:flex-row items-center gap-2 lg:gap-12">
         {/* Mascotas - Left Side */}
         <div className="w-full lg:w-3/5 flex justify-center lg:justify-start">
           <img 
