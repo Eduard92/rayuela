@@ -1,32 +1,13 @@
 import { Facebook, Instagram } from "lucide-react";
 import logo from "@/assets/rayuela-logo.png";
+import menuIcon from "@/assets/menu-icon.png";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-rayuela-blue/90 backdrop-blur-sm">
-      {/* Wave icon */}
-      <div className="text-rayuela-blue">
-        <svg
-          width="32"
-          height="24"
-          viewBox="0 0 32 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="opacity-70"
-        >
-          <path
-            d="M2 8C4 4 8 4 10 8C12 12 16 12 18 8C20 4 24 4 26 8C28 12 30 12 30 8"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-          />
-          <path
-            d="M2 16C4 12 8 12 10 16C12 20 16 20 18 16C20 12 24 12 26 16C28 20 30 20 30 16"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-          />
-        </svg>
+    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-white/95 backdrop-blur-sm shadow-sm">
+      {/* Menu icon */}
+      <div>
+        <img src={menuIcon} alt="Menu" className="h-8 w-auto cursor-pointer hover:scale-105 transition-transform" />
       </div>
 
       {/* Logo */}
