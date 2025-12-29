@@ -19,7 +19,7 @@ const HeroSection = () => {
       />
 
       {/* Content Overlay - Full Screen Grid */}
-      <div className="relative z-10 min-h-screen w-full grid grid-cols-3 grid-rows-2 gap-4 p-6 pt-28">
+      <div className="relative z-10 min-h-screen w-full grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-4 p-6 pt-28">
         {/* Row 1: Nosotros, Paquetes, Fotos */}
         <div className="flex items-center justify-center animate-fade-in-up-1">
           <NavigationButton
