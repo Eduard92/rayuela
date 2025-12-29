@@ -1,10 +1,14 @@
 import mascotasImage from "@/assets/mascotas-nosotros.png";
 import tituloImage from "@/assets/nosotros-titulo.png";
 import logo from "@/assets/rayuela-logo.png";
+import backgroundNosotros from "@/assets/background-nosotros.jpg";
 
 const NosotrosSection = () => {
   return (
-    <section className="relative min-h-screen w-full bg-white overflow-hidden py-16 px-6 md:px-12">
+    <section 
+      className="relative min-h-screen w-full overflow-hidden py-16 px-6 md:px-12"
+      style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+    >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
         {/* Mascotas - Left Side */}
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
