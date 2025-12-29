@@ -20,7 +20,7 @@ const HeroSection = () => {
 
       {/* Content Overlay - Full Screen Grid */}
       <div className="relative z-10 min-h-screen w-full grid grid-cols-3 grid-rows-2 gap-2 p-4 pt-24">
-        {/* Row 1: Nosotros, Fotos, Calendario */}
+        {/* Row 1: Nosotros, Paquetes, Fotos */}
         <div className="flex items-center justify-center animate-fade-in-up-1">
           <NavigationButton
             to="/nosotros"
@@ -33,9 +33,9 @@ const HeroSection = () => {
 
         <div className="flex items-center justify-center animate-fade-in-up-2">
           <NavigationButton
-            to="/fotos"
-            image={fotosImage}
-            alt="Fotos"
+            to="/paquetes"
+            image={paquetesImage}
+            alt="Paquetes"
             animationClass="float-animation-delayed"
             className="w-full max-w-[280px]"
           />
@@ -43,20 +43,20 @@ const HeroSection = () => {
 
         <div className="flex items-center justify-center animate-fade-in-up-3">
           <NavigationButton
-            to="/calendario"
-            image={calendarioImage}
-            alt="Calendario"
+            to="/fotos"
+            image={fotosImage}
+            alt="Fotos"
             animationClass="float-animation"
             className="w-full max-w-[280px]"
           />
         </div>
 
-        {/* Row 2: Paquetes, Cotiza, Contacto */}
+        {/* Row 2: Calendario, Cotiza, Contacto */}
         <div className="flex items-center justify-center animate-fade-in-up-4">
           <NavigationButton
-            to="/paquetes"
-            image={paquetesImage}
-            alt="Paquetes"
+            to="/calendario"
+            image={calendarioImage}
+            alt="Calendario"
             animationClass="float-animation-delayed"
             className="w-full max-w-[280px]"
           />
