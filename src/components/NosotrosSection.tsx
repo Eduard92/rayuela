@@ -6,10 +6,20 @@ import backgroundNosotros from "@/assets/background-nosotros.jpg";
 const NosotrosSection = () => {
   return (
     <section 
-      className="relative min-h-screen w-full overflow-hidden flex items-end pb-8 px-6 md:px-12"
+      className="relative min-h-screen w-full overflow-hidden px-6 md:px-12"
       style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
-      <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-end gap-8 lg:gap-12">
+      {/* Título - Top Right */}
+      <div className="absolute top-8 right-6 md:right-12">
+        <img 
+          src={tituloImage} 
+          alt="Nosotros" 
+          className="w-[200px] md:w-[300px] lg:w-[350px] object-contain"
+        />
+      </div>
+
+      {/* Content - Bottom */}
+      <div className="absolute bottom-8 left-6 right-6 md:left-12 md:right-12 flex flex-col lg:flex-row items-end gap-8 lg:gap-12">
         {/* Mascotas - Left Side */}
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
           <img 
@@ -21,14 +31,6 @@ const NosotrosSection = () => {
 
         {/* Content - Right Side */}
         <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-end gap-6">
-          {/* Título con imagen */}
-          <div className="w-full max-w-md">
-            <img 
-              src={tituloImage} 
-              alt="Nosotros" 
-              className="w-full max-w-[280px] md:max-w-[350px] object-contain"
-            />
-          </div>
 
           {/* Card con texto */}
           <div className="bg-rayuela-pink/40 p-6 md:p-8 rounded-sm max-w-md">
