@@ -19,89 +19,74 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Content Overlay */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center px-4 pt-20 pb-8">
-        <div className="w-full max-w-6xl mx-auto">
-          {/* Navigation Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 items-center justify-items-center">
-            {/* Nosotros - Top Left */}
-            <div className="justify-self-start md:justify-self-center animate-fade-in-up-1">
-              <NavigationButton
-                to="/nosotros"
-                image={nosotrosImage}
-                alt="Nosotros"
-                animationClass="float-animation"
-              />
-            </div>
+      {/* Content Overlay - Full Screen Grid */}
+      <div className="relative z-10 min-h-screen w-full grid grid-cols-3 grid-rows-2 gap-2 p-4 pt-24">
+        {/* Row 1: Nosotros, Fotos, Calendario */}
+        <div className="flex items-center justify-center animate-fade-in-up-1">
+          <NavigationButton
+            to="/nosotros"
+            image={nosotrosImage}
+            alt="Nosotros"
+            animationClass="float-animation"
+            className="w-full max-w-[280px]"
+          />
+        </div>
 
-            {/* Smile - Center Top (hidden on mobile, spans middle) */}
-            <div className="hidden md:flex justify-center items-center animate-fade-in-up-2">
-              <img
-                src={smileImage}
-                alt="Smile"
-                className="w-32 lg:w-40 h-auto object-contain wiggle-animation"
-              />
-            </div>
+        <div className="flex items-center justify-center animate-fade-in-up-2">
+          <NavigationButton
+            to="/fotos"
+            image={fotosImage}
+            alt="Fotos"
+            animationClass="float-animation-delayed"
+            className="w-full max-w-[280px]"
+          />
+        </div>
 
-            {/* Fotos - Top Right */}
-            <div className="justify-self-end md:justify-self-center animate-fade-in-up-3">
-              <NavigationButton
-                to="/fotos"
-                image={fotosImage}
-                alt="Fotos"
-                animationClass="float-animation-delayed"
-              />
-            </div>
+        <div className="flex items-center justify-center animate-fade-in-up-3">
+          <NavigationButton
+            to="/calendario"
+            image={calendarioImage}
+            alt="Calendario"
+            animationClass="float-animation"
+            className="w-full max-w-[280px]"
+          />
+        </div>
 
-            {/* Calendario - Middle Left */}
-            <div className="justify-self-start md:justify-self-center animate-fade-in-up-4">
-              <NavigationButton
-                to="/calendario"
-                image={calendarioImage}
-                alt="Calendario"
-                animationClass="float-animation-delayed"
-              />
-            </div>
+        {/* Row 2: Paquetes (con Smile), Cotiza, Contacto */}
+        <div className="relative flex items-center justify-center animate-fade-in-up-4">
+          {/* Smile overlapping Paquetes - top right */}
+          <img
+            src={smileImage}
+            alt="Smile"
+            className="absolute -top-8 -right-4 md:top-0 md:right-0 w-20 md:w-28 lg:w-32 h-auto object-contain wiggle-animation z-20"
+          />
+          <NavigationButton
+            to="/paquetes"
+            image={paquetesImage}
+            alt="Paquetes"
+            animationClass="float-animation-delayed"
+            className="w-full max-w-[280px]"
+          />
+        </div>
 
-            {/* Paquetes - Center */}
-            <div className="flex justify-center items-center animate-fade-in-up-5">
-              <NavigationButton
-                to="/paquetes"
-                image={paquetesImage}
-                alt="Paquetes"
-                animationClass="float-animation"
-              />
-            </div>
+        <div className="flex items-center justify-center animate-fade-in-up-5">
+          <NavigationButton
+            to="/cotiza"
+            image={cotizaImage}
+            alt="Cotiza"
+            animationClass="float-animation"
+            className="w-full max-w-[280px]"
+          />
+        </div>
 
-            {/* Contacto - Middle Right */}
-            <div className="justify-self-end md:justify-self-center animate-fade-in-up-6">
-              <NavigationButton
-                to="/contacto"
-                image={contactoImage}
-                alt="Contacto"
-                animationClass="float-animation"
-              />
-            </div>
-
-            {/* Cotiza - Bottom Center (spans full width on mobile) */}
-            <div className="col-span-2 md:col-span-3 flex justify-center mt-4 animate-fade-in-up-7">
-              <NavigationButton
-                to="/cotiza"
-                image={cotizaImage}
-                alt="Cotiza"
-                animationClass="float-animation-delayed"
-              />
-            </div>
-          </div>
-
-          {/* Mobile Smile */}
-          <div className="md:hidden flex justify-center mt-8 animate-fade-in-up">
-            <img
-              src={smileImage}
-              alt="Smile"
-              className="w-24 h-auto object-contain wiggle-animation"
-            />
-          </div>
+        <div className="flex items-center justify-center animate-fade-in-up-6">
+          <NavigationButton
+            to="/contacto"
+            image={contactoImage}
+            alt="Contacto"
+            animationClass="float-animation-delayed"
+            className="w-full max-w-[280px]"
+          />
         </div>
       </div>
     </section>

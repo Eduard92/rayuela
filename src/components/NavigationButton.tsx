@@ -23,7 +23,7 @@ const NavigationButton = ({
       <img
         src={image}
         alt={alt}
-        className="w-full h-auto object-contain max-w-[180px] md:max-w-[220px] lg:max-w-[260px]"
+        className="w-full h-auto object-contain"
         loading="lazy"
       />
     </Link>
