@@ -6,11 +6,11 @@ import backgroundNosotros from "@/assets/background-nosotros.jpg";
 const NosotrosSection = () => {
   return (
     <section 
-      className="relative min-h-screen w-full overflow-hidden px-6 md:px-12 flex flex-col"
+      className="relative min-h-screen w-full overflow-hidden px-6 md:px-12"
       style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       {/* Título - Top Right */}
-      <div className="flex justify-end pt-8">
+      <div className="absolute top-8 right-6 md:right-12">
         <img 
           src={tituloImage} 
           alt="Nosotros" 
@@ -18,19 +18,19 @@ const NosotrosSection = () => {
         />
       </div>
 
-      {/* Content - Fill remaining space */}
-      <div className="flex-1 flex flex-col lg:flex-row items-end justify-between pb-8 gap-4 lg:gap-8">
+      {/* Content - Bottom */}
+      <div className="absolute bottom-8 left-6 right-6 md:left-12 md:right-12 flex flex-col lg:flex-row items-end gap-8 lg:gap-12">
         {/* Mascotas - Left Side */}
-        <div className="flex-1 flex justify-center lg:justify-start items-end">
+        <div className="w-full lg:w-3/5 flex justify-center lg:justify-start">
           <img 
             src={mascotasImage} 
             alt="Ela y Ray - Mascotas de Rayuela" 
-            className="h-[45vh] md:h-[55vh] lg:h-[75vh] w-auto object-contain animate-fade-in"
+            className="h-[50vh] lg:h-[70vh] w-auto object-contain animate-fade-in"
           />
         </div>
 
         {/* Content - Right Side */}
-        <div className="flex flex-col items-center lg:items-end justify-end">
+        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-end gap-6">
 
           {/* Card con texto */}
           <div 
