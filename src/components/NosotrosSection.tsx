@@ -19,13 +19,13 @@ const NosotrosSection = () => {
       </div>
 
       {/* Content - Bottom */}
-      <div className="absolute bottom-8 left-6 right-6 md:left-12 md:right-12 top-24 flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <div className="absolute bottom-4 left-6 right-6 md:left-12 md:right-12 top-20 flex flex-col lg:flex-row items-center gap-2 lg:gap-12">
         {/* Mascotas - Left Side */}
         <div className="w-full lg:w-3/5 flex justify-center lg:justify-start">
           <img 
             src={mascotasImage} 
             alt="Ela y Ray - Mascotas de Rayuela" 
-            className="h-[50vh] lg:h-[70vh] w-auto object-contain animate-fade-in"
+            className="h-[35vh] lg:h-[70vh] w-auto object-contain animate-fade-in"
           />
         </div>
 
