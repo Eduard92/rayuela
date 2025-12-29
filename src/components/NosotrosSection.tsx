@@ -33,11 +33,14 @@ const NosotrosSection = () => {
         <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-end gap-6">
 
           {/* Card con texto */}
-          <div className="bg-rayuela-pink/40 p-6 md:p-8 rounded-sm max-w-md">
-            <p className="text-foreground/80 text-sm md:text-base leading-relaxed uppercase tracking-wide text-center lg:text-right">
+          <div 
+            className="bg-rayuela-pink/50 p-8 md:p-10 max-w-md"
+            style={{ clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0 100%, 0 10%)' }}
+          >
+            <p className="text-foreground/80 text-sm md:text-base leading-relaxed uppercase tracking-wide text-center">
               ¡Hola, nosotros somos Ela y Ray y juntos celebraremos momentos mágicos! En Rayuela te ofrecemos un espacio divertido y seguro para tus fiestas. Contamos con áreas de juego, decoración temática y servicios personalizados para que tu evento sea inolvidable.
             </p>
-            <p className="text-foreground/80 text-sm md:text-base leading-relaxed uppercase tracking-wide text-center lg:text-right mt-4">
+            <p className="text-foreground/80 text-sm md:text-base leading-relaxed uppercase tracking-wide text-center mt-4">
               ¿Listo para la diversión? Contáctanos y reserva tu fecha hoy mismo.
             </p>
 
