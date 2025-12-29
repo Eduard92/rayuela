@@ -6,10 +6,10 @@ import backgroundNosotros from "@/assets/background-nosotros.jpg";
 const NosotrosSection = () => {
   return (
     <section 
-      className="relative min-h-screen w-full overflow-hidden py-16 px-6 md:px-12"
+      className="relative min-h-screen w-full overflow-hidden flex items-end pb-8 px-6 md:px-12"
       style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-end gap-8 lg:gap-12">
         {/* Mascotas - Left Side */}
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
           <img 
