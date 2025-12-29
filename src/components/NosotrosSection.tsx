@@ -25,7 +25,7 @@ const NosotrosSection = () => {
           <img 
             src={mascotasImage} 
             alt="Ela y Ray - Mascotas de Rayuela" 
-            className="w-full max-w-md lg:max-w-lg object-contain animate-fade-in"
+            className="w-full max-w-lg lg:max-w-2xl object-contain animate-fade-in"
           />
         </div>
 
