@@ -1,5 +1,4 @@
 import backgroundPattern from "@/assets/background-pattern.jpg";
-import smileImage from "@/assets/smile.png";
 import nosotrosImage from "@/assets/nosotros.png";
 import fotosImage from "@/assets/fotos.png";
 import paquetesImage from "@/assets/paquetes.png";
@@ -52,14 +51,8 @@ const HeroSection = () => {
           />
         </div>
 
-        {/* Row 2: Paquetes (con Smile), Cotiza, Contacto */}
-        <div className="relative flex items-center justify-center animate-fade-in-up-4">
-          {/* Smile overlapping Paquetes - top right */}
-          <img
-            src={smileImage}
-            alt="Smile"
-            className="absolute -top-8 -right-4 md:top-0 md:right-0 w-20 md:w-28 lg:w-32 h-auto object-contain wiggle-animation z-20"
-          />
+        {/* Row 2: Paquetes, Cotiza, Contacto */}
+        <div className="flex items-center justify-center animate-fade-in-up-4">
           <NavigationButton
             to="/paquetes"
             image={paquetesImage}
