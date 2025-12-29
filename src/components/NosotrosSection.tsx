@@ -34,7 +34,7 @@ const NosotrosSection = () => {
 
           {/* Card con texto */}
           <div 
-            className="bg-rayuela-pink/50 p-8 md:p-10 max-w-md overflow-hidden"
+            className="bg-rayuela-pink/50 p-8 md:p-12 max-w-xl overflow-hidden"
             style={{ clipPath: 'polygon(4% 0, 100% 0, 96% 100%, 0% 100%)' }}
           >
             <p className="text-foreground/80 text-sm md:text-base leading-relaxed uppercase tracking-wide text-center">
