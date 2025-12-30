@@ -73,39 +73,42 @@ const CalendarioSection = () => {
     fetchReservas();
   }, [currentDate]);
 
-  // Calcular los días del mes
+  // Calcular los días del mes con días de meses adyacentes
   const getDaysInMonth = () => {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
     
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
+    const prevMonthLastDay = new Date(year, month, 0);
     
     const daysInMonth = lastDay.getDate();
+    const daysInPrevMonth = prevMonthLastDay.getDate();
     const startingDay = firstDay.getDay();
     
-    const days: (number | null)[] = [];
+    const days: { day: number; isCurrentMonth: boolean }[] = [];
     
-    // Días vacíos al inicio
-    for (let i = 0; i < startingDay; i++) {
-      days.push(null);
+    // Días del mes anterior
+    for (let i = startingDay - 1; i >= 0; i--) {
+      days.push({ day: daysInPrevMonth - i, isCurrentMonth: false });
     }
     
-    // Días del mes
+    // Días del mes actual
     for (let i = 1; i <= daysInMonth; i++) {
-      days.push(i);
+      days.push({ day: i, isCurrentMonth: true });
     }
     
-    // Completar la última semana
+    // Días del mes siguiente
+    let nextMonthDay = 1;
     while (days.length % 7 !== 0) {
-      days.push(null);
+      days.push({ day: nextMonthDay++, isCurrentMonth: false });
     }
     
     return days;
   };
 
-  const isReservado = (day: number | null): boolean => {
-    if (!day) return false;
+  const isReservado = (day: number, isCurrentMonth: boolean): boolean => {
+    if (!isCurrentMonth) return false;
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const dayStr = String(day).padStart(2, '0');
@@ -182,8 +185,9 @@ const CalendarioSection = () => {
               background: "linear-gradient(45deg, #F5A3C7 0%, #8BC4E8 50%, #F7A34A 100%)"
             }}
           >
-            {days.map((day, index) => {
-              const reservado = isReservado(day);
+            {days.map((dayInfo, index) => {
+              const { day, isCurrentMonth } = dayInfo;
+              const reservado = isReservado(day, isCurrentMonth);
               const color = getColor(index, 7, baseColors);
               
               return (
@@ -191,25 +195,21 @@ const CalendarioSection = () => {
                   key={index}
                   className="aspect-square transition-transform hover:scale-110 cursor-pointer hover:z-10 relative flex items-center justify-center"
                   style={{ 
-                    backgroundColor: day ? color : "transparent",
+                    backgroundColor: color,
                     transform: `rotate(${rotations[index % rotations.length]}deg) scale(1.02)`,
                     transformOrigin: "center",
-                    opacity: day ? 1 : 0.3,
+                    opacity: isCurrentMonth ? 1 : 0.4,
                   }}
                 >
-                  {day && (
-                    <>
-                      <span className="text-white font-bold text-lg lg:text-2xl drop-shadow-md">
-                        {day}
-                      </span>
-                      {reservado && (
-                        <img 
-                          src={pinReservado} 
-                          alt="Reservado" 
-                          className="absolute inset-0 w-full h-full object-contain p-1 lg:p-2"
-                        />
-                      )}
-                    </>
+                  <span className={`font-bold text-lg lg:text-2xl drop-shadow-md ${isCurrentMonth ? 'text-white' : 'text-white/60'}`}>
+                    {day}
+                  </span>
+                  {reservado && (
+                    <img 
+                      src={pinReservado} 
+                      alt="Reservado" 
+                      className="absolute inset-0 w-full h-full object-contain p-1 lg:p-2"
+                    />
                   )}
                 </div>
               );
