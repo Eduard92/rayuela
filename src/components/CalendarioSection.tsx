@@ -134,12 +134,12 @@ const CalendarioSection = () => {
 
   return (
     <section 
-      className="relative min-h-screen overflow-visible py-8 lg:py-16"
+      className="relative min-h-screen overflow-visible flex items-end pb-16"
       style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pb-8 lg:pb-16">
         {/* Navegación del mes */}
-        <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
+        <div className="flex items-center justify-start gap-4 mb-4 max-w-5xl">
           <button 
             onClick={goToPrevMonth}
             className="text-2xl lg:text-4xl font-bold text-rayuela-orange hover:scale-110 transition-transform"
@@ -158,11 +158,11 @@ const CalendarioSection = () => {
         </div>
 
         {/* Días de la semana */}
-        <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 max-w-full lg:max-w-3xl">
+        <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 max-w-5xl">
           {diasSemana.map((dia, index) => (
             <div 
               key={dia} 
-              className="text-center text-[10px] sm:text-xs lg:text-base font-semibold"
+              className="text-center text-xs lg:text-base font-semibold"
               style={{ 
                 color: index === 2 ? "#F7A34A" : 
                        index === 3 ? "#F5A3C7" : 
@@ -171,27 +171,15 @@ const CalendarioSection = () => {
                        index === 6 ? "#F5A3C7" : "#8BC4E8"
               }}
             >
-              {dia.slice(0, 3)}
+              {dia}
             </div>
           ))}
         </div>
 
-        {/* Título Calendario - arriba en móvil, al lado en desktop */}
-        <div className="flex justify-center lg:hidden mb-4">
-          <div className="w-40 sm:w-48">
-            <img 
-              src={calendarioTitulo} 
-              alt="Calendario" 
-              className="w-full h-auto object-contain"
-            />
-          </div>
-        </div>
-
-        {/* Layout responsivo */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:gap-8">
-          {/* Grid del calendario */}
+        {/* Grid del calendario dinámico */}
+        <div className="relative">
           <div 
-            className="grid grid-cols-7 w-full lg:max-w-3xl"
+            className="grid grid-cols-7 max-w-5xl"
             style={{ 
               gap: 0,
               background: "linear-gradient(45deg, #F5A3C7 0%, #8BC4E8 50%, #F7A34A 100%)"
@@ -205,15 +193,15 @@ const CalendarioSection = () => {
               return (
                 <div
                   key={index}
-                  className="aspect-square transition-transform hover:scale-105 cursor-pointer hover:z-10 relative flex items-start justify-start p-1 lg:p-2"
+                  className="aspect-square transition-transform hover:scale-110 cursor-pointer hover:z-10 relative flex items-start justify-start p-1 lg:p-2"
                   style={{ 
                     backgroundColor: color,
-                    transform: `rotate(${rotations[index % rotations.length]}deg) scale(1.01)`,
+                    transform: `rotate(${rotations[index % rotations.length]}deg) scale(1.02)`,
                     transformOrigin: "center",
                     opacity: isCurrentMonth ? 1 : 0.4,
                   }}
                 >
-                  <span className={`relative z-10 font-bold text-xs sm:text-sm lg:text-lg drop-shadow-md ${isCurrentMonth ? 'text-white' : 'text-white/60'}`}>
+                  <span className={`relative z-10 font-bold text-sm lg:text-lg drop-shadow-md ${isCurrentMonth ? 'text-white' : 'text-white/60'}`}>
                     {day}
                   </span>
                   {reservado && (
@@ -228,34 +216,20 @@ const CalendarioSection = () => {
             })}
           </div>
 
-          {/* Personaje y título - al lado en desktop */}
-          <div className="hidden lg:flex lg:flex-col items-center justify-end">
-            {/* Personaje rosa */}
-            <div className="w-72">
-              <img 
-                src={rosaCalendario} 
-                alt="Ela - Mascota de Rayuela" 
-                className="w-full h-auto object-contain"
-              />
-            </div>
-            
-            {/* Título Calendario */}
-            <div className="w-64 -mt-8">
-              <img 
-                src={calendarioTitulo} 
-                alt="Calendario" 
-                className="w-full h-auto object-contain"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Personaje rosa - debajo del calendario en móvil */}
-        <div className="flex justify-center lg:hidden mt-4">
-          <div className="w-40 sm:w-48">
+          {/* Personaje rosa posicionado a la derecha */}
+          <div className="absolute -right-10 lg:-right-32 bottom-0 w-44 lg:w-96 z-10">
             <img 
               src={rosaCalendario} 
               alt="Ela - Mascota de Rayuela" 
+              className="w-full h-auto object-contain"
+            />
+          </div>
+
+          {/* Título Calendario */}
+          <div className="absolute right-4 lg:right-0 -bottom-2 lg:-bottom-4 w-56 lg:w-96 z-20">
+            <img 
+              src={calendarioTitulo} 
+              alt="Calendario" 
               className="w-full h-auto object-contain"
             />
           </div>
