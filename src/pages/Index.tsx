@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import NosotrosSection from "@/components/NosotrosSection";
+import CalendarioSection from "@/components/CalendarioSection";
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
         <main>
           <HeroSection />
           <NosotrosSection />
+          <CalendarioSection />
         </main>
       </div>
     </>
