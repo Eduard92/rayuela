@@ -2,6 +2,8 @@ import backgroundPattern from "@/assets/background-pattern.jpg";
 import paquetesEncabezado from "@/assets/paquetes-encabezado.png";
 import mascotaVerde from "@/assets/mascota-verde-pastel.png";
 import mascotaRosa from "@/assets/mascota-rosa-globo.png";
+import quieresMas from "@/assets/quieres-mas.png";
+import cotizaAqui from "@/assets/cotiza.png";
 
 const PaquetesSection = () => {
   const paqueteItems = {
@@ -117,12 +119,16 @@ const PaquetesSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-4 mt-10 lg:mt-12">
-              <button className="text-[#8fa832] text-lg sm:text-xl font-semibold hover:scale-105 transition-transform">
-                ¿QUIERES MÁS?
-              </button>
-              <button className="bg-[#8fa832] text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-[#7d9429] transition-colors">
-                COTIZA AQUÍ
-              </button>
+              <img 
+                src={quieresMas} 
+                alt="¿Quieres más?" 
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
+              />
+              <img 
+                src={cotizaAqui} 
+                alt="Cotiza aquí" 
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
+              />
             </div>
           </div>
 
