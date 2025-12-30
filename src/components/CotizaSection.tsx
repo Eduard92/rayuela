@@ -97,8 +97,8 @@ const CotizaSection = () => {
 
           {/* Row 2 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-            <div className="relative">
-              <label className="absolute left-4 top-3 text-[#c85a8a] text-sm font-medium uppercase tracking-wide">
+            <div className="relative date-input-wrapper">
+              <label className="absolute left-4 top-3 text-[#c85a8a] text-sm font-medium uppercase tracking-wide z-10">
                 Fecha
               </label>
               <input
@@ -106,12 +106,12 @@ const CotizaSection = () => {
                 name="fecha"
                 value={formData.fecha}
                 onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 bg-[#f5c6d6]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                className="w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#f5c6d6]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832] cursor-pointer"
                 required
               />
             </div>
-            <div className="relative">
-              <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide">
+            <div className="relative time-input-wrapper">
+              <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide z-10">
                 Time
               </label>
               <input
@@ -119,7 +119,7 @@ const CotizaSection = () => {
                 name="time"
                 value={formData.time}
                 onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                className="w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832] cursor-pointer"
                 required
               />
             </div>
