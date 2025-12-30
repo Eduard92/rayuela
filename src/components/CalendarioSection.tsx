@@ -176,6 +176,17 @@ const CalendarioSection = () => {
           ))}
         </div>
 
+        {/* Título Calendario - arriba en móvil, al lado en desktop */}
+        <div className="flex justify-center lg:hidden mb-4">
+          <div className="w-40 sm:w-48">
+            <img 
+              src={calendarioTitulo} 
+              alt="Calendario" 
+              className="w-full h-auto object-contain"
+            />
+          </div>
+        </div>
+
         {/* Layout responsivo */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:gap-8">
           {/* Grid del calendario */}
@@ -217,10 +228,10 @@ const CalendarioSection = () => {
             })}
           </div>
 
-          {/* Personaje y título - debajo en móvil, al lado en desktop */}
-          <div className="relative flex flex-row lg:flex-col items-end justify-center lg:justify-end mt-4 lg:mt-0">
+          {/* Personaje y título - al lado en desktop */}
+          <div className="hidden lg:flex lg:flex-col items-center justify-end">
             {/* Personaje rosa */}
-            <div className="w-32 sm:w-40 lg:w-72">
+            <div className="w-72">
               <img 
                 src={rosaCalendario} 
                 alt="Ela - Mascota de Rayuela" 
@@ -229,13 +240,24 @@ const CalendarioSection = () => {
             </div>
             
             {/* Título Calendario */}
-            <div className="w-28 sm:w-40 lg:w-64 -ml-4 lg:ml-0 lg:-mt-8">
+            <div className="w-64 -mt-8">
               <img 
                 src={calendarioTitulo} 
                 alt="Calendario" 
                 className="w-full h-auto object-contain"
               />
             </div>
+          </div>
+        </div>
+
+        {/* Personaje rosa - debajo del calendario en móvil */}
+        <div className="flex justify-center lg:hidden mt-4">
+          <div className="w-40 sm:w-48">
+            <img 
+              src={rosaCalendario} 
+              alt="Ela - Mascota de Rayuela" 
+              className="w-full h-auto object-contain"
+            />
           </div>
         </div>
       </div>
