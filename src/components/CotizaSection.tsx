@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, Clock } from "lucide-react";
 import backgroundPattern from "@/assets/background-pattern.jpg";
 import cotizaTitulo from "@/assets/cotiza-titulo.png";
 import { useToast } from "@/hooks/use-toast";
@@ -13,13 +13,20 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
+const timeSlots = [
+  "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+  "12:00", "12:30", "13:00", "13:30", "14:00", "14:30",
+  "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
+  "18:00", "18:30", "19:00", "19:30", "20:00"
+];
+
 const CotizaSection = () => {
   const { toast } = useToast();
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+  const [selectedTime, setSelectedTime] = useState<string>("");
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
-    time: "",
     tipoEvento: "",
     numeroInvitados: "",
     telefono: "",
@@ -39,10 +46,10 @@ const CotizaSection = () => {
       description: "Nos pondremos en contacto contigo pronto.",
     });
     setSelectedDate(undefined);
+    setSelectedTime("");
     setFormData({
       nombre: "",
       email: "",
-      time: "",
       tipoEvento: "",
       numeroInvitados: "",
       telefono: "",
@@ -134,19 +141,43 @@ const CotizaSection = () => {
                 />
               </PopoverContent>
             </Popover>
-            <div className="relative time-input-wrapper">
-              <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide z-10">
-                Time
-              </label>
-              <input
-                type="time"
-                name="time"
-                value={formData.time}
-                onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832] cursor-pointer"
-                required
-              />
-            </div>
+            <Popover>
+              <PopoverTrigger asChild>
+                <div className="relative cursor-pointer">
+                  <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide z-10">
+                    Hora
+                  </label>
+                  <div
+                    className={cn(
+                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#a8c8d8]/80 rounded-full text-gray-700 flex items-end",
+                      !selectedTime && "text-gray-400"
+                    )}
+                  >
+                    {selectedTime || "Seleccionar hora"}
+                  </div>
+                  <Clock className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#8faab8]" />
+                </div>
+              </PopoverTrigger>
+              <PopoverContent className="w-48 p-2 bg-white border-2 border-[#a8c8d8] rounded-2xl shadow-xl max-h-64 overflow-y-auto" align="start">
+                <div className="grid grid-cols-2 gap-1">
+                  {timeSlots.map((time) => (
+                    <button
+                      key={time}
+                      type="button"
+                      onClick={() => setSelectedTime(time)}
+                      className={cn(
+                        "px-3 py-2 text-sm rounded-lg transition-colors",
+                        selectedTime === time
+                          ? "bg-[#a8c8d8] text-white font-semibold"
+                          : "hover:bg-[#a8c8d8]/30 text-gray-700"
+                      )}
+                    >
+                      {time}
+                    </button>
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
 
           {/* Row 3 */}
