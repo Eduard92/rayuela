@@ -217,7 +217,7 @@ const CalendarioSection = () => {
           </div>
 
           {/* Personaje rosa posicionado a la derecha */}
-          <div className="absolute -right-8 lg:-right-28 bottom-0 w-40 lg:w-80 z-10">
+          <div className="absolute -right-10 lg:-right-32 bottom-0 w-44 lg:w-96 z-10">
             <img 
               src={rosaCalendario} 
               alt="Ela - Mascota de Rayuela" 
