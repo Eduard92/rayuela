@@ -17,14 +17,14 @@ const CalendarioSection = () => {
   const rotations = [0.8, -0.5, 0.6, -0.8, 0.4, -0.6, 0.7];
 
   return (
-    <section className="relative min-h-screen bg-background py-8 lg:py-16 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="relative min-h-screen bg-background py-8 lg:py-12 overflow-hidden">
+      <div className="container mx-auto px-2 lg:px-8">
         {/* Días de la semana */}
-        <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 max-w-4xl mx-auto">
+        <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 max-w-6xl mx-auto lg:pr-48">
           {diasSemana.map((dia, index) => (
             <div 
               key={dia} 
-              className="text-center text-xs lg:text-sm font-semibold"
+              className="text-center text-xs lg:text-base font-semibold"
               style={{ 
                 color: index === 2 ? "#F7A34A" : 
                        index === 3 ? "#F5A3C7" : 
@@ -41,7 +41,7 @@ const CalendarioSection = () => {
         {/* Grid del calendario con polígonos asimétricos */}
         <div className="relative">
           <div 
-            className="grid grid-cols-7 max-w-4xl mx-auto"
+            className="grid grid-cols-7 max-w-6xl mx-auto lg:pr-48"
             style={{ 
               gap: 0,
               background: "linear-gradient(45deg, #F5A3C7 0%, #8BC4E8 50%, #F7A34A 100%)"
