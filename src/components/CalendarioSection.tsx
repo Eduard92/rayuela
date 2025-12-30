@@ -226,7 +226,7 @@ const CalendarioSection = () => {
           </div>
 
           {/* Título Calendario */}
-          <div className="absolute right-4 lg:right-12 -bottom-2 lg:-bottom-4 w-56 lg:w-96 z-20">
+          <div className="absolute right-4 lg:right-12 -bottom-16 lg:-bottom-24 w-56 lg:w-96 z-20">
             <img 
               src={calendarioTitulo} 
               alt="Calendario" 
