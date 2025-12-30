@@ -139,7 +139,7 @@ const CalendarioSection = () => {
     >
       <div className="container mx-auto px-4 pb-8 lg:pb-16">
         {/* Título Calendario - arriba en móvil, antes del mes */}
-        <div className="flex justify-center lg:hidden mb-4">
+        <div className="flex justify-end lg:hidden mb-4">
           <img 
             src={calendarioTitulo} 
             alt="Calendario" 
