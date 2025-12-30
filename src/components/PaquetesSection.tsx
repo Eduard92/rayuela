@@ -59,7 +59,7 @@ const PaquetesSection = () => {
           <div className="w-full lg:max-w-3xl xl:max-w-4xl flex flex-col items-center">
             
             {/* Title Image */}
-            <div className="mb-6 lg:mb-8">
+            <div className="mb-8 lg:mb-10 -mt-8 lg:-mt-12">
               <img 
                 src={paquetesEncabezado} 
                 alt="Paquete Rayuela Mágica" 
