@@ -134,7 +134,7 @@ const CalendarioSection = () => {
 
   return (
     <section 
-      className="relative min-h-screen overflow-hidden flex items-end"
+      className="relative min-h-screen overflow-visible flex items-end pb-16"
       style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       <div className="container mx-auto px-4 pb-8 lg:pb-16">
@@ -217,11 +217,11 @@ const CalendarioSection = () => {
           </div>
 
           {/* Personaje rosa posicionado a la derecha */}
-          <div className="absolute -right-12 lg:-right-40 bottom-0 w-52 lg:w-[28rem] z-10 max-h-full">
+          <div className="absolute -right-12 lg:-right-40 bottom-0 w-52 lg:w-[28rem] z-10">
             <img 
               src={rosaCalendario} 
               alt="Ela - Mascota de Rayuela" 
-              className="w-full h-full object-contain object-bottom"
+              className="w-full h-auto object-contain"
             />
           </div>
 
