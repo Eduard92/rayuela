@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
-import { CalendarIcon, Clock } from "lucide-react";
+import { CalendarIcon, Clock, CheckCircle } from "lucide-react";
 import backgroundPattern from "@/assets/background-pattern.jpg";
 import cotizaTitulo from "@/assets/cotiza-titulo.png";
 import { useToast } from "@/hooks/use-toast";
@@ -11,6 +11,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
 const timeSlots = [
@@ -24,6 +31,9 @@ const CotizaSection = () => {
   const { toast } = useToast();
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
   const [selectedTime, setSelectedTime] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [reservationId, setReservationId] = useState<string>("");
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -39,23 +49,62 @@ const CotizaSection = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast({
-      title: "¡Mensaje enviado!",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
-    setSelectedDate(undefined);
-    setSelectedTime("");
-    setFormData({
-      nombre: "",
-      email: "",
-      tipoEvento: "",
-      numeroInvitados: "",
-      telefono: "",
-      direccion: "",
-      comentarios: "",
-    });
+    setIsSubmitting(true);
+
+    try {
+      const form = e.currentTarget;
+      const formDataToSend = new FormData(form);
+      
+      // Add date and time to form data
+      if (selectedDate) {
+        formDataToSend.append('fecha', format(selectedDate, 'yyyy-MM-dd'));
+      }
+      formDataToSend.append('hora', selectedTime);
+
+      const resp = await fetch('/reservas/store', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formDataToSend
+      });
+
+      const data = await resp.json();
+
+      if (data.ok) {
+        setReservationId(data.reservation_id);
+        setShowConfirmModal(true);
+        
+        // Reset form
+        setSelectedDate(undefined);
+        setSelectedTime("");
+        setFormData({
+          nombre: "",
+          email: "",
+          tipoEvento: "",
+          numeroInvitados: "",
+          telefono: "",
+          direccion: "",
+          comentarios: "",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: data.message || "Hubo un problema al enviar la reserva.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error de conexión",
+        description: "No se pudo conectar con el servidor. Intenta de nuevo.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -257,13 +306,46 @@ const CotizaSection = () => {
           <div className="pt-4">
             <button
               type="submit"
-              className="px-8 py-3 border-2 border-[#8fa832] text-[#8fa832] rounded-full font-semibold hover:bg-[#8fa832] hover:text-white transition-all duration-300 hover:scale-105"
+              disabled={isSubmitting}
+              className="px-8 py-3 border-2 border-[#8fa832] text-[#8fa832] rounded-full font-semibold hover:bg-[#8fa832] hover:text-white transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              Enviar
+              {isSubmitting ? "Enviando..." : "Enviar"}
             </button>
           </div>
         </form>
       </div>
+
+      {/* Confirmation Modal */}
+      <Dialog open={showConfirmModal} onOpenChange={setShowConfirmModal}>
+        <DialogContent className="bg-white border-2 border-[#8fa832] rounded-3xl max-w-md">
+          <DialogHeader className="text-center">
+            <div className="flex justify-center mb-4">
+              <div className="w-16 h-16 bg-[#c5c88a]/30 rounded-full flex items-center justify-center">
+                <CheckCircle className="w-10 h-10 text-[#8fa832]" />
+              </div>
+            </div>
+            <DialogTitle className="text-2xl text-[#8fa832] font-bold">
+              ¡Reserva Enviada!
+            </DialogTitle>
+            <DialogDescription className="text-gray-600 text-base mt-2">
+              Tu solicitud de reserva ha sido recibida exitosamente.
+              {reservationId && (
+                <span className="block mt-2 font-semibold text-[#e8855e]">
+                  ID de Reserva: {reservationId}
+                </span>
+              )}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex justify-center mt-4">
+            <button
+              onClick={() => setShowConfirmModal(false)}
+              className="px-8 py-3 bg-[#8fa832] text-white rounded-full font-semibold hover:bg-[#7d9429] transition-all duration-300 hover:scale-105"
+            >
+              ¡Entendido!
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
