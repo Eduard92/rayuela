@@ -133,7 +133,7 @@ const PaquetesSection = () => {
           </div>
 
           {/* Right Character - Hidden on mobile */}
-          <div className="hidden lg:block absolute -right-24 xl:-right-36 bottom-0 w-72 xl:w-96 z-20">
+          <div className="hidden lg:block absolute -right-24 xl:-right-36 bottom-0 w-[368px] xl:w-[520px] z-20">
             <img 
               src={mascotaRosa} 
               alt="Mascota rosa con globo" 
