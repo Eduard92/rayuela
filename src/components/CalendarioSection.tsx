@@ -201,7 +201,7 @@ const CalendarioSection = () => {
                     opacity: isCurrentMonth ? 1 : 0.4,
                   }}
                 >
-                  <span className={`font-bold text-sm lg:text-lg drop-shadow-md ${isCurrentMonth ? 'text-white' : 'text-white/60'}`}>
+                  <span className={`relative z-10 font-bold text-sm lg:text-lg drop-shadow-md ${isCurrentMonth ? 'text-white' : 'text-white/60'}`}>
                     {day}
                   </span>
                   {reservado && (
