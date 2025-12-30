@@ -173,15 +173,13 @@ const CalendarioSection = () => {
           ))}
         </div>
 
-        {/* Layout flex para calendario y elementos laterales */}
-        <div className="flex items-end gap-4">
-          {/* Grid del calendario */}
+        {/* Grid del calendario dinámico */}
+        <div className="relative">
           <div 
-            className="grid grid-cols-7 flex-shrink-0"
+            className="grid grid-cols-7 max-w-5xl"
             style={{ 
               gap: 0,
-              background: "linear-gradient(45deg, #F5A3C7 0%, #8BC4E8 50%, #F7A34A 100%)",
-              maxWidth: "600px"
+              background: "linear-gradient(45deg, #F5A3C7 0%, #8BC4E8 50%, #F7A34A 100%)"
             }}
           >
             {days.map((day, index) => {
@@ -218,25 +216,22 @@ const CalendarioSection = () => {
             })}
           </div>
 
-          {/* Columna derecha con personaje y título */}
-          <div className="relative flex flex-col items-center justify-end">
-            {/* Personaje rosa */}
-            <div className="w-40 lg:w-72">
-              <img 
-                src={rosaCalendario} 
-                alt="Ela - Mascota de Rayuela" 
-                className="w-full h-auto object-contain"
-              />
-            </div>
-            
-            {/* Título Calendario */}
-            <div className="w-32 lg:w-56 -mt-4">
-              <img 
-                src={calendarioTitulo} 
-                alt="Calendario" 
-                className="w-full h-auto object-contain"
-              />
-            </div>
+          {/* Personaje rosa posicionado a la derecha */}
+          <div className="absolute -right-12 lg:-right-40 bottom-0 lg:bottom-4 w-52 lg:w-[28rem] z-10">
+            <img 
+              src={rosaCalendario} 
+              alt="Ela - Mascota de Rayuela" 
+              className="w-full h-auto object-contain"
+            />
+          </div>
+
+          {/* Título Calendario */}
+          <div className="absolute right-4 lg:right-0 -bottom-2 lg:-bottom-4 w-56 lg:w-96 z-20">
+            <img 
+              src={calendarioTitulo} 
+              alt="Calendario" 
+              className="w-full h-auto object-contain"
+            />
           </div>
         </div>
       </div>
