@@ -17,14 +17,14 @@ const CalendarioSection = () => {
   const rotations = [0.8, -0.5, 0.6, -0.8, 0.4, -0.6, 0.7];
 
   return (
-    <section className="relative min-h-screen bg-background py-8 lg:py-16 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="relative min-h-screen bg-background overflow-hidden flex items-end">
+      <div className="container mx-auto px-4 pb-8 lg:pb-16">
         {/* Días de la semana */}
-        <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 max-w-4xl mx-auto">
+        <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 max-w-5xl mx-auto">
           {diasSemana.map((dia, index) => (
             <div 
               key={dia} 
-              className="text-center text-xs lg:text-sm font-semibold"
+              className="text-center text-xs lg:text-base font-semibold"
               style={{ 
                 color: index === 2 ? "#F7A34A" : 
                        index === 3 ? "#F5A3C7" : 
@@ -41,7 +41,7 @@ const CalendarioSection = () => {
         {/* Grid del calendario con polígonos asimétricos */}
         <div className="relative">
           <div 
-            className="grid grid-cols-7 max-w-4xl mx-auto"
+            className="grid grid-cols-7 max-w-5xl mx-auto"
             style={{ 
               gap: 0,
               background: "linear-gradient(45deg, #F5A3C7 0%, #8BC4E8 50%, #F7A34A 100%)"
@@ -61,7 +61,7 @@ const CalendarioSection = () => {
           </div>
 
           {/* Personaje rosa posicionado a la derecha */}
-          <div className="absolute -right-4 lg:-right-20 bottom-0 lg:bottom-10 w-32 lg:w-64 z-10">
+          <div className="absolute -right-8 lg:-right-28 bottom-0 lg:bottom-8 w-40 lg:w-80 z-10">
             <img 
               src={rosaCalendario} 
               alt="Ela - Mascota de Rayuela" 
@@ -70,7 +70,7 @@ const CalendarioSection = () => {
           </div>
 
           {/* Título Calendario */}
-          <div className="absolute right-8 lg:right-16 bottom-4 lg:bottom-20 w-40 lg:w-56 z-0">
+          <div className="absolute right-12 lg:right-24 bottom-4 lg:bottom-24 w-48 lg:w-72 z-0">
             <img 
               src={calendarioTitulo} 
               alt="Calendario" 
