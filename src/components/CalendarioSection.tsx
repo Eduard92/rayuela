@@ -4,13 +4,13 @@ import rosaCalendario from "@/assets/rosa-calendario.png";
 const CalendarioSection = () => {
   const diasSemana = ["DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"];
   
-  // Colores del grid basados en la imagen de referencia
+  // Colores del grid sin colores iguales adyacentes (horizontal y vertical)
   const gridColors = [
-    "#F5A3C7", "#F5A3C7", "#F7A34A", "#8BC4E8", "#F7A34A", "#8BC4E8", "#F5A3C7",
-    "#F7A34A", "#9A8B4F", "#F5A3C7", "#F7A34A", "#9A8B4F", "#F5A3C7", "#F7A34A",
-    "#8BC4E8", "#F7A34A", "#9A8B4F", "#8BC4E8", "#F7A34A", "#F5A3C7", "#8BC4E8",
-    "#9A8B4F", "#8BC4E8", "#F7A34A", "#F5A3C7", "#8BC4E8", "#9A8B4F", "#F7A34A",
-    "#F5A3C7", "#F7A34A", "#8BC4E8", "#F7A34A", "#9A8B4F", "#F7A34A", "#9A8B4F",
+    "#F5A3C7", "#8BC4E8", "#F7A34A", "#9A8B4F", "#F5A3C7", "#F7A34A", "#8BC4E8",
+    "#9A8B4F", "#F7A34A", "#8BC4E8", "#F5A3C7", "#F7A34A", "#9A8B4F", "#F5A3C7",
+    "#F7A34A", "#F5A3C7", "#9A8B4F", "#8BC4E8", "#9A8B4F", "#F7A34A", "#9A8B4F",
+    "#8BC4E8", "#9A8B4F", "#F5A3C7", "#F7A34A", "#8BC4E8", "#F5A3C7", "#8BC4E8",
+    "#F5A3C7", "#F7A34A", "#8BC4E8", "#9A8B4F", "#F5A3C7", "#9A8B4F", "#F7A34A",
   ];
 
   // Polígonos asimétricos más sutiles para evitar espacios
