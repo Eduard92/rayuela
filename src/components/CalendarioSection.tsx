@@ -56,7 +56,12 @@ const CalendarioSection = () => {
         const response = await fetch(`https://rayuela.com.mx/getReservas/${year}/${month}`);
         if (response.ok) {
           const data = await response.json();
-          setReservas(data);
+          // La API devuelve un objeto con fechas como claves, convertir a array
+          const reservasArray = Object.keys(data).map(fecha => ({
+            fecha,
+            reservado: true
+          }));
+          setReservas(reservasArray);
         }
       } catch (error) {
         console.error("Error fetching reservas:", error);
