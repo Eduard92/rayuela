@@ -118,16 +118,16 @@ const PaquetesSection = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 mt-10 lg:mt-12">
+            <div className="flex flex-col sm:flex-row items-center gap-6 mt-16 lg:mt-20">
               <img 
                 src={quieresMas} 
                 alt="¿Quieres más?" 
-                className="h-12 sm:h-14 md:h-16 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
               />
               <img 
                 src={cotizaAqui} 
                 alt="Cotiza aquí" 
-                className="h-12 sm:h-14 md:h-16 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
               />
             </div>
           </div>
