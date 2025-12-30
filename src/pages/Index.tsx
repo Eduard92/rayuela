@@ -4,8 +4,8 @@ import HeroSection from "@/components/HeroSection";
 import NosotrosSection from "@/components/NosotrosSection";
 import CalendarioSection from "@/components/CalendarioSection";
 import PaquetesSection from "@/components/PaquetesSection";
+import FotosSection from "@/components/FotosSection";
 import CotizaSection from "@/components/CotizaSection";
-
 const Index = () => {
   return (
     <>
@@ -29,6 +29,7 @@ const Index = () => {
           <NosotrosSection />
           <CalendarioSection />
           <PaquetesSection />
+          <FotosSection />
           <CotizaSection />
         </main>
       </div>
