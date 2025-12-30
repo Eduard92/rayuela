@@ -13,15 +13,15 @@ const CalendarioSection = () => {
     "#F5A3C7", "#F7A34A", "#8BC4E8", "#F7A34A", "#9A8B4F", "#F7A34A", "#9A8B4F",
   ];
 
-  // Polígonos asimétricos variados
+  // Polígonos asimétricos más sutiles para evitar espacios
   const clipPaths = [
-    "polygon(5% 0%, 100% 3%, 97% 100%, 0% 95%)",
-    "polygon(0% 5%, 95% 0%, 100% 92%, 3% 100%)",
-    "polygon(3% 2%, 100% 0%, 98% 97%, 0% 100%)",
-    "polygon(0% 0%, 97% 5%, 100% 100%, 4% 96%)",
-    "polygon(2% 3%, 100% 0%, 96% 98%, 0% 100%)",
-    "polygon(0% 0%, 98% 4%, 100% 95%, 3% 100%)",
-    "polygon(4% 0%, 100% 2%, 97% 100%, 0% 97%)",
+    "polygon(2% 0%, 100% 1%, 99% 100%, 0% 98%)",
+    "polygon(0% 2%, 98% 0%, 100% 99%, 1% 100%)",
+    "polygon(1% 1%, 100% 0%, 99% 99%, 0% 100%)",
+    "polygon(0% 0%, 99% 2%, 100% 100%, 2% 99%)",
+    "polygon(1% 1%, 100% 0%, 98% 100%, 0% 99%)",
+    "polygon(0% 0%, 100% 1%, 99% 98%, 1% 100%)",
+    "polygon(2% 0%, 100% 1%, 98% 100%, 0% 99%)",
   ];
 
   return (
@@ -48,15 +48,15 @@ const CalendarioSection = () => {
 
         {/* Grid del calendario con polígonos asimétricos */}
         <div className="relative">
-          <div className="grid grid-cols-7 max-w-4xl mx-auto" style={{ gap: "2px" }}>
+          <div className="grid grid-cols-7 max-w-4xl mx-auto -ml-1">
             {gridColors.map((color, index) => (
               <div
                 key={index}
-                className="aspect-square transition-transform hover:scale-105 cursor-pointer hover:z-10"
+                className="aspect-square transition-transform hover:scale-105 cursor-pointer hover:z-10 -m-[2px]"
                 style={{ 
                   backgroundColor: color,
                   clipPath: clipPaths[index % clipPaths.length],
-                  margin: "-1px",
+                  transform: `rotate(${(index % 3 - 1) * 0.5}deg)`,
                 }}
               />
             ))}
