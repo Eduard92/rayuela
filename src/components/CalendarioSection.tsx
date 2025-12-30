@@ -20,7 +20,7 @@ const CalendarioSection = () => {
     <section className="relative min-h-screen bg-background overflow-hidden flex items-end">
       <div className="container mx-auto px-4 pb-8 lg:pb-16">
         {/* Días de la semana */}
-        <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 max-w-5xl mx-auto">
+        <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 max-w-5xl">
           {diasSemana.map((dia, index) => (
             <div 
               key={dia} 
@@ -41,7 +41,7 @@ const CalendarioSection = () => {
         {/* Grid del calendario con polígonos asimétricos */}
         <div className="relative">
           <div 
-            className="grid grid-cols-7 max-w-5xl mx-auto"
+            className="grid grid-cols-7 max-w-5xl"
             style={{ 
               gap: 0,
               background: "linear-gradient(45deg, #F5A3C7 0%, #8BC4E8 50%, #F7A34A 100%)"
