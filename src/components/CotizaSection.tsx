@@ -1,0 +1,216 @@
+import { useState } from "react";
+import backgroundPattern from "@/assets/background-pattern.jpg";
+import cotizaTitulo from "@/assets/cotiza-titulo.png";
+import { useToast } from "@/hooks/use-toast";
+
+const CotizaSection = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    nombre: "",
+    email: "",
+    fecha: "",
+    time: "",
+    tipoEvento: "",
+    numeroInvitados: "",
+    telefono: "",
+    direccion: "",
+    comentarios: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "¡Mensaje enviado!",
+      description: "Nos pondremos en contacto contigo pronto.",
+    });
+    setFormData({
+      nombre: "",
+      email: "",
+      fecha: "",
+      time: "",
+      tipoEvento: "",
+      numeroInvitados: "",
+      telefono: "",
+      direccion: "",
+      comentarios: "",
+    });
+  };
+
+  return (
+    <section className="relative min-h-screen w-full overflow-hidden py-16 lg:py-24">
+      {/* Background Pattern */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${backgroundPattern})`,
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Title */}
+        <div className="mb-10 lg:mb-14">
+          <img 
+            src={cotizaTitulo} 
+            alt="Cotiza" 
+            className="w-48 sm:w-56 md:w-64 h-auto object-contain"
+          />
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
+          {/* Row 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+            <div className="relative">
+              <label className="absolute left-4 top-3 text-[#8fa832] text-sm font-medium uppercase tracking-wide">
+                Nombre
+              </label>
+              <input
+                type="text"
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleChange}
+                className="w-full h-14 pt-6 pb-2 px-4 bg-[#e8855e]/80 rounded-full text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                required
+              />
+            </div>
+            <div className="relative">
+              <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                required
+              />
+            </div>
+          </div>
+
+          {/* Row 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+            <div className="relative">
+              <label className="absolute left-4 top-3 text-[#c85a8a] text-sm font-medium uppercase tracking-wide">
+                Fecha
+              </label>
+              <input
+                type="date"
+                name="fecha"
+                value={formData.fecha}
+                onChange={handleChange}
+                className="w-full h-14 pt-6 pb-2 px-4 bg-[#f5c6d6]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                required
+              />
+            </div>
+            <div className="relative">
+              <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide">
+                Time
+              </label>
+              <input
+                type="time"
+                name="time"
+                value={formData.time}
+                onChange={handleChange}
+                className="w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                required
+              />
+            </div>
+          </div>
+
+          {/* Row 3 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+            <div className="relative">
+              <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide">
+                Tipo de evento
+              </label>
+              <input
+                type="text"
+                name="tipoEvento"
+                value={formData.tipoEvento}
+                onChange={handleChange}
+                className="w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                required
+              />
+            </div>
+            <div className="relative">
+              <label className="absolute left-4 top-3 text-[#8fa832] text-sm font-medium uppercase tracking-wide">
+                Número de invitados
+              </label>
+              <input
+                type="number"
+                name="numeroInvitados"
+                value={formData.numeroInvitados}
+                onChange={handleChange}
+                className="w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                required
+              />
+            </div>
+          </div>
+
+          {/* Row 4 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+            <div className="relative">
+              <label className="absolute left-4 top-3 text-[#8fa832] text-sm font-medium uppercase tracking-wide">
+                Teléfono
+              </label>
+              <input
+                type="tel"
+                name="telefono"
+                value={formData.telefono}
+                onChange={handleChange}
+                className="w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                required
+              />
+            </div>
+            <div className="relative">
+              <label className="absolute left-4 top-3 text-[#e8855e] text-sm font-medium uppercase tracking-wide">
+                Dirección / Calle
+              </label>
+              <input
+                type="text"
+                name="direccion"
+                value={formData.direccion}
+                onChange={handleChange}
+                className="w-full h-14 pt-6 pb-2 px-4 bg-[#f5c6d6]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+              />
+            </div>
+          </div>
+
+          {/* Row 5 - Comentarios */}
+          <div className="relative">
+            <label className="absolute left-4 top-3 text-[#8fa832] text-sm font-medium uppercase tracking-wide">
+              Comentarios
+            </label>
+            <textarea
+              name="comentarios"
+              value={formData.comentarios}
+              onChange={handleChange}
+              rows={3}
+              className="w-full pt-8 pb-4 px-4 bg-[#a8c8d8]/60 rounded-3xl text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832] resize-none"
+            />
+          </div>
+
+          {/* Submit Button */}
+          <div className="pt-4">
+            <button
+              type="submit"
+              className="px-8 py-3 border-2 border-[#8fa832] text-[#8fa832] rounded-full font-semibold hover:bg-[#8fa832] hover:text-white transition-all duration-300 hover:scale-105"
+            >
+              Enviar
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+};
+
+export default CotizaSection;
