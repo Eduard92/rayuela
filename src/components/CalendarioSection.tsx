@@ -1,5 +1,6 @@
 import calendarioTitulo from "@/assets/calendario-titulo.png";
 import rosaCalendario from "@/assets/rosa-calendario.png";
+import backgroundNosotros from "@/assets/background-nosotros.jpg";
 
 const CalendarioSection = () => {
   const diasSemana = ["DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"];
@@ -17,7 +18,10 @@ const CalendarioSection = () => {
   const rotations = [0.8, -0.5, 0.6, -0.8, 0.4, -0.6, 0.7];
 
   return (
-    <section className="relative min-h-screen bg-background overflow-hidden flex items-end">
+    <section 
+      className="relative min-h-screen overflow-hidden flex items-end"
+      style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+    >
       <div className="container mx-auto px-4 pb-8 lg:pb-16">
         {/* Días de la semana */}
         <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 max-w-5xl">
