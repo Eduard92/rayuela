@@ -68,7 +68,7 @@ const PaquetesSection = () => {
             </div>
 
             {/* Description */}
-            <p className="text-center text-base sm:text-lg md:text-xl text-[#e8a0b5] mb-8 lg:mb-10 max-w-2xl leading-relaxed px-4">
+            <p className="text-center text-base sm:text-lg md:text-xl text-[#e8a0b5] font-semibold mb-8 lg:mb-10 max-w-2xl leading-relaxed px-4">
               En Rayuela hemos creado un paquete que combina diversión, creatividad y magia.
               <br />
               Aquí encontrarás todo lo necesario para celebrar en grande.
