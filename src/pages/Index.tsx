@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import NosotrosSection from "@/components/NosotrosSection";
 import CalendarioSection from "@/components/CalendarioSection";
+import PaquetesSection from "@/components/PaquetesSection";
 
 const Index = () => {
   return (
@@ -25,6 +26,7 @@ const Index = () => {
         <main>
           <HeroSection />
           <NosotrosSection />
+          <PaquetesSection />
           <CalendarioSection />
         </main>
       </div>
