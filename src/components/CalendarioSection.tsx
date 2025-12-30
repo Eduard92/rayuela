@@ -193,7 +193,7 @@ const CalendarioSection = () => {
               return (
                 <div
                   key={index}
-                  className="aspect-square transition-transform hover:scale-110 cursor-pointer hover:z-10 relative flex items-center justify-center"
+                  className="aspect-square transition-transform hover:scale-110 cursor-pointer hover:z-10 relative flex items-start justify-start p-1 lg:p-2"
                   style={{ 
                     backgroundColor: color,
                     transform: `rotate(${rotations[index % rotations.length]}deg) scale(1.02)`,
@@ -201,7 +201,7 @@ const CalendarioSection = () => {
                     opacity: isCurrentMonth ? 1 : 0.4,
                   }}
                 >
-                  <span className={`font-bold text-lg lg:text-2xl drop-shadow-md ${isCurrentMonth ? 'text-white' : 'text-white/60'}`}>
+                  <span className={`font-bold text-sm lg:text-lg drop-shadow-md ${isCurrentMonth ? 'text-white' : 'text-white/60'}`}>
                     {day}
                   </span>
                   {reservado && (
