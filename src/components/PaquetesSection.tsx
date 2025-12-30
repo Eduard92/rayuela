@@ -122,12 +122,12 @@ const PaquetesSection = () => {
               <img 
                 src={quieresMas} 
                 alt="¿Quieres más?" 
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
+                className="h-20 sm:h-24 md:h-32 w-auto object-contain cursor-pointer hover:scale-110 hover:rotate-2 hover:drop-shadow-xl transition-all duration-300"
               />
               <img 
                 src={cotizaAqui} 
                 alt="Cotiza aquí" 
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
+                className="h-20 sm:h-24 md:h-32 w-auto object-contain cursor-pointer hover:scale-110 hover:-rotate-2 hover:drop-shadow-xl transition-all duration-300"
               />
             </div>
           </div>
