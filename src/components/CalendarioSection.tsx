@@ -176,6 +176,15 @@ const CalendarioSection = () => {
           ))}
         </div>
 
+        {/* Título Calendario - arriba en móvil */}
+        <div className="flex justify-center lg:hidden mb-4">
+          <img 
+            src={calendarioTitulo} 
+            alt="Calendario" 
+            className="w-56 h-auto object-contain"
+          />
+        </div>
+
         {/* Grid del calendario dinámico */}
         <div className="relative">
           <div 
@@ -216,8 +225,8 @@ const CalendarioSection = () => {
             })}
           </div>
 
-          {/* Personaje rosa posicionado a la derecha */}
-          <div className="absolute -right-10 lg:-right-32 bottom-0 w-44 lg:w-96 z-10">
+          {/* Personaje rosa - debajo del calendario en móvil, a la derecha en desktop */}
+          <div className="hidden lg:block absolute -right-32 bottom-0 w-96 z-10">
             <img 
               src={rosaCalendario} 
               alt="Ela - Mascota de Rayuela" 
@@ -225,14 +234,23 @@ const CalendarioSection = () => {
             />
           </div>
 
-          {/* Título Calendario */}
-          <div className="absolute right-4 lg:right-0 -bottom-2 lg:-bottom-4 w-56 lg:w-96 z-20">
+          {/* Título Calendario - solo desktop */}
+          <div className="hidden lg:block absolute right-0 -bottom-4 w-96 z-20">
             <img 
               src={calendarioTitulo} 
               alt="Calendario" 
               className="w-full h-auto object-contain"
             />
           </div>
+        </div>
+
+        {/* Personaje rosa - debajo del calendario solo en móvil */}
+        <div className="flex justify-center lg:hidden mt-4">
+          <img 
+            src={rosaCalendario} 
+            alt="Ela - Mascota de Rayuela" 
+            className="w-48 h-auto object-contain"
+          />
         </div>
       </div>
     </section>
