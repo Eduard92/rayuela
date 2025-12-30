@@ -1,4 +1,4 @@
-import backgroundPattern from "@/assets/background-pattern.jpg";
+import backgroundPaquetes from "@/assets/background-paquetes.jpg";
 import paquetesEncabezado from "@/assets/paquetes-encabezado.png";
 import mascotaVerde from "@/assets/mascota-verde-pastel.png";
 import mascotaRosa from "@/assets/mascota-rosa-globo.png";
@@ -36,7 +36,7 @@ const PaquetesSection = () => {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${backgroundPattern})`,
+          backgroundImage: `url(${backgroundPaquetes})`,
         }}
       />
 
