@@ -1,14 +1,24 @@
 import { useState } from "react";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
+import { CalendarIcon } from "lucide-react";
 import backgroundPattern from "@/assets/background-pattern.jpg";
 import cotizaTitulo from "@/assets/cotiza-titulo.png";
 import { useToast } from "@/hooks/use-toast";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
 const CotizaSection = () => {
   const { toast } = useToast();
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>();
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
-    fecha: "",
     time: "",
     tipoEvento: "",
     numeroInvitados: "",
@@ -28,10 +38,10 @@ const CotizaSection = () => {
       title: "¡Mensaje enviado!",
       description: "Nos pondremos en contacto contigo pronto.",
     });
+    setSelectedDate(undefined);
     setFormData({
       nombre: "",
       email: "",
-      fecha: "",
       time: "",
       tipoEvento: "",
       numeroInvitados: "",
@@ -97,19 +107,33 @@ const CotizaSection = () => {
 
           {/* Row 2 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-            <div className="relative date-input-wrapper">
-              <label className="absolute left-4 top-3 text-[#c85a8a] text-sm font-medium uppercase tracking-wide z-10">
-                Fecha
-              </label>
-              <input
-                type="date"
-                name="fecha"
-                value={formData.fecha}
-                onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#f5c6d6]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832] cursor-pointer"
-                required
-              />
-            </div>
+            <Popover>
+              <PopoverTrigger asChild>
+                <div className="relative cursor-pointer">
+                  <label className="absolute left-4 top-3 text-[#c85a8a] text-sm font-medium uppercase tracking-wide z-10">
+                    Fecha
+                  </label>
+                  <div
+                    className={cn(
+                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#f5c6d6]/80 rounded-full text-gray-700 flex items-end focus:outline-none focus:ring-2 focus:ring-[#8fa832]",
+                      !selectedDate && "text-gray-400"
+                    )}
+                  >
+                    {selectedDate ? format(selectedDate, "dd/MM/yyyy", { locale: es }) : "Seleccionar fecha"}
+                  </div>
+                  <CalendarIcon className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#c85a8a]" />
+                </div>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0 bg-white border-2 border-[#f5c6d6] rounded-2xl shadow-xl" align="start">
+                <Calendar
+                  mode="single"
+                  selected={selectedDate}
+                  onSelect={setSelectedDate}
+                  initialFocus
+                  locale={es}
+                />
+              </PopoverContent>
+            </Popover>
             <div className="relative time-input-wrapper">
               <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide z-10">
                 Time
