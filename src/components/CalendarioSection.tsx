@@ -138,6 +138,15 @@ const CalendarioSection = () => {
       style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       <div className="container mx-auto px-4 pb-8 lg:pb-16">
+        {/* Título Calendario - arriba en móvil, antes del mes */}
+        <div className="flex justify-center lg:hidden mb-4">
+          <img 
+            src={calendarioTitulo} 
+            alt="Calendario" 
+            className="w-56 h-auto object-contain"
+          />
+        </div>
+
         {/* Navegación del mes */}
         <div className="flex items-center justify-start gap-4 mb-4 max-w-5xl">
           <button 
@@ -174,15 +183,6 @@ const CalendarioSection = () => {
               {dia}
             </div>
           ))}
-        </div>
-
-        {/* Título Calendario - arriba en móvil */}
-        <div className="flex justify-center lg:hidden mb-4">
-          <img 
-            src={calendarioTitulo} 
-            alt="Calendario" 
-            className="w-56 h-auto object-contain"
-          />
         </div>
 
         {/* Grid del calendario dinámico */}
