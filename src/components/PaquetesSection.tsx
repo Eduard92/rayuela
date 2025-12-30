@@ -47,7 +47,7 @@ const PaquetesSection = () => {
         <div className="w-full max-w-7xl flex items-center justify-center relative">
           
           {/* Left Character - Hidden on mobile */}
-          <div className="hidden lg:block absolute left-0 bottom-0 w-64 xl:w-80 z-20">
+          <div className="hidden lg:block absolute -left-8 xl:-left-16 bottom-0 w-72 xl:w-96 z-20">
             <img 
               src={mascotaVerde} 
               alt="Mascota verde con pastel" 
@@ -133,7 +133,7 @@ const PaquetesSection = () => {
           </div>
 
           {/* Right Character - Hidden on mobile */}
-          <div className="hidden lg:block absolute right-0 bottom-0 w-56 xl:w-72 z-20">
+          <div className="hidden lg:block absolute -right-8 xl:-right-16 bottom-0 w-64 xl:w-80 z-20">
             <img 
               src={mascotaRosa} 
               alt="Mascota rosa con globo" 
