@@ -27,11 +27,11 @@ const FotosSection = () => {
       <div className="container mx-auto px-4">
         <div className="relative flex flex-col lg:flex-row items-center justify-center gap-8">
           {/* Mascota verde a la izquierda */}
-          <div className="hidden lg:block absolute left-0 bottom-0 z-10">
+          <div className="hidden lg:block absolute left-0 -bottom-8 z-30">
             <img 
               src={mascotaVerde} 
               alt="Mascota verde con globo" 
-              className="w-48 xl:w-64 h-auto"
+              className="w-72 xl:w-96 h-auto"
             />
           </div>
 
