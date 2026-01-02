@@ -14,8 +14,7 @@ const CalendarioSection = () => {
   const [reservas, setReservas] = useState<Reserva[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const diasSemana = ["DOM", "LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB"];
-  const diasSemanaFull = ["DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"];
+  const diasSemana = ["DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"];
   
   // Colores del grid sin colores iguales adyacentes
   const baseColors = ["#F5A3C7", "#8BC4E8", "#F7A34A", "#9A8B4F"];
@@ -135,46 +134,44 @@ const CalendarioSection = () => {
 
   return (
     <section 
-      className="relative min-h-screen overflow-visible flex items-center md:items-end py-8 md:pb-16"
+      className="relative min-h-screen overflow-visible flex items-end pb-16"
       style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
-      <div className="container mx-auto px-2 sm:px-4 pb-4 md:pb-8 lg:pb-16 w-full">
-        {/* Título Calendario - arriba en móvil/tablet */}
-        <div className="flex justify-center md:justify-end lg:hidden mb-4">
+      <div className="container mx-auto px-4 pb-8 lg:pb-16">
+        {/* Título Calendario - arriba en móvil, antes del mes */}
+        <div className="flex justify-end lg:hidden mb-4">
           <img 
             src={calendarioTitulo} 
             alt="Calendario" 
-            className="w-40 sm:w-56 h-auto object-contain"
+            className="w-56 h-auto object-contain"
           />
         </div>
 
         {/* Navegación del mes */}
-        <div className="flex items-center justify-center md:justify-start gap-2 sm:gap-4 mb-3 sm:mb-4 max-w-5xl mx-auto md:mx-0">
+        <div className="flex items-center justify-start gap-4 mb-4 max-w-5xl">
           <button 
             onClick={goToPrevMonth}
-            className="text-xl sm:text-2xl lg:text-4xl font-bold text-rayuela-orange hover:scale-110 transition-transform p-2"
-            aria-label="Mes anterior"
+            className="text-2xl lg:text-4xl font-bold text-rayuela-orange hover:scale-110 transition-transform"
           >
             ←
           </button>
-          <h2 className="text-base sm:text-xl lg:text-3xl font-bold text-rayuela-pink uppercase text-center min-w-[140px] sm:min-w-[200px]">
+          <h2 className="text-xl lg:text-3xl font-bold text-rayuela-pink uppercase">
             {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
           </h2>
           <button 
             onClick={goToNextMonth}
-            className="text-xl sm:text-2xl lg:text-4xl font-bold text-rayuela-orange hover:scale-110 transition-transform p-2"
-            aria-label="Mes siguiente"
+            className="text-2xl lg:text-4xl font-bold text-rayuela-orange hover:scale-110 transition-transform"
           >
             →
           </button>
         </div>
 
         {/* Días de la semana */}
-        <div className="grid grid-cols-7 gap-0.5 sm:gap-1 lg:gap-2 mb-1 sm:mb-2 max-w-5xl mx-auto md:mx-0">
+        <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 max-w-5xl">
           {diasSemana.map((dia, index) => (
             <div 
               key={dia} 
-              className="text-center text-[10px] sm:text-xs lg:text-base font-semibold py-1"
+              className="text-center text-xs lg:text-base font-semibold"
               style={{ 
                 color: index === 2 ? "#F7A34A" : 
                        index === 3 ? "#F5A3C7" : 
@@ -183,16 +180,15 @@ const CalendarioSection = () => {
                        index === 6 ? "#F5A3C7" : "#8BC4E8"
               }}
             >
-              <span className="hidden md:inline">{diasSemanaFull[index]}</span>
-              <span className="md:hidden">{dia}</span>
+              {dia}
             </div>
           ))}
         </div>
 
         {/* Grid del calendario dinámico */}
-        <div className="relative max-w-5xl mx-auto md:mx-0">
+        <div className="relative">
           <div 
-            className="grid grid-cols-7"
+            className="grid grid-cols-7 max-w-5xl"
             style={{ 
               gap: 0,
               background: "linear-gradient(45deg, #F5A3C7 0%, #8BC4E8 50%, #F7A34A 100%)"
@@ -206,7 +202,7 @@ const CalendarioSection = () => {
               return (
                 <div
                   key={index}
-                  className="aspect-square transition-transform hover:scale-105 sm:hover:scale-110 cursor-pointer hover:z-10 relative flex items-start justify-start p-0.5 sm:p-1 lg:p-2"
+                  className="aspect-square transition-transform hover:scale-110 cursor-pointer hover:z-10 relative flex items-start justify-start p-1 lg:p-2"
                   style={{ 
                     backgroundColor: color,
                     transform: `rotate(${rotations[index % rotations.length]}deg) scale(1.02)`,
@@ -214,14 +210,14 @@ const CalendarioSection = () => {
                     opacity: isCurrentMonth ? 1 : 0.4,
                   }}
                 >
-                  <span className={`relative z-10 font-bold text-[10px] sm:text-sm lg:text-lg drop-shadow-md ${isCurrentMonth ? 'text-white' : 'text-white/60'}`}>
+                  <span className={`relative z-10 font-bold text-sm lg:text-lg drop-shadow-md ${isCurrentMonth ? 'text-white' : 'text-white/60'}`}>
                     {day}
                   </span>
                   {reservado && (
                     <img 
                       src={pinReservado} 
                       alt="Reservado" 
-                      className="absolute inset-0 w-full h-full object-contain p-0.5 sm:p-1 lg:p-2"
+                      className="absolute inset-0 w-full h-full object-contain p-1 lg:p-2"
                     />
                   )}
                 </div>
@@ -229,7 +225,7 @@ const CalendarioSection = () => {
             })}
           </div>
 
-          {/* Personaje rosa - solo desktop */}
+          {/* Personaje rosa - debajo del calendario en móvil, a la derecha en desktop */}
           <div className="hidden lg:block absolute -right-32 bottom-0 w-96 z-10">
             <img 
               src={rosaCalendario} 
@@ -248,12 +244,12 @@ const CalendarioSection = () => {
           </div>
         </div>
 
-        {/* Personaje rosa - móvil y tablet */}
-        <div className="flex justify-center lg:hidden mt-4 sm:mt-6">
+        {/* Personaje rosa - debajo del calendario solo en móvil */}
+        <div className="flex justify-center lg:hidden mt-4">
           <img 
             src={rosaCalendario} 
             alt="Ela - Mascota de Rayuela" 
-            className="w-32 sm:w-48 h-auto object-contain"
+            className="w-48 h-auto object-contain"
           />
         </div>
       </div>
