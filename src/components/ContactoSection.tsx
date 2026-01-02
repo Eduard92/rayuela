@@ -3,20 +3,16 @@ import mascotaVerdeDireccion from "@/assets/mascota-verde-direccion.png";
 import telefonoTitulo from "@/assets/telefono-titulo.png";
 import mascotaRosaPatines from "@/assets/mascota-rosa-patines.png";
 import horariosTitulo from "@/assets/horarios-titulo.png";
+import backgroundContacto from "@/assets/background-contacto.jpg";
 
 const ContactoSection = () => {
   return (
-    <section id="contacto" className="relative py-16 md:py-24 overflow-hidden bg-white">
-      {/* Rainbow waves background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <svg className="absolute w-full h-full" viewBox="0 0 1440 600" preserveAspectRatio="none">
-          <path d="M-50,200 Q200,150 400,200 T800,180 T1200,220 T1500,200" fill="none" stroke="#f5b5c8" strokeWidth="20" opacity="0.6"/>
-          <path d="M-50,220 Q200,170 400,220 T800,200 T1200,240 T1500,220" fill="none" stroke="#ffd280" strokeWidth="18" opacity="0.6"/>
-          <path d="M-50,240 Q200,190 400,240 T800,220 T1200,260 T1500,240" fill="none" stroke="#a8d5ba" strokeWidth="16" opacity="0.6"/>
-          <path d="M-50,260 Q200,210 400,260 T800,240 T1200,280 T1500,260" fill="none" stroke="#87ceeb" strokeWidth="14" opacity="0.6"/>
-          <path d="M-50,280 Q200,230 400,280 T800,260 T1200,300 T1500,280" fill="none" stroke="#dda0dd" strokeWidth="12" opacity="0.6"/>
-        </svg>
-      </div>
+    <section id="contacto" className="relative py-16 md:py-24 overflow-hidden">
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${backgroundContacto})` }}
+      />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Título CONTACTO */}
