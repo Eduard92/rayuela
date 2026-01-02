@@ -52,25 +52,25 @@ const ContactoSection = () => {
             <img 
               src={telefonoTitulo} 
               alt="Teléfono" 
-              className="w-40 md:w-48 h-auto mb-2"
+              className="w-52 md:w-64 h-auto mb-2"
             />
             <a 
               href="tel:+525578426657" 
-              className="text-[#6b9ac4] text-lg md:text-xl font-light tracking-wider hover:opacity-80 transition-opacity"
+              className="text-[#6b9ac4] text-xl md:text-2xl font-light tracking-wider hover:opacity-80 transition-opacity"
             >
               + 52 5578426657
             </a>
             <div className="mt-6 flex flex-col items-center">
               <div className="relative mb-2">
-                <div className="bg-[#8b9a6b] px-6 py-2 transform -skew-x-3">
-                  <span className="text-white text-lg md:text-xl font-medium tracking-wide skew-x-3 inline-block">
+                <div className="bg-[#8b9a6b] px-8 py-3 transform -skew-x-3">
+                  <span className="text-white text-xl md:text-2xl font-medium tracking-wide skew-x-3 inline-block">
                     E-MAIL
                   </span>
                 </div>
               </div>
               <a 
                 href="mailto:contacto@rayuela.com.mx" 
-                className="text-[#6b9ac4] text-base md:text-lg font-light tracking-wide hover:opacity-80 transition-opacity"
+                className="text-[#6b9ac4] text-lg md:text-xl font-light tracking-wide hover:opacity-80 transition-opacity"
               >
                 contacto@rayuela.com.mx
               </a>
@@ -91,20 +91,20 @@ const ContactoSection = () => {
             <img 
               src={horariosTitulo} 
               alt="Horarios" 
-              className="w-36 md:w-44 h-auto mb-4"
+              className="w-48 md:w-56 h-auto mb-4"
             />
-            <div className="text-center space-y-1">
-              <div className="flex gap-3 justify-center">
-                <span className="text-[#4a4a4a] font-medium text-sm md:text-base">LUN - VIE</span>
-                <span className="text-[#4a4a4a] font-light text-sm md:text-base">11:00 AM - 7 PM</span>
+            <div className="text-center space-y-2">
+              <div className="flex gap-4 justify-center">
+                <span className="text-[#4a4a4a] font-medium text-base md:text-lg">LUN - VIE</span>
+                <span className="text-[#4a4a4a] font-light text-base md:text-lg">11:00 AM - 7 PM</span>
               </div>
-              <div className="flex gap-3 justify-center">
-                <span className="text-[#4a4a4a] font-medium text-sm md:text-base">SABADO</span>
-                <span className="text-[#4a4a4a] font-light text-sm md:text-base">11:00 AM - 8 PM</span>
+              <div className="flex gap-4 justify-center">
+                <span className="text-[#4a4a4a] font-medium text-base md:text-lg">SABADO</span>
+                <span className="text-[#4a4a4a] font-light text-base md:text-lg">11:00 AM - 8 PM</span>
               </div>
-              <div className="flex gap-3 justify-center">
-                <span className="text-[#4a4a4a] font-medium text-sm md:text-base">DOMINGO</span>
-                <span className="text-[#e74c3c] font-light text-sm md:text-base">CERRADO</span>
+              <div className="flex gap-4 justify-center">
+                <span className="text-[#4a4a4a] font-medium text-base md:text-lg">DOMINGO</span>
+                <span className="text-[#e74c3c] font-light text-base md:text-lg">CERRADO</span>
               </div>
             </div>
           </div>
