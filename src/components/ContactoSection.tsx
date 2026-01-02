@@ -26,7 +26,7 @@ const ContactoSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
           {/* Columna 1 - Dirección */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center self-start">
             <div className="relative mb-4">
               <img 
                 src={mascotaVerdeDireccion} 
