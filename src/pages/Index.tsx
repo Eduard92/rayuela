@@ -6,6 +6,7 @@ import CalendarioSection from "@/components/CalendarioSection";
 import PaquetesSection from "@/components/PaquetesSection";
 import FotosSection from "@/components/FotosSection";
 import CotizaSection from "@/components/CotizaSection";
+import ContactoSection from "@/components/ContactoSection";
 const Index = () => {
   return (
     <>
@@ -31,6 +32,7 @@ const Index = () => {
           <PaquetesSection />
           <CotizaSection />
           <FotosSection />
+          <ContactoSection />
         </main>
       </div>
     </>
