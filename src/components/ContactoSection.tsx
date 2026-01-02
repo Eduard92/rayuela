@@ -31,7 +31,7 @@ const ContactoSection = () => {
               <img 
                 src={mascotaVerdeDireccion} 
                 alt="Mascota verde con dirección" 
-                className="w-40 md:w-48 h-auto"
+                className="w-80 md:w-96 h-auto"
               />
             </div>
             <div className="text-center">
