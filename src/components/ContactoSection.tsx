@@ -82,7 +82,7 @@ const ContactoSection = () => {
             <img 
               src={mascotaRosaPatines} 
               alt="Mascota rosa con patines" 
-              className="w-40 md:w-56 h-auto"
+              className="w-64 md:w-80 h-auto"
             />
           </div>
 
