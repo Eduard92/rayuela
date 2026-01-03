@@ -61,7 +61,7 @@ const ContactoSection = () => {
             <img 
               src={telefonoTitulo} 
               alt="Teléfono" 
-              className="w-52 md:w-64 h-auto mb-2"
+              className="w-64 md:w-80 h-auto mb-2"
             />
             <a 
               href="tel:+525578426657" 
@@ -71,8 +71,8 @@ const ContactoSection = () => {
             </a>
             <div className="mt-6 flex flex-col items-center">
               <div className="relative mb-2">
-                <div className="bg-[#8b9a6b] px-8 py-3 transform -skew-x-3">
-                  <span className="text-white text-xl md:text-2xl font-medium tracking-wide skew-x-3 inline-block">
+                <div className="bg-[#8b9a6b] px-10 py-4 transform -skew-x-3">
+                  <span className="text-white text-2xl md:text-3xl font-medium tracking-wide skew-x-3 inline-block">
                     E-MAIL
                   </span>
                 </div>
@@ -100,7 +100,7 @@ const ContactoSection = () => {
             <img 
               src={horariosTitulo} 
               alt="Horarios" 
-              className="w-48 md:w-56 h-auto mb-4"
+              className="w-64 md:w-72 h-auto mb-4"
             />
             <div className="text-center space-y-2">
               <div className="flex gap-4 justify-center">
