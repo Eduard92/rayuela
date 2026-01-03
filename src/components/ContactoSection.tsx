@@ -41,13 +41,13 @@ const ContactoSection = () => {
               rel="noopener noreferrer"
               className="text-center hover:opacity-80 transition-opacity"
             >
-              <p className="text-[#769fbc] font-extrabold text-base md:text-lg uppercase tracking-wide">
+              <p className="text-[#769fbc] font-semibold text-base md:text-lg uppercase tracking-wide">
                 Terraza Pedregal
               </p>
-              <p className="text-[#769fbc] font-extrabold text-base md:text-lg uppercase tracking-wide">
+              <p className="text-[#769fbc] font-semibold text-base md:text-lg uppercase tracking-wide">
                 Periferico Sur 4132
               </p>
-              <p className="text-[#769fbc] font-extrabold text-base md:text-lg uppercase tracking-wide">
+              <p className="text-[#769fbc] font-semibold text-base md:text-lg uppercase tracking-wide">
                 Jardines el Pedregal CDMX
               </p>
             </a>
