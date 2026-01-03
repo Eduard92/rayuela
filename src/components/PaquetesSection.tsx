@@ -127,7 +127,7 @@ const PaquetesSection = () => {
               <img 
                 src={cotizaAqui} 
                 alt="Cotiza aquí" 
-                className="h-20 sm:h-24 md:h-32 w-auto object-contain cursor-pointer hover:scale-110 hover:-rotate-2 hover:drop-shadow-xl transition-all duration-300"
+                className="hidden md:block h-20 sm:h-24 md:h-32 w-auto object-contain cursor-pointer hover:scale-110 hover:-rotate-2 hover:drop-shadow-xl transition-all duration-300"
               />
             </div>
           </div>
