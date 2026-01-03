@@ -15,6 +15,7 @@ const CalendarioSection = () => {
   const [loading, setLoading] = useState(true);
 
   const diasSemana = ["DOMINGO", "LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO"];
+  const diasSemanaCortos = ["DOM", "LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB"];
   
   // Colores del grid sin colores iguales adyacentes
   const baseColors = ["#F5A3C7", "#8BC4E8", "#F7A34A", "#9A8B4F"];
@@ -180,7 +181,8 @@ const CalendarioSection = () => {
                        index === 6 ? "#F5A3C7" : "#8BC4E8"
               }}
             >
-              {dia}
+              <span className="hidden lg:inline">{dia}</span>
+              <span className="lg:hidden">{diasSemanaCortos[index]}</span>
             </div>
           ))}
         </div>
