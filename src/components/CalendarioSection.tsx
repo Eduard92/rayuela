@@ -135,6 +135,7 @@ const CalendarioSection = () => {
 
   return (
     <section 
+      id="calendario"
       className="relative min-h-screen overflow-visible flex items-end pb-16"
       style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >

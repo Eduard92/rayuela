@@ -27,6 +27,7 @@ const NosotrosSection = () => {
 
   return (
     <section 
+      id="nosotros"
       ref={sectionRef}
       className="relative min-h-screen w-full overflow-hidden px-6 md:px-12"
       style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
