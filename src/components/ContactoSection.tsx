@@ -28,11 +28,11 @@ const ContactoSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
           {/* Columna 1 - Dirección */}
           <div className="flex flex-col items-center self-start">
-            <div className="relative mb-4 -mt-28">
+            <div className="relative mb-4 -mt-28 md:-mt-28">
               <img 
                 src={mascotaVerdeDireccion} 
                 alt="Mascota verde con dirección" 
-                className="w-80 md:w-96 h-auto"
+                className="w-64 max-w-[16rem] md:w-96 md:max-w-none h-auto"
               />
             </div>
             <a 
