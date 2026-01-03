@@ -35,7 +35,12 @@ const ContactoSection = () => {
                 className="w-80 md:w-96 h-auto"
               />
             </div>
-            <div className="text-center">
+            <a 
+              href="https://maps.app.goo.gl/iSKcbi8bHu61NUUU7" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-center hover:opacity-80 transition-opacity"
+            >
               <p className="text-[#4a4a4a] font-bold text-sm md:text-base uppercase tracking-wide">
                 Terraza Pedregal
               </p>
@@ -45,15 +50,20 @@ const ContactoSection = () => {
               <p className="text-[#4a4a4a] font-bold text-sm md:text-base uppercase tracking-wide">
                 Jardines el Pedregal CDMX
               </p>
-            </div>
+            </a>
             {/* Mapa debajo de la dirección */}
-            <div className="mt-4">
+            <a 
+              href="https://maps.app.goo.gl/iSKcbi8bHu61NUUU7" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mt-4 hover:opacity-80 transition-opacity"
+            >
               <img 
                 src={mapaImage} 
                 alt="Mapa de ubicación Terraza Pedregal" 
                 className="w-64 md:w-80 h-auto rounded-lg shadow-md"
               />
-            </div>
+            </a>
           </div>
 
           {/* Columna 2 - Teléfono */}
