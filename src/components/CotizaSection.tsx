@@ -108,7 +108,7 @@ const CotizaSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden py-16 lg:py-24">
+    <section id="cotiza" className="relative min-h-screen w-full overflow-hidden py-16 lg:py-24">
       {/* Background Pattern */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

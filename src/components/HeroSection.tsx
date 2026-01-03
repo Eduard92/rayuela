@@ -9,7 +9,7 @@ import NavigationButton from "./NavigationButton";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
+    <section id="inicio" className="relative min-h-screen w-full overflow-hidden">
       {/* Background Pattern */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"

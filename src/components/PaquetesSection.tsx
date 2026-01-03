@@ -31,7 +31,7 @@ const PaquetesSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
+    <section id="paquetes" className="relative min-h-screen w-full overflow-hidden">
       {/* Background Pattern */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
