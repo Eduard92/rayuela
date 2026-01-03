@@ -38,11 +38,11 @@ const FotosSection = () => {
           {/* Contenedor principal de la galería */}
           <div className="relative w-full max-w-4xl mx-auto lg:ml-48 xl:ml-64">
             {/* Título FOTOS */}
-            <div className="absolute -top-12 right-0 md:-right-32 z-20">
+            <div className="absolute -top-12 -right-16 md:-right-32 z-20">
               <img 
                 src={fotosTitulo} 
                 alt="Fotos" 
-                className="w-40 md:w-80 h-auto"
+                className="w-56 md:w-80 h-auto"
               />
             </div>
 

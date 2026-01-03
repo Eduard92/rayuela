@@ -114,18 +114,15 @@ const ContactoSection = () => {
             />
             <div className="text-center space-y-2">
               <div className="flex gap-4 justify-center">
-                <span className="text-[#4a4a4a] font-medium text-base md:text-lg block md:hidden">L-V</span>
-                <span className="text-[#4a4a4a] font-medium text-base md:text-lg hidden md:block">LUN - VIE</span>
+                <span className="text-[#4a4a4a] font-medium text-base md:text-lg">LUN - VIE</span>
                 <span className="text-[#4a4a4a] font-light text-base md:text-lg">11:00 AM - 7 PM</span>
               </div>
               <div className="flex gap-4 justify-center">
-                <span className="text-[#4a4a4a] font-medium text-base md:text-lg block md:hidden">SAB</span>
-                <span className="text-[#4a4a4a] font-medium text-base md:text-lg hidden md:block">SABADO</span>
+                <span className="text-[#4a4a4a] font-medium text-base md:text-lg">SABADO</span>
                 <span className="text-[#4a4a4a] font-light text-base md:text-lg">11:00 AM - 8 PM</span>
               </div>
               <div className="flex gap-4 justify-center">
-                <span className="text-[#4a4a4a] font-medium text-base md:text-lg block md:hidden">DOM</span>
-                <span className="text-[#4a4a4a] font-medium text-base md:text-lg hidden md:block">DOMINGO</span>
+                <span className="text-[#4a4a4a] font-medium text-base md:text-lg">DOMINGO</span>
                 <span className="text-[#e74c3c] font-light text-base md:text-lg">CERRADO</span>
               </div>
             </div>
