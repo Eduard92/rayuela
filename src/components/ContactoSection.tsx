@@ -4,6 +4,7 @@ import telefonoTitulo from "@/assets/telefono-titulo.png";
 import mascotaRosaPatines from "@/assets/mascota-rosa-patines.png";
 import horariosTitulo from "@/assets/horarios-titulo.png";
 import backgroundContacto from "@/assets/background-contacto.jpg";
+import mapaImage from "@/assets/mapa.png";
 
 const ContactoSection = () => {
   return (
@@ -44,6 +45,14 @@ const ContactoSection = () => {
               <p className="text-[#4a4a4a] font-bold text-sm md:text-base uppercase tracking-wide">
                 Jardines el Pedregal CDMX
               </p>
+            </div>
+            {/* Mapa debajo de la dirección */}
+            <div className="mt-4">
+              <img 
+                src={mapaImage} 
+                alt="Mapa de ubicación Terraza Pedregal" 
+                className="w-64 md:w-80 h-auto rounded-lg shadow-md"
+              />
             </div>
           </div>
 
