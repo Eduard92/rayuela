@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Facebook, Instagram, X } from "lucide-react";
+import { X } from "lucide-react";
 import logo from "@/assets/rayuela-logo.png";
 import menuIcon from "@/assets/menu-icon.png";
+import instagramIcon from "@/assets/instagram-icon.png";
+import facebookIcon from "@/assets/facebook-icon.png";
 
 const menuItems = [
   { label: "Inicio", href: "#inicio" },
@@ -52,47 +54,19 @@ const Header = () => {
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground/70 hover:text-rayuela-orange transition-colors duration-300"
+            className="hover:scale-110 transition-transform duration-300"
             aria-label="Facebook"
           >
-            <Facebook size={22} />
-          </a>
-          <a
-            href="https://pinterest.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground/70 hover:text-rayuela-orange transition-colors duration-300"
-            aria-label="Pinterest"
-          >
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M8 12a4 4 0 1 0 8 0 4 4 0 1 0-8 0" />
-              <path d="M12 2v4" />
-              <path d="M12 18v4" />
-              <path d="m4.93 4.93 2.83 2.83" />
-              <path d="m16.24 16.24 2.83 2.83" />
-              <path d="M2 12h4" />
-              <path d="M18 12h4" />
-              <path d="m4.93 19.07 2.83-2.83" />
-              <path d="m16.24 7.76 2.83-2.83" />
-            </svg>
+            <img src={facebookIcon} alt="Facebook" className="h-6 w-auto" />
           </a>
           <a
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground/70 hover:text-rayuela-orange transition-colors duration-300"
+            className="hover:scale-110 transition-transform duration-300"
             aria-label="Instagram"
           >
-            <Instagram size={22} />
+            <img src={instagramIcon} alt="Instagram" className="h-6 w-auto" />
           </a>
         </div>
       </header>
