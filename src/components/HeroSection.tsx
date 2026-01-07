@@ -23,7 +23,7 @@ const HeroSection = () => {
         {/* Row 1: Nosotros, Paquetes, Fotos */}
         <div className="flex items-center justify-center animate-fade-in-up-1">
           <NavigationButton
-            to="/nosotros"
+            to="#nosotros"
             image={nosotrosImage}
             alt="Nosotros"
             animationClass="float-animation"
@@ -33,7 +33,7 @@ const HeroSection = () => {
 
         <div className="flex items-center justify-center animate-fade-in-up-2">
           <NavigationButton
-            to="/paquetes"
+            to="#paquetes"
             image={paquetesImage}
             alt="Paquetes"
             animationClass="float-animation-delayed"
@@ -43,7 +43,7 @@ const HeroSection = () => {
 
         <div className="flex items-center justify-center animate-fade-in-up-3">
           <NavigationButton
-            to="/fotos"
+            to="#fotos"
             image={fotosImage}
             alt="Fotos"
             animationClass="float-animation"
@@ -54,7 +54,7 @@ const HeroSection = () => {
         {/* Row 2: Calendario, Cotiza, Contacto */}
         <div className="flex items-center justify-center animate-fade-in-up-4">
           <NavigationButton
-            to="/calendario"
+            to="#calendario"
             image={calendarioImage}
             alt="Calendario"
             animationClass="float-animation-delayed"
@@ -64,7 +64,7 @@ const HeroSection = () => {
 
         <div className="flex items-center justify-center animate-fade-in-up-5">
           <NavigationButton
-            to="/cotiza"
+            to="#cotiza"
             image={cotizaImage}
             alt="Cotiza"
             animationClass="float-animation"
@@ -74,7 +74,7 @@ const HeroSection = () => {
 
         <div className="flex items-center justify-center animate-fade-in-up-6">
           <NavigationButton
-            to="/contacto"
+            to="#contacto"
             image={contactoImage}
             alt="Contacto"
             animationClass="float-animation-delayed"
