@@ -7,6 +7,7 @@ import PaquetesSection from "@/components/PaquetesSection";
 import FotosSection from "@/components/FotosSection";
 import CotizaSection from "@/components/CotizaSection";
 import ContactoSection from "@/components/ContactoSection";
+import AudioPlayer from "@/components/AudioPlayer";
 const Index = () => {
   return (
     <>
@@ -25,6 +26,7 @@ const Index = () => {
 
       <div className="min-h-screen bg-background">
         <Header />
+        <AudioPlayer />
         <main>
           <HeroSection />
           <NosotrosSection />
