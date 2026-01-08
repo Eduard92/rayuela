@@ -167,21 +167,30 @@ const Bienvenida = () => {
           phase === "final" ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
-        {/* Logo horizontal fuera del cuadro - 75% del ancho */}
+        {/* Logo horizontal fuera del cuadro - solo en desktop */}
         <img
           src={rayuelaHorizontal}
           alt="Rayuela"
-          className={`w-[80%] h-auto mb-[-2rem] md:mb-[-8rem] z-10 transition-all duration-700 ${
+          className={`hidden md:block w-[80%] h-auto mb-[-8rem] z-10 transition-all duration-700 ${
             showFinal ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
           }`}
         />
 
         {/* Cuadro blanco con slogan y botón */}
         <div
-          className={`bg-white/90 rounded-xl shadow-2xl p-6 md:p-10 pt-12 md:pt-16 mx-4 w-[95%] md:w-[85%] max-w-6xl flex flex-col items-center transition-all duration-700 ${
+          className={`bg-white/90 rounded-xl shadow-2xl p-6 md:p-10 md:pt-16 mx-4 w-[95%] md:w-[85%] max-w-6xl flex flex-col items-center transition-all duration-700 ${
             showFinal ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
           }`}
         >
+          {/* Logo horizontal dentro del cuadro - solo en móvil */}
+          <img
+            src={rayuelaHorizontal}
+            alt="Rayuela"
+            className={`md:hidden w-[90%] h-auto mb-4 transition-all duration-700 ${
+              showFinal ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
+            }`}
+          />
+
           {/* Texto slogan - 55rem en desktop */}
           <img
             src={textoSlogan}
