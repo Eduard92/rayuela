@@ -68,7 +68,7 @@ const CotizaSection = () => {
 
       // Add date and time to form data
       if (selectedDate) {
-        formDataToSend.append("date", format(selectedDate, "yyyy-MM-dd"));
+        formDataToSend.append("date", format(selectedDate, "dd/MM/yyyy"));
       }
       formDataToSend.append("time", selectedTime);
       formDataToSend.append("date_submit", format(new Date(), "yyyy/MM/dd"));
