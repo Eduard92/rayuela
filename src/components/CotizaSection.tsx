@@ -312,9 +312,11 @@ const CotizaSection = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-8 py-3 border-2 border-[#8fa832] text-[#8fa832] rounded-full font-semibold hover:bg-[#8fa832] hover:text-white transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="relative px-12 py-4 bg-[#a8a832] rounded-full font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-[#8fa832] active:scale-95 active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 group"
             >
-              {isSubmitting ? "Enviando..." : "Enviar"}
+              {/* Dashed border inside */}
+              <span className="absolute inset-[4px] border-2 border-dashed border-white rounded-full pointer-events-none transition-all duration-300 group-hover:inset-[6px] group-active:inset-[3px]" />
+              <span className="relative z-10">{isSubmitting ? "Enviando..." : "Enviar"}</span>
             </button>
           </div>
         </form>
