@@ -41,7 +41,7 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="flex items-center justify-center animate-fade-in-up-3">
+        <div className="flex items-start justify-center animate-fade-in-up-3">
           <NavigationButton
             to="#fotos"
             image={fotosImage}
