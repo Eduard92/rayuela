@@ -143,7 +143,7 @@ const Bienvenida = () => {
         }`}
       >
         <div
-          className={`bg-white/90 rounded-xl shadow-2xl p-6 md:p-10 mx-4 max-w-3xl flex flex-col items-center transition-all duration-700 ${
+          className={`bg-white/90 rounded-xl shadow-2xl p-6 md:p-10 mx-4 max-w-4xl flex flex-col items-center transition-all duration-700 ${
             showFinal ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
           }`}
         >
@@ -151,7 +151,7 @@ const Bienvenida = () => {
           <img
             src={rayuelaHorizontal}
             alt="Rayuela"
-            className="w-full max-w-lg md:max-w-xl h-auto mb-4"
+            className="w-full max-w-2xl md:max-w-3xl h-auto mb-4"
           />
 
           {/* Texto slogan */}
