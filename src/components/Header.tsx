@@ -56,7 +56,8 @@ const Header = () => {
           <img
             src={logo}
             alt="Rayuela"
-            className="h-10 md:h-14 w-auto object-contain"
+            className="h-10 md:h-14 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
+            onClick={() => handleMenuClick("#inicio")}
           />
         </div>
 
