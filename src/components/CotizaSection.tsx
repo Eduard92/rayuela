@@ -44,13 +44,13 @@ const CotizaSection = () => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [reservationId, setReservationId] = useState<string>("");
   const [formData, setFormData] = useState({
-    nombre: "",
+    name: "",
     email: "",
-    tipoEvento: "",
-    numeroInvitados: "",
-    telefono: "",
-    direccion: "",
-    comentarios: "",
+    tipo_evento: "",
+    invitados: "",
+    phone: "",
+    street: "",
+    message: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -68,9 +68,9 @@ const CotizaSection = () => {
 
       // Add date and time to form data
       if (selectedDate) {
-        formDataToSend.append("fecha", format(selectedDate, "yyyy-MM-dd"));
+        formDataToSend.append("date", format(selectedDate, "yyyy-MM-dd"));
       }
-      formDataToSend.append("hora", selectedTime);
+      formDataToSend.append("time", selectedTime);
 
       const resp = await fetch("https://rayuela.com.mx/reservas/store", {
         method: "POST",
@@ -90,13 +90,13 @@ const CotizaSection = () => {
         setSelectedDate(undefined);
         setSelectedTime("");
         setFormData({
-          nombre: "",
+          name: "",
           email: "",
-          tipoEvento: "",
-          numeroInvitados: "",
-          telefono: "",
-          direccion: "",
-          comentarios: "",
+          tipo_evento: "",
+          invitados: "",
+          phone: "",
+          street: "",
+          message: "",
         });
       } else {
         toast({
@@ -143,8 +143,8 @@ const CotizaSection = () => {
               </label>
               <input
                 type="text"
-                name="nombre"
-                value={formData.nombre}
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
                 className="w-full h-14 pt-6 pb-2 px-4 bg-[#e8855e]/80 rounded-full text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
                 required
@@ -241,8 +241,8 @@ const CotizaSection = () => {
               </label>
               <input
                 type="text"
-                name="tipoEvento"
-                value={formData.tipoEvento}
+                name="tipo_evento"
+                value={formData.tipo_evento}
                 onChange={handleChange}
                 className="w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
                 required
@@ -254,8 +254,8 @@ const CotizaSection = () => {
               </label>
               <input
                 type="number"
-                name="numeroInvitados"
-                value={formData.numeroInvitados}
+                name="invitados"
+                value={formData.invitados}
                 onChange={handleChange}
                 className="w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
                 required
@@ -271,8 +271,8 @@ const CotizaSection = () => {
               </label>
               <input
                 type="tel"
-                name="telefono"
-                value={formData.telefono}
+                name="phone"
+                value={formData.phone}
                 onChange={handleChange}
                 className="w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
                 required
@@ -284,8 +284,8 @@ const CotizaSection = () => {
               </label>
               <input
                 type="text"
-                name="direccion"
-                value={formData.direccion}
+                name="street"
+                value={formData.street}
                 onChange={handleChange}
                 className="w-full h-14 pt-6 pb-2 px-4 bg-[#f5c6d6]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
               />
@@ -298,8 +298,8 @@ const CotizaSection = () => {
               Comentarios
             </label>
             <textarea
-              name="comentarios"
-              value={formData.comentarios}
+              name="message"
+              value={formData.message}
               onChange={handleChange}
               rows={3}
               className="w-full pt-8 pb-4 px-4 bg-[#a8c8d8]/60 rounded-3xl text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832] resize-none"
