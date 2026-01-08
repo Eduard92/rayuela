@@ -5,22 +5,14 @@ import menuIcon from "@/assets/menu-icon.png";
 import instagramIcon from "@/assets/instagram-icon.png";
 import facebookIcon from "@/assets/facebook-icon.png";
 
-// Importar imágenes de títulos
-import cotizaTitulo from "@/assets/cotiza-titulo.png";
-import nosotrosTitulo from "@/assets/nosotros-titulo.png";
-import paquetesTitulo from "@/assets/paquetes-encabezado.png";
-import calendarioTitulo from "@/assets/calendario-titulo.png";
-import fotosTitulo from "@/assets/fotos-titulo.png";
-import contactoTitulo from "@/assets/contacto-titulo.png";
-
-const menuItems = [
-  { label: "Cotiza", href: "#cotiza", img: cotizaTitulo, position: "top-left" },
-  { label: "Nosotros", href: "#nosotros", img: nosotrosTitulo, position: "top-right" },
-  { label: "Paquetes", href: "#paquetes", img: paquetesTitulo, position: "middle-left" },
-  { label: "Calendario", href: "#calendario", img: calendarioTitulo, position: "middle-right" },
-  { label: "Fotos", href: "#fotos", img: fotosTitulo, position: "bottom-left" },
-  { label: "Contacto", href: "#contacto", img: contactoTitulo, position: "bottom-right" },
-];
+// Imágenes del menú modal
+import modalBackground from "@/assets/menu/modal_background.png";
+import cotizaModal from "@/assets/menu/cotiza_modal.png";
+import nosotrosModal from "@/assets/menu/nosotros_modal.png";
+import paquetesModal from "@/assets/menu/paquetes_modal.png";
+import calendarioModal from "@/assets/menu/calendario_modal.png";
+import fotosModal from "@/assets/menu/fotos_modal.png";
+import contactoModal from "@/assets/menu/contacto_modal.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -89,9 +81,15 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Menu Overlay con tablero de colores */}
+      {/* Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm flex items-start justify-start pt-20 pl-4 md:pt-24 md:pl-8">
+        <div 
+          className="fixed inset-0 z-[999] flex items-start justify-start"
+          style={{ background: "rgb(179 175 175 / 80%)" }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setIsMenuOpen(false);
+          }}
+        >
           {/* Botón cerrar */}
           <button 
             onClick={() => setIsMenuOpen(false)}
@@ -101,84 +99,103 @@ const Header = () => {
             <X size={32} />
           </button>
           
-          {/* Tablero de menú */}
-          <div className="grid grid-cols-2 grid-rows-3 w-[300px] md:w-[400px] aspect-[2/3] shadow-2xl animate-scale-in">
-            {/* Fila 1 */}
-            <div className="bg-[#e8b4d4] relative flex items-center justify-center">
-              <button
-                onClick={() => handleMenuClick("#cotiza")}
-                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
+          {/* Tablero del menú */}
+          <div 
+            className="grid grid-cols-2 grid-rows-3 mt-[5rem] md:mt-[10rem] ml-[1rem] md:ml-[5rem] w-[300px] md:w-[359px] h-[366px] md:h-[438px] justify-items-center items-center animate-scale-in"
+            style={{
+              backgroundImage: `url(${modalBackground})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {/* Cotiza */}
+            <div className="flex items-center justify-center">
+              <a 
+                href="#cotiza" 
+                onClick={(e) => { e.preventDefault(); handleMenuClick("#cotiza"); }}
+                className="hover:scale-110 transition-transform"
               >
                 <img 
-                  src={cotizaTitulo} 
+                  src={cotizaModal} 
                   alt="Cotiza" 
-                  className="w-[80%] h-auto transform -rotate-3 hover:rotate-0 transition-transform"
+                  className="relative -right-[20px] -bottom-[21px] md:-right-[20px] md:-bottom-[21px]"
                 />
-              </button>
+              </a>
             </div>
-            <div className="bg-[#f5a849] relative flex items-center justify-center">
-              <button
-                onClick={() => handleMenuClick("#nosotros")}
-                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
+            
+            {/* Nosotros */}
+            <div className="flex items-center justify-center">
+              <a 
+                href="#nosotros" 
+                onClick={(e) => { e.preventDefault(); handleMenuClick("#nosotros"); }}
+                className="hover:scale-110 transition-transform"
               >
                 <img 
-                  src={nosotrosTitulo} 
+                  src={nosotrosModal} 
                   alt="Nosotros" 
-                  className="w-[80%] h-auto transform rotate-2 hover:rotate-0 transition-transform"
+                  className="relative -left-[18px] -bottom-[8px] md:-left-[18px] md:-bottom-[8px]"
                 />
-              </button>
+              </a>
             </div>
             
-            {/* Fila 2 */}
-            <div className="bg-[#7eb0c4] relative flex items-center justify-center">
-              <button
-                onClick={() => handleMenuClick("#paquetes")}
-                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
+            {/* Paquetes */}
+            <div className="flex items-center justify-center">
+              <a 
+                href="#paquetes" 
+                onClick={(e) => { e.preventDefault(); handleMenuClick("#paquetes"); }}
+                className="hover:scale-110 transition-transform"
               >
                 <img 
-                  src={paquetesTitulo} 
+                  src={paquetesModal} 
                   alt="Paquetes" 
-                  className="w-[80%] h-auto transform rotate-1 hover:rotate-0 transition-transform"
+                  className="relative -right-[2px] -bottom-[3px] md:-right-[2px] md:-bottom-[3px]"
                 />
-              </button>
-            </div>
-            <div className="bg-[#a5a145] relative flex items-center justify-center">
-              <button
-                onClick={() => handleMenuClick("#calendario")}
-                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
-              >
-                <img 
-                  src={calendarioTitulo} 
-                  alt="Calendario" 
-                  className="w-[80%] h-auto transform -rotate-2 hover:rotate-0 transition-transform"
-                />
-              </button>
+              </a>
             </div>
             
-            {/* Fila 3 */}
-            <div className="bg-[#e07c4f] relative flex items-center justify-center">
-              <button
-                onClick={() => handleMenuClick("#fotos")}
-                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
+            {/* Calendario */}
+            <div className="flex items-center justify-center">
+              <a 
+                href="#calendario" 
+                onClick={(e) => { e.preventDefault(); handleMenuClick("#calendario"); }}
+                className="hover:scale-110 transition-transform"
               >
                 <img 
-                  src={fotosTitulo} 
-                  alt="Fotos" 
-                  className="w-[80%] h-auto transform rotate-3 hover:rotate-0 transition-transform"
+                  src={calendarioModal} 
+                  alt="Calendario" 
+                  className="relative -left-[20px] md:-left-[20px]"
                 />
-              </button>
+              </a>
             </div>
-            <div className="bg-[#e8b4d4] relative flex items-center justify-center">
-              <button
-                onClick={() => handleMenuClick("#contacto")}
-                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
+            
+            {/* Fotos */}
+            <div className="flex items-center justify-center">
+              <a 
+                href="#fotos" 
+                onClick={(e) => { e.preventDefault(); handleMenuClick("#fotos"); }}
+                className="hover:scale-110 transition-transform"
               >
                 <img 
-                  src={contactoTitulo} 
-                  alt="Contacto" 
-                  className="w-[80%] h-auto transform -rotate-1 hover:rotate-0 transition-transform"
+                  src={fotosModal} 
+                  alt="Fotos" 
+                  className="relative -right-[20px] -bottom-[21px] md:-right-[20px] md:-bottom-[21px]"
                 />
-              </button>
+              </a>
+            </div>
+            
+            {/* Contacto */}
+            <div className="flex items-center justify-center">
+              <a 
+                href="#contacto" 
+                onClick={(e) => { e.preventDefault(); handleMenuClick("#contacto"); }}
+                className="hover:scale-110 transition-transform"
+              >
+                <img 
+                  src={contactoModal} 
+                  alt="Contacto" 
+                  className="relative -left-[20px] md:-left-[20px]"
+                />
+              </a>
             </div>
           </div>
         </div>
