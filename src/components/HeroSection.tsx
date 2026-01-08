@@ -52,7 +52,7 @@ const HeroSection = () => {
         </div>
 
         {/* Row 2: Calendario, Cotiza, Contacto */}
-        <div className="flex items-center justify-center animate-fade-in-up-4">
+        <div className="flex items-start justify-center animate-fade-in-up-4">
           <NavigationButton
             to="#calendario"
             image={calendarioImage}
