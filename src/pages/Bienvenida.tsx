@@ -10,6 +10,7 @@ import letterL from "@/assets/letters/L.png";
 import letterAA from "@/assets/letters/AA.png";
 import cursorImg from "@/assets/cursor2.png";
 import backgroundWelcome from "@/assets/background-welcome.jpg";
+import backgroundPattern from "@/assets/background-pattern.jpg";
 import rayuelaHorizontal from "@/assets/rayuela-horizontal.png";
 import textoSlogan from "@/assets/texto-slogan.png";
 
@@ -96,11 +97,16 @@ const Bienvenida = () => {
         cursor: `url(${cursorImg}) 16 16, auto`,
       }}
     >
-      {/* Fondo gris claro para fase inicial */}
+      {/* Fondo con pattern para fase inicial */}
       <div
-        className={`absolute inset-0 bg-[#f1eff0] transition-opacity duration-1000 ${
+        className={`absolute inset-0 transition-opacity duration-1000 ${
           phase === "final" ? "opacity-0" : "opacity-100"
         }`}
+        style={{
+          backgroundImage: `url(${backgroundPattern})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       />
 
       {/* Fondo con imagen para fase final */}
