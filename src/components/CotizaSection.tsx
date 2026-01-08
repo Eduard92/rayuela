@@ -6,25 +6,34 @@ import backgroundPattern from "@/assets/background-pattern.jpg";
 import cotizaTitulo from "@/assets/cotiza-titulo.png";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
 const timeSlots = [
-  "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
-  "12:00", "12:30", "13:00", "13:30", "14:00", "14:30",
-  "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
-  "18:00", "18:30", "19:00", "19:30", "20:00"
+  "09:00",
+  "09:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "12:00",
+  "12:30",
+  "13:00",
+  "13:30",
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+  "16:00",
+  "16:30",
+  "17:00",
+  "17:30",
+  "18:00",
+  "18:30",
+  "19:00",
+  "19:30",
+  "20:00",
 ];
 
 const CotizaSection = () => {
@@ -46,7 +55,7 @@ const CotizaSection = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -56,19 +65,19 @@ const CotizaSection = () => {
     try {
       const form = e.currentTarget;
       const formDataToSend = new FormData(form);
-      
+
       // Add date and time to form data
       if (selectedDate) {
-        formDataToSend.append('fecha', format(selectedDate, 'yyyy-MM-dd'));
+        formDataToSend.append("fecha", format(selectedDate, "yyyy-MM-dd"));
       }
-      formDataToSend.append('hora', selectedTime);
+      formDataToSend.append("hora", selectedTime);
 
-      const resp = await fetch('/reservas/store', {
-        method: 'POST',
+      const resp = await fetch("https://rayuela.com.mx/reservas/store", {
+        method: "POST",
         headers: {
-          'Accept': 'application/json'
+          Accept: "application/json",
         },
-        body: formDataToSend
+        body: formDataToSend,
       });
 
       const data = await resp.json();
@@ -76,7 +85,7 @@ const CotizaSection = () => {
       if (data.ok) {
         setReservationId(data.reservation_id);
         setShowConfirmModal(true);
-        
+
         // Reset form
         setSelectedDate(undefined);
         setSelectedTime("");
@@ -119,14 +128,9 @@ const CotizaSection = () => {
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Title */}
         <div className="mb-10 lg:mb-14">
-          <img 
-            src={cotizaTitulo} 
-            alt="Cotiza" 
-            className="w-48 sm:w-56 md:w-64 h-auto object-contain"
-          />
+          <img src={cotizaTitulo} alt="Cotiza" className="w-48 sm:w-56 md:w-64 h-auto object-contain" />
         </div>
 
         {/* Form */}
@@ -172,7 +176,7 @@ const CotizaSection = () => {
                   <div
                     className={cn(
                       "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#f5c6d6]/80 rounded-full text-gray-700 flex items-end focus:outline-none focus:ring-2 focus:ring-[#8fa832]",
-                      !selectedDate && "text-gray-400"
+                      !selectedDate && "text-gray-400",
                     )}
                   >
                     {selectedDate ? format(selectedDate, "dd/MM/yyyy", { locale: es }) : "Seleccionar fecha"}
@@ -180,14 +184,11 @@ const CotizaSection = () => {
                   <CalendarIcon className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#c85a8a]" />
                 </div>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 bg-white border-2 border-[#f5c6d6] rounded-2xl shadow-xl" align="start">
-                <Calendar
-                  mode="single"
-                  selected={selectedDate}
-                  onSelect={setSelectedDate}
-                  initialFocus
-                  locale={es}
-                />
+              <PopoverContent
+                className="w-auto p-0 bg-white border-2 border-[#f5c6d6] rounded-2xl shadow-xl"
+                align="start"
+              >
+                <Calendar mode="single" selected={selectedDate} onSelect={setSelectedDate} initialFocus locale={es} />
               </PopoverContent>
             </Popover>
             <Popover>
@@ -199,7 +200,7 @@ const CotizaSection = () => {
                   <div
                     className={cn(
                       "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#a8c8d8]/80 rounded-full text-gray-700 flex items-end",
-                      !selectedTime && "text-gray-400"
+                      !selectedTime && "text-gray-400",
                     )}
                   >
                     {selectedTime || "Seleccionar hora"}
@@ -207,7 +208,10 @@ const CotizaSection = () => {
                   <Clock className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#8faab8]" />
                 </div>
               </PopoverTrigger>
-              <PopoverContent className="w-48 p-2 bg-white border-2 border-[#a8c8d8] rounded-2xl shadow-xl max-h-64 overflow-y-auto" align="start">
+              <PopoverContent
+                className="w-48 p-2 bg-white border-2 border-[#a8c8d8] rounded-2xl shadow-xl max-h-64 overflow-y-auto"
+                align="start"
+              >
                 <div className="grid grid-cols-2 gap-1">
                   {timeSlots.map((time) => (
                     <button
@@ -218,7 +222,7 @@ const CotizaSection = () => {
                         "px-3 py-2 text-sm rounded-lg transition-colors",
                         selectedTime === time
                           ? "bg-[#a8c8d8] text-white font-semibold"
-                          : "hover:bg-[#a8c8d8]/30 text-gray-700"
+                          : "hover:bg-[#a8c8d8]/30 text-gray-700",
                       )}
                     >
                       {time}
@@ -324,15 +328,11 @@ const CotizaSection = () => {
                 <CheckCircle className="w-10 h-10 text-[#8fa832]" />
               </div>
             </div>
-            <DialogTitle className="text-2xl text-[#8fa832] font-bold">
-              ¡Reserva Enviada!
-            </DialogTitle>
+            <DialogTitle className="text-2xl text-[#8fa832] font-bold">¡Reserva Enviada!</DialogTitle>
             <DialogDescription className="text-gray-600 text-base mt-2">
               Tu solicitud de reserva ha sido recibida exitosamente.
               {reservationId && (
-                <span className="block mt-2 font-semibold text-[#e8855e]">
-                  ID de Reserva: {reservationId}
-                </span>
+                <span className="block mt-2 font-semibold text-[#e8855e]">ID de Reserva: {reservationId}</span>
               )}
             </DialogDescription>
           </DialogHeader>
