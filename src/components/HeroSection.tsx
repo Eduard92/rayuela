@@ -32,7 +32,7 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="flex items-end justify-center animate-fade-in-up-2 relative overflow-visible">
+        <div className="flex items-end justify-start animate-fade-in-up-2 relative overflow-visible">
           <img 
             src={smilePaquetes} 
             alt="Smile" 
