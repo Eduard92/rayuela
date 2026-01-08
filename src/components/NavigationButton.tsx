@@ -36,12 +36,12 @@ const NavigationButton = ({
   return (
     <button
       onClick={handleClick}
-      className={`nav-button block hover-${hoverEffect} ${animationClass} ${className} cursor-pointer`}
+      className={`nav-button block ${animationClass} ${className} cursor-pointer`}
     >
       <img
         src={image}
         alt={alt}
-        className="w-full h-auto object-contain"
+        className={`nav-button-image w-full h-auto object-contain hover-${hoverEffect}`}
         loading="lazy"
       />
     </button>
