@@ -18,20 +18,31 @@ import textoSlogan from "@/assets/texto-slogan.png";
 const stackedLetters = [
   // Fila 1: R, a
   [
-    { src: letterR, alt: "R", className: "w-20 md:w-32" },
-    { src: letterA, alt: "a", className: "w-20 md:w-32" },
+    { src: letterR, alt: "R", className: "w-32 md:w-52 lg:w-64" },
+    { src: letterA, alt: "a", className: "w-32 md:w-52 lg:w-64" },
   ],
   // Fila 2: y, u
   [
-    { src: letterY, alt: "y", className: "w-20 md:w-32" },
-    { src: letterU, alt: "u", className: "w-16 md:w-24" },
+    { src: letterY, alt: "y", className: "w-32 md:w-52 lg:w-64" },
+    { src: letterU, alt: "u", className: "w-24 md:w-40 lg:w-52" },
   ],
   // Fila 3: e, l, a
   [
-    { src: letterE, alt: "e", className: "w-20 md:w-28" },
-    { src: letterL, alt: "l", className: "w-8 md:w-12" },
-    { src: letterAA, alt: "a", className: "w-16 md:w-24" },
+    { src: letterE, alt: "e", className: "w-28 md:w-48 lg:w-60" },
+    { src: letterL, alt: "l", className: "w-12 md:w-20 lg:w-24" },
+    { src: letterAA, alt: "a", className: "w-24 md:w-40 lg:w-52" },
   ],
+];
+
+// Transiciones diferentes para cada letra
+const letterTransitions = [
+  "translate-y-12 scale-75", // R - desde abajo con escala
+  "translate-x-12 rotate-12", // a - desde derecha con rotación
+  "-translate-y-12 scale-90", // y - desde arriba con escala
+  "-translate-x-12 -rotate-12", // u - desde izquierda con rotación
+  "translate-y-12 -rotate-6", // e - desde abajo con rotación
+  "scale-50", // l - solo escala
+  "-translate-y-12 rotate-6", // a - desde arriba con rotación
 ];
 
 const Bienvenida = () => {
@@ -133,13 +144,14 @@ const Bienvenida = () => {
               {row.map((letter, colIndex) => {
                 const globalIndex = getGlobalIndex(rowIndex, colIndex);
                 const isVisible = animatedLetters.includes(globalIndex);
+                const hiddenTransform = letterTransitions[globalIndex] || "translate-y-8";
                 return (
                   <img
                     key={colIndex}
                     src={letter.src}
                     alt={letter.alt}
-                    className={`${letter.className} h-auto transition-all duration-500 ease-out ${
-                      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    className={`${letter.className} h-auto transition-all duration-700 ease-out ${
+                      isVisible ? "opacity-100 translate-x-0 translate-y-0 rotate-0 scale-100" : `opacity-0 ${hiddenTransform}`
                     }`}
                   />
                 );
