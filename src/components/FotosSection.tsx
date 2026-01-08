@@ -31,6 +31,21 @@ const FotosSection = () => {
     }, 200);
   };
 
+  // Auto-play effect
+  useEffect(() => {
+    if (images.length === 0 || isTransitioning) return;
+    
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setSelectedImage((prev) => (prev + 1) % images.length);
+        setTimeout(() => setIsTransitioning(false), 300);
+      }, 200);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [images.length, isTransitioning]);
+
   useEffect(() => {
     const fetchImages = async () => {
       try {
