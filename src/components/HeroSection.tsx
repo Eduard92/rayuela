@@ -27,7 +27,7 @@ const HeroSection = () => {
             image={nosotrosImage}
             alt="Nosotros"
             animationClass="float-animation"
-            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[85%]"
+            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
           />
         </div>
 
@@ -37,7 +37,7 @@ const HeroSection = () => {
             image={paquetesImage}
             alt="Paquetes"
             animationClass="float-animation-delayed"
-            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[85%]"
+            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
           />
         </div>
 
@@ -47,7 +47,7 @@ const HeroSection = () => {
             image={fotosImage}
             alt="Fotos"
             animationClass="float-animation"
-            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[85%]"
+            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
           />
         </div>
 
@@ -58,7 +58,7 @@ const HeroSection = () => {
             image={calendarioImage}
             alt="Calendario"
             animationClass="float-animation-delayed"
-            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[85%]"
+            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
           />
         </div>
 
@@ -68,7 +68,7 @@ const HeroSection = () => {
             image={cotizaImage}
             alt="Cotiza"
             animationClass="float-animation"
-            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[85%]"
+            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
           />
         </div>
 
@@ -78,7 +78,7 @@ const HeroSection = () => {
             image={contactoImage}
             alt="Contacto"
             animationClass="float-animation-delayed"
-            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[85%]"
+            className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
           />
         </div>
       </div>
