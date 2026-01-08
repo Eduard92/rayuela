@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 interface NavigationButtonProps {
   to: string;
   image: string;
@@ -15,10 +13,26 @@ const NavigationButton = ({
   className = "",
   animationClass = "",
 }: NavigationButtonProps) => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    const element = document.querySelector(to);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
-    <Link
-      to={to}
-      className={`nav-button block ${animationClass} ${className}`}
+    <button
+      onClick={handleClick}
+      className={`nav-button block ${animationClass} ${className} cursor-pointer`}
     >
       <img
         src={image}
@@ -26,7 +40,7 @@ const NavigationButton = ({
         className="w-full h-auto object-contain"
         loading="lazy"
       />
-    </Link>
+    </button>
   );
 };
 
