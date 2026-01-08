@@ -5,24 +5,29 @@ import menuIcon from "@/assets/menu-icon.png";
 import instagramIcon from "@/assets/instagram-icon.png";
 import facebookIcon from "@/assets/facebook-icon.png";
 
+// Importar imágenes de títulos
+import cotizaTitulo from "@/assets/cotiza-titulo.png";
+import nosotrosTitulo from "@/assets/nosotros-titulo.png";
+import paquetesTitulo from "@/assets/paquetes-encabezado.png";
+import calendarioTitulo from "@/assets/calendario-titulo.png";
+import fotosTitulo from "@/assets/fotos-titulo.png";
+import contactoTitulo from "@/assets/contacto-titulo.png";
+
 const menuItems = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Calendario", href: "#calendario" },
-  { label: "Paquetes", href: "#paquetes" },
-  { label: "Cotiza", href: "#cotiza" },
-  { label: "Fotos", href: "#fotos" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Cotiza", href: "#cotiza", img: cotizaTitulo, position: "top-left" },
+  { label: "Nosotros", href: "#nosotros", img: nosotrosTitulo, position: "top-right" },
+  { label: "Paquetes", href: "#paquetes", img: paquetesTitulo, position: "middle-left" },
+  { label: "Calendario", href: "#calendario", img: calendarioTitulo, position: "middle-right" },
+  { label: "Fotos", href: "#fotos", img: fotosTitulo, position: "bottom-left" },
+  { label: "Contacto", href: "#contacto", img: contactoTitulo, position: "bottom-right" },
 ];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuClick = (href: string) => {
-    // First close the menu
     setIsMenuOpen(false);
     
-    // Use setTimeout to allow the menu to close before scrolling
     setTimeout(() => {
       const element = document.querySelector(href);
       if (element) {
@@ -84,28 +89,98 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Menu Overlay */}
+      {/* Menu Overlay con tablero de colores */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[60] bg-white/98 backdrop-blur-md flex flex-col items-center justify-center">
+        <div className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm flex items-start justify-start pt-20 pl-4 md:pt-24 md:pl-8">
+          {/* Botón cerrar */}
           <button 
             onClick={() => setIsMenuOpen(false)}
-            className="absolute top-6 right-6 text-rayuela-pink hover:scale-110 transition-transform"
+            className="absolute top-6 right-6 text-white hover:scale-110 transition-transform z-10"
             aria-label="Cerrar menú"
           >
             <X size={32} />
           </button>
           
-          <nav className="flex flex-col items-center gap-6">
-            {menuItems.map((item) => (
+          {/* Tablero de menú */}
+          <div className="grid grid-cols-2 grid-rows-3 w-[300px] md:w-[400px] aspect-[2/3] shadow-2xl animate-scale-in">
+            {/* Fila 1 */}
+            <div className="bg-[#e8b4d4] relative flex items-center justify-center">
               <button
-                key={item.href}
-                onClick={() => handleMenuClick(item.href)}
-                className="text-2xl md:text-3xl font-semibold text-rayuela-pink hover:text-rayuela-orange transition-colors uppercase tracking-wide"
+                onClick={() => handleMenuClick("#cotiza")}
+                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
               >
-                {item.label}
+                <img 
+                  src={cotizaTitulo} 
+                  alt="Cotiza" 
+                  className="w-[80%] h-auto transform -rotate-3 hover:rotate-0 transition-transform"
+                />
               </button>
-            ))}
-          </nav>
+            </div>
+            <div className="bg-[#f5a849] relative flex items-center justify-center">
+              <button
+                onClick={() => handleMenuClick("#nosotros")}
+                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
+              >
+                <img 
+                  src={nosotrosTitulo} 
+                  alt="Nosotros" 
+                  className="w-[80%] h-auto transform rotate-2 hover:rotate-0 transition-transform"
+                />
+              </button>
+            </div>
+            
+            {/* Fila 2 */}
+            <div className="bg-[#7eb0c4] relative flex items-center justify-center">
+              <button
+                onClick={() => handleMenuClick("#paquetes")}
+                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
+              >
+                <img 
+                  src={paquetesTitulo} 
+                  alt="Paquetes" 
+                  className="w-[80%] h-auto transform rotate-1 hover:rotate-0 transition-transform"
+                />
+              </button>
+            </div>
+            <div className="bg-[#a5a145] relative flex items-center justify-center">
+              <button
+                onClick={() => handleMenuClick("#calendario")}
+                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
+              >
+                <img 
+                  src={calendarioTitulo} 
+                  alt="Calendario" 
+                  className="w-[80%] h-auto transform -rotate-2 hover:rotate-0 transition-transform"
+                />
+              </button>
+            </div>
+            
+            {/* Fila 3 */}
+            <div className="bg-[#e07c4f] relative flex items-center justify-center">
+              <button
+                onClick={() => handleMenuClick("#fotos")}
+                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
+              >
+                <img 
+                  src={fotosTitulo} 
+                  alt="Fotos" 
+                  className="w-[80%] h-auto transform rotate-3 hover:rotate-0 transition-transform"
+                />
+              </button>
+            </div>
+            <div className="bg-[#e8b4d4] relative flex items-center justify-center">
+              <button
+                onClick={() => handleMenuClick("#contacto")}
+                className="absolute inset-0 flex items-center justify-center hover:scale-105 transition-transform"
+              >
+                <img 
+                  src={contactoTitulo} 
+                  alt="Contacto" 
+                  className="w-[80%] h-auto transform -rotate-1 hover:rotate-0 transition-transform"
+                />
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </>
