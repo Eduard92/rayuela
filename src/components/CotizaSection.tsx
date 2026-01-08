@@ -71,6 +71,7 @@ const CotizaSection = () => {
         formDataToSend.append("date", format(selectedDate, "yyyy-MM-dd"));
       }
       formDataToSend.append("time", selectedTime);
+      formDataToSend.append("date_submit", format(new Date(), "yyyy/MM/dd"));
 
       const resp = await fetch("https://rayuela.com.mx/reservas/store", {
         method: "POST",
