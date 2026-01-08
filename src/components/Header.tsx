@@ -109,92 +109,68 @@ const Header = () => {
             }}
           >
             {/* Cotiza */}
-            <div className="flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center">
               <a 
                 href="#cotiza" 
                 onClick={(e) => { e.preventDefault(); handleMenuClick("#cotiza"); }}
-                className="hover:scale-110 transition-transform"
+                className="hover:scale-110 transition-transform flex items-center justify-center"
               >
-                <img 
-                  src={cotizaModal} 
-                  alt="Cotiza" 
-                  className="relative -right-[20px] -bottom-[21px] md:-right-[20px] md:-bottom-[21px]"
-                />
+                <img src={cotizaModal} alt="Cotiza" />
               </a>
             </div>
             
             {/* Nosotros */}
-            <div className="flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center">
               <a 
                 href="#nosotros" 
                 onClick={(e) => { e.preventDefault(); handleMenuClick("#nosotros"); }}
-                className="hover:scale-110 transition-transform"
+                className="hover:scale-110 transition-transform flex items-center justify-center"
               >
-                <img 
-                  src={nosotrosModal} 
-                  alt="Nosotros" 
-                  className="relative -left-[18px] -bottom-[8px] md:-left-[18px] md:-bottom-[8px]"
-                />
+                <img src={nosotrosModal} alt="Nosotros" />
               </a>
             </div>
             
             {/* Paquetes */}
-            <div className="flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center">
               <a 
                 href="#paquetes" 
                 onClick={(e) => { e.preventDefault(); handleMenuClick("#paquetes"); }}
-                className="hover:scale-110 transition-transform"
+                className="hover:scale-110 transition-transform flex items-center justify-center"
               >
-                <img 
-                  src={paquetesModal} 
-                  alt="Paquetes" 
-                  className="relative -right-[2px] -bottom-[3px] md:-right-[2px] md:-bottom-[3px]"
-                />
+                <img src={paquetesModal} alt="Paquetes" />
               </a>
             </div>
             
             {/* Calendario */}
-            <div className="flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center">
               <a 
                 href="#calendario" 
                 onClick={(e) => { e.preventDefault(); handleMenuClick("#calendario"); }}
-                className="hover:scale-110 transition-transform"
+                className="hover:scale-110 transition-transform flex items-center justify-center"
               >
-                <img 
-                  src={calendarioModal} 
-                  alt="Calendario" 
-                  className="relative -left-[20px] md:-left-[20px]"
-                />
+                <img src={calendarioModal} alt="Calendario" />
               </a>
             </div>
             
             {/* Fotos */}
-            <div className="flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center">
               <a 
                 href="#fotos" 
                 onClick={(e) => { e.preventDefault(); handleMenuClick("#fotos"); }}
-                className="hover:scale-110 transition-transform"
+                className="hover:scale-110 transition-transform flex items-center justify-center"
               >
-                <img 
-                  src={fotosModal} 
-                  alt="Fotos" 
-                  className="relative -right-[20px] -bottom-[21px] md:-right-[20px] md:-bottom-[21px]"
-                />
+                <img src={fotosModal} alt="Fotos" />
               </a>
             </div>
             
             {/* Contacto */}
-            <div className="flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center">
               <a 
                 href="#contacto" 
                 onClick={(e) => { e.preventDefault(); handleMenuClick("#contacto"); }}
-                className="hover:scale-110 transition-transform"
+                className="hover:scale-110 transition-transform flex items-center justify-center"
               >
-                <img 
-                  src={contactoModal} 
-                  alt="Contacto" 
-                  className="relative -left-[20px] md:-left-[20px]"
-                />
+                <img src={contactoModal} alt="Contacto" />
               </a>
             </div>
           </div>
