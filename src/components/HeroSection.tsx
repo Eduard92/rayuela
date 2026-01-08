@@ -32,11 +32,11 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="flex items-end justify-center animate-fade-in-up-2 relative">
+        <div className="flex items-end justify-center animate-fade-in-up-2 relative overflow-visible">
           <img 
             src={smilePaquetes} 
             alt="Smile" 
-            className="absolute -top-4 -right-4 md:top-0 md:right-0 w-16 h-16 md:w-24 md:h-24 z-10"
+            className="absolute -top-20 md:-top-28 left-1/2 -translate-x-1/2 w-32 h-32 md:w-48 md:h-48 z-10"
           />
           <NavigationButton
             to="#paquetes"
