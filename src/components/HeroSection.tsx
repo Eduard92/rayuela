@@ -5,6 +5,7 @@ import paquetesImage from "@/assets/paquetes.png";
 import contactoImage from "@/assets/contacto.png";
 import calendarioImage from "@/assets/calendario.png";
 import cotizaImage from "@/assets/cotiza-titulo.png";
+import smilePaquetes from "@/assets/smile-paquetes.png";
 import NavigationButton from "./NavigationButton";
 
 const HeroSection = () => {
@@ -31,7 +32,12 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="flex items-end justify-center animate-fade-in-up-2">
+        <div className="flex items-end justify-center animate-fade-in-up-2 relative">
+          <img 
+            src={smilePaquetes} 
+            alt="Smile" 
+            className="absolute -top-4 -right-4 md:top-0 md:right-0 w-16 h-16 md:w-24 md:h-24 z-10"
+          />
           <NavigationButton
             to="#paquetes"
             image={paquetesImage}
