@@ -8,10 +8,10 @@ import facebookIcon from "@/assets/facebook-icon.png";
 const menuItems = [
   { label: "Inicio", href: "#inicio" },
   { label: "Nosotros", href: "#nosotros" },
-  { label: "Paquetes", href: "#paquetes" },
-  { label: "Fotos", href: "#fotos" },
   { label: "Calendario", href: "#calendario" },
+  { label: "Paquetes", href: "#paquetes" },
   { label: "Cotiza", href: "#cotiza" },
+  { label: "Fotos", href: "#fotos" },
   { label: "Contacto", href: "#contacto" },
 ];
 
