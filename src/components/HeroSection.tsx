@@ -29,6 +29,7 @@ const HeroSection = () => {
             alt="Nosotros"
             animationClass="float-animation"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
+            hoverEffect="scale"
           />
         </div>
 
@@ -44,6 +45,7 @@ const HeroSection = () => {
             alt="Paquetes"
             animationClass="float-animation-delayed"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
+            hoverEffect="rotate"
           />
         </div>
 
@@ -54,6 +56,7 @@ const HeroSection = () => {
             alt="Fotos"
             animationClass="float-animation"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
+            hoverEffect="bounce"
           />
         </div>
 
@@ -65,6 +68,7 @@ const HeroSection = () => {
             alt="Calendario"
             animationClass="float-animation-delayed"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
+            hoverEffect="tilt"
           />
         </div>
 
@@ -75,6 +79,7 @@ const HeroSection = () => {
             alt="Cotiza"
             animationClass="float-animation"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
+            hoverEffect="pulse"
           />
         </div>
 
@@ -85,6 +90,7 @@ const HeroSection = () => {
             alt="Contacto"
             animationClass="float-animation-delayed"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
+            hoverEffect="shake"
           />
         </div>
       </div>
