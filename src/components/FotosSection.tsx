@@ -20,31 +20,22 @@ const FotosSection = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const handleImageChange = (index: number) => {
-    if (index === selectedImage || isTransitioning) return;
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setSelectedImage(index);
-      setTimeout(() => setIsTransitioning(false), 300);
-    }, 200);
+    if (index === selectedImage) return;
+    setSelectedImage(index);
   };
 
   // Auto-play effect
   useEffect(() => {
-    if (images.length === 0 || isTransitioning) return;
+    if (images.length === 0) return;
     
     const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setSelectedImage((prev) => (prev + 1) % images.length);
-        setTimeout(() => setIsTransitioning(false), 300);
-      }, 200);
+      setSelectedImage((prev) => (prev + 1) % images.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [images.length, isTransitioning]);
+  }, [images.length]);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -88,18 +79,21 @@ const FotosSection = () => {
               />
             </div>
 
-            {/* Imagen principal */}
+            {/* Imagen principal con crossfade */}
             {loading ? (
               <div className="w-full h-[300px] md:h-[450px] bg-muted animate-pulse rounded-lg mb-4" />
             ) : images.length > 0 ? (
-              <div className="relative rounded-lg overflow-hidden shadow-xl mb-4">
-                <img 
-                  src={images[selectedImage]?.url} 
-                  alt={images[selectedImage]?.alt || `Foto ${selectedImage + 1}`}
-                  className={`w-full h-[300px] md:h-[450px] object-cover transition-all duration-300 ${
-                    isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
-                  }`}
-                />
+              <div className="relative rounded-lg overflow-hidden shadow-xl mb-4 h-[300px] md:h-[450px]">
+                {images.map((image, index) => (
+                  <img 
+                    key={index}
+                    src={image.url} 
+                    alt={image.alt || `Foto ${index + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                      selectedImage === index ? "opacity-100 z-10" : "opacity-0 z-0"
+                    }`}
+                  />
+                ))}
               </div>
             ) : null}
 
