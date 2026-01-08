@@ -48,23 +48,32 @@ const Bienvenida = () => {
     stackedLetters.forEach((row) => {
       row.forEach((_, colIndex) => {
         const currentIndex = letterIndex;
-        setTimeout(() => {
-          setAnimatedLetters((prev) => [...prev, currentIndex]);
-        }, currentIndex * 150 + 300);
+        setTimeout(
+          () => {
+            setAnimatedLetters((prev) => [...prev, currentIndex]);
+          },
+          currentIndex * 150 + 300,
+        );
         letterIndex++;
       });
     });
 
     // Después de todas las letras, iniciar transición
-    setTimeout(() => {
-      setPhase("transition");
-    }, totalLetters * 150 + 1500);
+    setTimeout(
+      () => {
+        setPhase("transition");
+      },
+      totalLetters * 150 + 1500,
+    );
 
     // Mostrar pantalla final
-    setTimeout(() => {
-      setPhase("final");
-      setTimeout(() => setShowFinal(true), 100);
-    }, totalLetters * 150 + 2000);
+    setTimeout(
+      () => {
+        setPhase("final");
+        setTimeout(() => setShowFinal(true), 100);
+      },
+      totalLetters * 150 + 2000,
+    );
   }, []);
 
   const handleEnter = () => {
@@ -124,9 +133,7 @@ const Bienvenida = () => {
                     src={letter.src}
                     alt={letter.alt}
                     className={`${letter.className} h-auto transition-all duration-500 ease-out ${
-                      isVisible
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-8"
+                      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                     }`}
                   />
                 );
@@ -146,7 +153,7 @@ const Bienvenida = () => {
         <img
           src={rayuelaHorizontal}
           alt="Rayuela"
-          className={`w-[75%] max-w-4xl h-auto mb-[-2rem] md:mb-[-3rem] z-10 transition-all duration-700 ${
+          className={`w-[80%] h-auto mb-[-2rem] md:mb-[-3rem] z-10 transition-all duration-700 ${
             showFinal ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
           }`}
         />
