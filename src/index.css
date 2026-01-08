@@ -149,13 +149,45 @@
     @apply transition-all duration-300 ease-out cursor-pointer;
   }
 
-  .nav-button:hover {
-    @apply scale-105;
+  .nav-button:active {
+    @apply scale-95;
+  }
+
+  /* Different hover effects for each nav button */
+  .hover-scale:hover {
+    transform: scale(1.1);
     filter: brightness(1.05);
   }
 
-  .nav-button:active {
-    @apply scale-95;
+  .hover-rotate:hover {
+    transform: rotate(5deg) scale(1.05);
+    filter: brightness(1.05);
+  }
+
+  .hover-bounce:hover {
+    transform: translateY(-8px);
+    filter: brightness(1.05);
+  }
+
+  .hover-tilt:hover {
+    transform: rotate(-5deg) scale(1.05);
+    filter: brightness(1.05);
+  }
+
+  .hover-pulse:hover {
+    transform: scale(1.08);
+    filter: brightness(1.1) saturate(1.2);
+  }
+
+  .hover-shake:hover {
+    animation: shake 0.4s ease-in-out;
+    filter: brightness(1.05);
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-2deg); }
+    75% { transform: translateX(5px) rotate(2deg); }
   }
 
   .float-animation {
