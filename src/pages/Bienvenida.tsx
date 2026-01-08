@@ -153,7 +153,7 @@ const Bienvenida = () => {
         <img
           src={rayuelaHorizontal}
           alt="Rayuela"
-          className={`w-[80%] h-auto mb-[-2rem] md:mb-[-3rem] z-10 transition-all duration-700 ${
+          className={`w-[80%] h-auto mb-[-2rem] md:mb-[-8rem] z-10 transition-all duration-700 ${
             showFinal ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
           }`}
         />
