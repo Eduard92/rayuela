@@ -101,7 +101,7 @@ const Header = () => {
           
           {/* Tablero del menú */}
           <div 
-            className="grid grid-cols-2 grid-rows-3 mt-[5rem] md:mt-[10rem] ml-[1rem] md:ml-[5rem] w-[300px] md:w-[359px] h-[366px] md:h-[438px] justify-items-center items-center animate-scale-in"
+            className="grid grid-cols-2 grid-rows-3 mt-[5rem] md:mt-[10rem] ml-[1rem] md:ml-[5rem] w-[360px] md:w-[500px] h-[440px] md:h-[610px] justify-items-center items-center animate-scale-in"
             style={{
               backgroundImage: `url(${modalBackground})`,
               backgroundSize: "cover",
