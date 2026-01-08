@@ -36,7 +36,7 @@ const HeroSection = () => {
           <img 
             src={smilePaquetes} 
             alt="Smile" 
-            className="absolute top-1/2 -translate-y-1/2 right-0 w-40 h-40 md:w-56 md:h-56 z-10"
+            className="absolute top-1/2 -translate-y-1/2 right-0 w-40 h-40 md:w-56 md:h-56 z-10 animate-wiggle"
           />
           <NavigationButton
             to="#paquetes"
