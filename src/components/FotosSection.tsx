@@ -20,6 +20,16 @@ const FotosSection = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handleImageChange = (index: number) => {
+    if (index === selectedImage || isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setSelectedImage(index);
+      setTimeout(() => setIsTransitioning(false), 300);
+    }, 200);
+  };
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -71,7 +81,9 @@ const FotosSection = () => {
                 <img 
                   src={images[selectedImage]?.url} 
                   alt={images[selectedImage]?.alt || `Foto ${selectedImage + 1}`}
-                  className="w-full h-[300px] md:h-[450px] object-cover transition-all duration-300"
+                  className={`w-full h-[300px] md:h-[450px] object-cover transition-all duration-300 ${
+                    isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
+                  }`}
                 />
               </div>
             ) : null}
@@ -89,7 +101,7 @@ const FotosSection = () => {
                   {images.map((image, index) => (
                     <CarouselItem key={index} className="pl-2 basis-1/4 md:basis-1/6">
                       <button
-                        onClick={() => setSelectedImage(index)}
+                        onClick={() => handleImageChange(index)}
                         className={`relative w-full aspect-square rounded-md overflow-hidden transition-all duration-200 ${
                           selectedImage === index 
                             ? "ring-4 ring-[#F5A623] scale-105" 
