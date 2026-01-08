@@ -4,7 +4,7 @@ import fotosImage from "@/assets/fotos.png";
 import paquetesImage from "@/assets/paquetes.png";
 import contactoImage from "@/assets/contacto.png";
 import calendarioImage from "@/assets/calendario.png";
-import cotizaImage from "@/assets/cotiza.png";
+import cotizaImage from "@/assets/cotiza-titulo.png";
 import NavigationButton from "./NavigationButton";
 
 const HeroSection = () => {
