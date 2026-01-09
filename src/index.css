@@ -4,28 +4,28 @@
 @font-face {
   font-family: 'Caviar Dreams';
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
   src: local('Caviar Dreams'), url('/fonts/CaviarDreams.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'Caviar Dreams';
-  font-style: italic;
-  font-weight: 400;
+  font-family: 'Caviar Dreams Italic';
+  font-style: normal;
+  font-weight: normal;
   src: local('Caviar Dreams Italic'), url('/fonts/CaviarDreamsItalic.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'Caviar Dreams';
+  font-family: 'Caviar Dreams Bold';
   font-style: normal;
-  font-weight: 700;
+  font-weight: normal;
   src: local('Caviar Dreams Bold'), url('/fonts/CaviarDreams_Bold.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'Caviar Dreams';
-  font-style: italic;
-  font-weight: 700;
+  font-family: 'Caviar Dreams Bold Italic';
+  font-style: normal;
+  font-weight: normal;
   src: local('Caviar Dreams Bold Italic'), url('/fonts/CaviarDreams_BoldItalic.woff') format('woff');
 }
 
