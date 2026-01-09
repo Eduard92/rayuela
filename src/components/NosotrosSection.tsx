@@ -54,22 +54,22 @@ const NosotrosSection = () => {
         <div className="w-full lg:w-1/2 flex flex-col items-center justify-center gap-6">
           {/* Card con texto */}
           <div
-            className="bg-rayuela-pink/50 p-8 md:p-12 overflow-hidden"
+            className="bg-rayuela-pink/50 p-8 md:p-12 max-w-xl overflow-hidden"
             style={{ clipPath: "polygon(4% 0, 100% 0, 96% 100%, 0% 100%)" }}
           >
-            <p className="text-sm md:text-base leading-relaxed uppercase tracking-wide text-center font-bold" style={{ color: '#759dba' }}>
-              ¡Hola, nosotros somos Ela y Ray y juntos celebraremos momentos mágicos! En Rayuela te ofrecemos un espacio
-              divertido y seguro para tus fiestas. Contamos con áreas de juego, decoración temática y servicios
+            <p className="text-foreground/80 text-sm md:text-base leading-relaxed uppercase tracking-wide text-center">
+              ¡Hola, nosotros somos Ela y Ray y juntos celebraremos momentos mágicos ! En Rayuela te ofrecemos un
+              espacio divertido y seguro para tus fiestas. Contamos con áreas de juego, decoración temática y servicios
               personalizados para que tu evento sea inolvidable.
             </p>
-            <p className="text-sm md:text-base leading-relaxed uppercase tracking-wide text-center mt-4 font-bold" style={{ color: '#759dba' }}>
+            <p className="text-foreground/80 text-sm md:text-base leading-relaxed uppercase tracking-wide text-center mt-4">
               ¿Listo para la diversión? Contáctanos y reserva tu fecha hoy mismo.
             </p>
 
             {/* Logo y slogan */}
             <div className="mt-6 flex flex-col items-center">
               <img src={logo} alt="Rayuela" className="h-12 md:h-16 w-auto object-contain" />
-              <p className="text-xs md:text-sm mt-2 text-center italic font-semibold" style={{ color: '#759dba' }}>
+              <p className="text-foreground/70 text-xs md:text-sm mt-2 text-center italic">
                 El lugar donde tus sueños se hacen fiesta!
               </p>
             </div>
