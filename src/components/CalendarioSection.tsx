@@ -229,7 +229,7 @@ const CalendarioSection = () => {
           </div>
 
           {/* Personaje rosa - a la derecha del calendario en desktop */}
-          <div className="hidden lg:block absolute -right-[45%] bottom-0 w-[55%] z-10">
+          <div className="hidden lg:block absolute -right-[50%] bottom-0 w-[55%] z-10">
             <img 
               src={rosaCalendario} 
               alt="Ela - Mascota de Rayuela" 
