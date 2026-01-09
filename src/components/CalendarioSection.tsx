@@ -150,7 +150,7 @@ const CalendarioSection = () => {
         </div>
 
         {/* Navegación del mes */}
-        <div className="flex items-center justify-start gap-4 mb-4 max-w-5xl">
+        <div className="flex items-center justify-start gap-4 mb-4 w-full lg:w-[60%]">
           <button 
             onClick={goToPrevMonth}
             className="text-2xl lg:text-4xl font-bold text-rayuela-orange hover:scale-110 transition-transform"
@@ -169,7 +169,7 @@ const CalendarioSection = () => {
         </div>
 
         {/* Días de la semana */}
-        <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 max-w-5xl">
+        <div className="grid grid-cols-7 gap-1 lg:gap-2 mb-2 w-full lg:w-[60%]">
           {diasSemana.map((dia, index) => (
             <div 
               key={dia} 
@@ -191,7 +191,7 @@ const CalendarioSection = () => {
         {/* Grid del calendario dinámico */}
         <div className="relative">
           <div 
-            className="grid grid-cols-7 max-w-5xl"
+            className="grid grid-cols-7 w-full lg:w-[60%]"
             style={{ 
               gap: 0,
               background: "linear-gradient(45deg, #F5A3C7 0%, #8BC4E8 50%, #F7A34A 100%)"
