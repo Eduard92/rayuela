@@ -189,9 +189,9 @@ const CalendarioSection = () => {
         </div>
 
         {/* Grid del calendario dinámico */}
-        <div className="relative">
+        <div className="relative w-full lg:w-[60%]">
           <div 
-            className="grid grid-cols-7 w-full lg:w-[60%]"
+            className="grid grid-cols-7 w-full"
             style={{ 
               gap: 0,
               background: "linear-gradient(45deg, #F5A3C7 0%, #8BC4E8 50%, #F7A34A 100%)"
@@ -228,8 +228,8 @@ const CalendarioSection = () => {
             })}
           </div>
 
-          {/* Personaje rosa - debajo del calendario en móvil, a la derecha en desktop */}
-          <div className="hidden lg:block absolute -right-32 bottom-0 w-96 z-10">
+          {/* Personaje rosa - a la derecha del calendario en desktop */}
+          <div className="hidden lg:block absolute -right-[45%] bottom-0 w-[55%] z-10">
             <img 
               src={rosaCalendario} 
               alt="Ela - Mascota de Rayuela" 
@@ -238,7 +238,7 @@ const CalendarioSection = () => {
           </div>
 
           {/* Título Calendario - solo desktop */}
-          <div className="hidden lg:block absolute right-0 -bottom-4 w-96 z-20">
+          <div className="hidden lg:block absolute -right-[40%] -bottom-4 w-[50%] z-20">
             <img 
               src={calendarioTitulo} 
               alt="Calendario" 
