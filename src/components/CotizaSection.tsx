@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
-import { CalendarIcon, Clock, CheckCircle } from "lucide-react";
+import { CalendarIcon, Clock, CheckCircle, Loader2 } from "lucide-react";
 import backgroundPattern from "@/assets/background-pattern.jpg";
 import cotizaTitulo from "@/assets/cotiza-titulo.png";
 import rayuelaLogo from "@/assets/rayuela-logo.png";
@@ -94,6 +94,8 @@ const CotizaSection = () => {
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showLoadingModal, setShowLoadingModal] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [reservationId, setReservationId] = useState<string>("");
   const [formData, setFormData] = useState({
     name: "",
@@ -113,6 +115,8 @@ const CotizaSection = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setIsSuccess(false);
+    setShowLoadingModal(true);
 
     try {
       const form = e.currentTarget;
@@ -137,7 +141,9 @@ const CotizaSection = () => {
 
       if (data.ok) {
         setReservationId(data.reservation_id);
+        setIsSuccess(true);
         setShowConfirmModal(true);
+        setShowLoadingModal(false);
 
         // Reset form
         setSelectedDate(undefined);
@@ -152,6 +158,7 @@ const CotizaSection = () => {
           message: "",
         });
       } else {
+        setShowLoadingModal(false);
         toast({
           title: "Error",
           description: data.message || "Hubo un problema al enviar la reserva.",
@@ -159,6 +166,7 @@ const CotizaSection = () => {
         });
       }
     } catch (error) {
+      setShowLoadingModal(false);
       toast({
         title: "Error de conexión",
         description: "No se pudo conectar con el servidor. Intenta de nuevo.",
@@ -374,11 +382,37 @@ const CotizaSection = () => {
         </form>
       </div>
 
+      {/* Loading Modal */}
+      <Dialog open={showLoadingModal} onOpenChange={() => {}}>
+        <DialogContent className="bg-white border-2 border-[#a8c8d8] rounded-3xl max-w-md overflow-hidden [&>button]:hidden">
+          <DialogHeader className="text-center">
+            {/* Logo de Rayuela */}
+            <div className="flex justify-center mb-4">
+              <img 
+                src={rayuelaLogo} 
+                alt="Rayuela Logo" 
+                className="w-32 h-auto object-contain"
+              />
+            </div>
+            
+            <div className="flex justify-center mb-4">
+              <div className="w-16 h-16 bg-[#a8c8d8]/30 rounded-full flex items-center justify-center">
+                <Loader2 className="w-10 h-10 text-[#a8c8d8] animate-spin" />
+              </div>
+            </div>
+            <DialogTitle className="text-2xl text-[#a8c8d8] font-bold">Enviando...</DialogTitle>
+            <DialogDescription className="text-gray-600 text-base mt-2">
+              Por favor espera mientras procesamos tu solicitud de reserva.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+
       {/* Confirmation Modal */}
       <Dialog open={showConfirmModal} onOpenChange={setShowConfirmModal}>
         <DialogContent className="bg-white border-2 border-[#8fa832] rounded-3xl max-w-md overflow-hidden">
           {/* Confetti Effect */}
-          <Confetti isActive={showConfirmModal} />
+          <Confetti isActive={isSuccess && showConfirmModal} />
           
           <DialogHeader className="text-center relative z-10">
             {/* Logo de Rayuela */}
