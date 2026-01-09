@@ -229,7 +229,7 @@ const CalendarioSection = () => {
           </div>
 
           {/* Personaje rosa - a la derecha del calendario en desktop */}
-          <div className="hidden lg:block absolute -right-[50%] -bottom-8 w-[55%] z-10">
+          <div className="hidden lg:block absolute -right-[58%] -bottom-8 w-[55%] z-10">
             <img 
               src={rosaCalendario} 
               alt="Ela - Mascota de Rayuela" 
@@ -238,7 +238,7 @@ const CalendarioSection = () => {
           </div>
 
           {/* Título Calendario - solo desktop */}
-          <div className="hidden lg:block absolute -right-[40%] -bottom-12 w-[50%] z-20">
+          <div className="hidden lg:block absolute -right-[48%] -bottom-12 w-[50%] z-20">
             <img 
               src={calendarioTitulo} 
               alt="Calendario" 
