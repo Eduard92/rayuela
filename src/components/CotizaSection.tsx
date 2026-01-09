@@ -1,14 +1,66 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { CalendarIcon, Clock, CheckCircle } from "lucide-react";
 import backgroundPattern from "@/assets/background-pattern.jpg";
 import cotizaTitulo from "@/assets/cotiza-titulo.png";
+import rayuelaLogo from "@/assets/rayuela-logo.png";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+
+// Confetti piece component
+const ConfettiPiece = ({ index }: { index: number }) => {
+  const colors = ['#e8855e', '#f5c6d6', '#8fa832', '#a8c8d8', '#c5c88a', '#c85a8a', '#ffd700', '#ff6b6b'];
+  const color = colors[index % colors.length];
+  const left = Math.random() * 100;
+  const delay = Math.random() * 0.5;
+  const duration = 2 + Math.random() * 2;
+  const size = 8 + Math.random() * 8;
+  const rotation = Math.random() * 360;
+
+  return (
+    <div
+      className="absolute animate-confetti-fall pointer-events-none"
+      style={{
+        left: `${left}%`,
+        top: '-10px',
+        width: `${size}px`,
+        height: `${size}px`,
+        backgroundColor: color,
+        borderRadius: Math.random() > 0.5 ? '50%' : '2px',
+        transform: `rotate(${rotation}deg)`,
+        animationDelay: `${delay}s`,
+        animationDuration: `${duration}s`,
+      }}
+    />
+  );
+};
+
+// Confetti container component
+const Confetti = ({ isActive }: { isActive: boolean }) => {
+  const [pieces, setPieces] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (isActive) {
+      setPieces(Array.from({ length: 50 }, (_, i) => i));
+      const timer = setTimeout(() => setPieces([]), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [isActive]);
+
+  if (!isActive || pieces.length === 0) return null;
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-50">
+      {pieces.map((i) => (
+        <ConfettiPiece key={i} index={i} />
+      ))}
+    </div>
+  );
+};
 
 const timeSlots = [
   "09:00",
@@ -324,10 +376,22 @@ const CotizaSection = () => {
 
       {/* Confirmation Modal */}
       <Dialog open={showConfirmModal} onOpenChange={setShowConfirmModal}>
-        <DialogContent className="bg-white border-2 border-[#8fa832] rounded-3xl max-w-md">
-          <DialogHeader className="text-center">
+        <DialogContent className="bg-white border-2 border-[#8fa832] rounded-3xl max-w-md overflow-hidden">
+          {/* Confetti Effect */}
+          <Confetti isActive={showConfirmModal} />
+          
+          <DialogHeader className="text-center relative z-10">
+            {/* Logo de Rayuela */}
             <div className="flex justify-center mb-4">
-              <div className="w-16 h-16 bg-[#c5c88a]/30 rounded-full flex items-center justify-center">
+              <img 
+                src={rayuelaLogo} 
+                alt="Rayuela Logo" 
+                className="w-32 h-auto object-contain animate-bounce-in"
+              />
+            </div>
+            
+            <div className="flex justify-center mb-4">
+              <div className="w-16 h-16 bg-[#c5c88a]/30 rounded-full flex items-center justify-center animate-scale-in">
                 <CheckCircle className="w-10 h-10 text-[#8fa832]" />
               </div>
             </div>
@@ -339,7 +403,7 @@ const CotizaSection = () => {
               )}
             </DialogDescription>
           </DialogHeader>
-          <div className="flex justify-center mt-4">
+          <div className="flex justify-center mt-4 relative z-10">
             <button
               onClick={() => setShowConfirmModal(false)}
               className="px-8 py-3 bg-[#8fa832] text-white rounded-full font-semibold hover:bg-[#7d9429] transition-all duration-300 hover:scale-105"
