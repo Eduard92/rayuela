@@ -15,7 +15,7 @@ const NosotrosSection = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) {
@@ -26,28 +26,24 @@ const NosotrosSection = () => {
   }, []);
 
   return (
-    <section 
+    <section
       id="nosotros"
       ref={sectionRef}
       className="relative min-h-screen w-full overflow-hidden px-6 md:px-12"
-      style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+      style={{ backgroundImage: `url(${backgroundNosotros})`, backgroundSize: "cover", backgroundPosition: "center" }}
     >
       {/* Título - Top Right */}
       <div className="absolute top-8 right-6 md:right-12">
-        <img 
-          src={tituloImage} 
-          alt="Nosotros" 
-          className="w-[200px] md:w-[300px] lg:w-[350px] object-contain"
-        />
+        <img src={tituloImage} alt="Nosotros" className="w-[200px] md:w-[300px] lg:w-[350px] object-contain" />
       </div>
 
       {/* Content - Bottom */}
       <div className="absolute bottom-4 left-2 right-2 md:left-12 md:right-12 top-20 flex flex-col lg:flex-row items-center gap-2 lg:gap-12">
         {/* Mascotas - Left Side */}
-        <div className="w-full lg:w-2/5 flex justify-center lg:justify-start">
-          <img 
-            src={mascotasImage} 
-            alt="Ela y Ray - Mascotas de Rayuela" 
+        <div className="w-full lg:w-3/5 flex justify-center lg:justify-start">
+          <img
+            src={mascotasImage}
+            alt="Ela y Ray - Mascotas de Rayuela"
             className={`h-[28vh] lg:h-[70vh] w-auto object-contain transition-transform duration-500 ${
               isVisible ? "scale-105" : "scale-100"
             }`}
@@ -55,15 +51,16 @@ const NosotrosSection = () => {
         </div>
 
         {/* Content - Right Side */}
-        <div className="w-full lg:w-3/5 flex flex-col items-center justify-center gap-6">
-
+        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center gap-6">
           {/* Card con texto */}
-          <div 
-            className="bg-rayuela-pink/50 p-8 md:p-12 max-w-xl overflow-hidden"
-            style={{ clipPath: 'polygon(4% 0, 100% 0, 96% 100%, 0% 100%)' }}
+          <div
+            className="bg-rayuela-pink/50 p-8 md:p-12 overflow-hidden"
+            style={{ clipPath: "polygon(4% 0, 100% 0, 96% 100%, 0% 100%)" }}
           >
             <p className="text-foreground/80 text-sm md:text-base leading-relaxed uppercase tracking-wide text-center">
-              ¡Hola, nosotros somos Ela y Ray y juntos celebraremos momentos mágicos! En Rayuela te ofrecemos un espacio divertido y seguro para tus fiestas. Contamos con áreas de juego, decoración temática y servicios personalizados para que tu evento sea inolvidable.
+              ¡Hola, nosotros somos Ela y Ray y juntos celebraremos momentos mágicos! En Rayuela te ofrecemos un espacio
+              divertido y seguro para tus fiestas. Contamos con áreas de juego, decoración temática y servicios
+              personalizados para que tu evento sea inolvidable.
             </p>
             <p className="text-foreground/80 text-sm md:text-base leading-relaxed uppercase tracking-wide text-center mt-4">
               ¿Listo para la diversión? Contáctanos y reserva tu fecha hoy mismo.
@@ -71,11 +68,7 @@ const NosotrosSection = () => {
 
             {/* Logo y slogan */}
             <div className="mt-6 flex flex-col items-center">
-              <img 
-                src={logo} 
-                alt="Rayuela" 
-                className="h-12 md:h-16 w-auto object-contain"
-              />
+              <img src={logo} alt="Rayuela" className="h-12 md:h-16 w-auto object-contain" />
               <p className="text-foreground/70 text-xs md:text-sm mt-2 text-center italic">
                 El lugar donde tus sueños se hacen fiesta!
               </p>
