@@ -44,7 +44,7 @@ const NosotrosSection = () => {
       {/* Content - Bottom */}
       <div className="absolute bottom-4 left-2 right-2 md:left-12 md:right-12 top-20 flex flex-col lg:flex-row items-center gap-2 lg:gap-12">
         {/* Mascotas - Left Side */}
-        <div className="w-full lg:w-3/5 flex justify-center lg:justify-start">
+        <div className="w-full lg:w-2/5 flex justify-center lg:justify-start">
           <img 
             src={mascotasImage} 
             alt="Ela y Ray - Mascotas de Rayuela" 
@@ -55,7 +55,7 @@ const NosotrosSection = () => {
         </div>
 
         {/* Content - Right Side */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center justify-center gap-6">
+        <div className="w-full lg:w-3/5 flex flex-col items-center justify-center gap-6">
 
           {/* Card con texto */}
           <div 
