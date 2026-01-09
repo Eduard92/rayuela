@@ -55,7 +55,7 @@ const NosotrosSection = () => {
           {/* Card con texto */}
           <div
             className="bg-rayuela-pink/50 p-8 md:p-12 max-w-xl overflow-hidden"
-            style={{ clipPath: "polygon(4% 0, 100% 0, 96% 100%, 0% 100%)", fontFamily: "'Caviar Dreams Bold', sans-serif" }}
+            style={{ clipPath: "polygon(4% 0, 100% 0, 96% 100%, 0% 100%)", fontFamily: "'Caviar Dreams Bold', sans-serif", fontWeight: 900 }}
           >
             <p className="text-sm md:text-base leading-relaxed uppercase tracking-wide text-center" style={{ color: '#759dba' }}>
               ¡Hola, nosotros somos Ela y Ray y juntos celebraremos momentos mágicos ! En Rayuela te ofrecemos un
