@@ -615,9 +615,16 @@ const CotizaSection = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={(e) => {
-                  handleChange(e);
-                  if (e.target.value.trim() !== "") setPhoneError(false);
+                  const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  const syntheticEvent = {
+                    target: { name: 'phone', value }
+                  } as React.ChangeEvent<HTMLInputElement>;
+                  handleChange(syntheticEvent);
+                  if (value.trim() !== "") setPhoneError(false);
                 }}
+                maxLength={10}
+                inputMode="numeric"
+                pattern="[0-9]*"
                 className={cn(
                   "w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none transition-all",
                   phoneError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-[#8fa832]"
