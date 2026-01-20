@@ -101,6 +101,8 @@ const CotizaSection = () => {
   const [reservationId, setReservationId] = useState<string>("");
   const [emailError, setEmailError] = useState<string>("");
   const [emailTouched, setEmailTouched] = useState(false);
+  const [nameError, setNameError] = useState<string>("");
+  const [nameTouched, setNameTouched] = useState(false);
   const [showEmailSuggestions, setShowEmailSuggestions] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -260,17 +262,48 @@ const CotizaSection = () => {
           {/* Row 1 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div className="relative">
-              <label className="absolute left-4 top-3 text-[#8fa832] text-sm font-medium uppercase tracking-wide">
+              <label className={cn(
+                "absolute left-4 top-3 text-sm font-medium uppercase tracking-wide transition-colors z-10",
+                nameError && nameTouched ? "text-red-500" : "text-[#8fa832]"
+              )}>
                 Nombre
               </label>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
-                onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 bg-[#e8855e]/80 rounded-full text-white placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                onChange={(e) => {
+                  handleChange(e);
+                  const value = e.target.value.trim();
+                  if (value === "") {
+                    setNameError("El nombre es requerido");
+                  } else if (value.length < 2) {
+                    setNameError("Mínimo 2 caracteres");
+                  } else {
+                    setNameError("");
+                  }
+                }}
+                onBlur={() => setNameTouched(true)}
+                className={cn(
+                  "w-full h-14 pt-6 pb-2 px-4 bg-[#e8855e]/80 rounded-full text-white placeholder-transparent focus:outline-none transition-all",
+                  nameError && nameTouched 
+                    ? "ring-2 ring-red-500 focus:ring-red-500" 
+                    : formData.name.trim().length >= 2 
+                      ? "ring-2 ring-green-500 focus:ring-green-500"
+                      : "focus:ring-2 focus:ring-[#8fa832]"
+                )}
                 required
               />
+              {nameError && nameTouched && (
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-red-500 text-xs">
+                  {nameError}
+                </span>
+              )}
+              {formData.name.trim().length >= 2 && !nameError && (
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500">
+                  <CheckCircle className="w-5 h-5" />
+                </span>
+              )}
             </div>
             <div className="relative">
               <label className={cn(
