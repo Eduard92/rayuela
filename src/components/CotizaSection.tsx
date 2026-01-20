@@ -101,6 +101,7 @@ const CotizaSection = () => {
   const [reservationId, setReservationId] = useState<string>("");
   const [emailError, setEmailError] = useState<string>("");
   const [emailTouched, setEmailTouched] = useState(false);
+  const [showEmailSuggestions, setShowEmailSuggestions] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -111,9 +112,37 @@ const CotizaSection = () => {
     message: "",
   });
 
+  const emailDomains = [
+    "gmail.com",
+    "hotmail.com",
+    "outlook.com",
+    "yahoo.com",
+    "icloud.com",
+    "live.com",
+    "protonmail.com",
+  ];
+
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  };
+
+  const getEmailSuggestions = (): string[] => {
+    const email = formData.email;
+    if (!email.includes("@")) return [];
+    
+    const [localPart, domainPart] = email.split("@");
+    if (!localPart) return [];
+    
+    return emailDomains
+      .filter(domain => domain.startsWith(domainPart.toLowerCase()))
+      .map(domain => `${localPart}@${domain}`);
+  };
+
+  const handleEmailSuggestionClick = (suggestion: string) => {
+    setFormData(prev => ({ ...prev, email: suggestion }));
+    setShowEmailSuggestions(false);
+    setEmailError("");
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -123,10 +152,24 @@ const CotizaSection = () => {
     if (name === "email") {
       if (value === "") {
         setEmailError("");
-      } else if (!validateEmail(value)) {
-        setEmailError("Ingresa un email válido");
+        setShowEmailSuggestions(false);
+      } else if (value.includes("@") && !value.includes("@.")) {
+        const [, domainPart] = value.split("@");
+        const hasFullDomain = emailDomains.some(d => domainPart === d);
+        setShowEmailSuggestions(!hasFullDomain && domainPart !== undefined);
+        
+        if (!validateEmail(value)) {
+          setEmailError("Ingresa un email válido");
+        } else {
+          setEmailError("");
+        }
       } else {
-        setEmailError("");
+        setShowEmailSuggestions(false);
+        if (!validateEmail(value)) {
+          setEmailError("Ingresa un email válido");
+        } else {
+          setEmailError("");
+        }
       }
     }
   };
@@ -232,7 +275,7 @@ const CotizaSection = () => {
             </div>
             <div className="relative">
               <label className={cn(
-                "absolute left-4 top-3 text-sm font-medium uppercase tracking-wide transition-colors",
+                "absolute left-4 top-3 text-sm font-medium uppercase tracking-wide transition-colors z-10",
                 emailError && emailTouched ? "text-red-500" : "text-[#8faab8]"
               )}>
                 Email
@@ -242,7 +285,17 @@ const CotizaSection = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                onBlur={() => setEmailTouched(true)}
+                onBlur={() => {
+                  setEmailTouched(true);
+                  setTimeout(() => setShowEmailSuggestions(false), 200);
+                }}
+                onFocus={() => {
+                  if (formData.email.includes("@")) {
+                    const [, domainPart] = formData.email.split("@");
+                    const hasFullDomain = emailDomains.some(d => domainPart === d);
+                    setShowEmailSuggestions(!hasFullDomain);
+                  }
+                }}
                 className={cn(
                   "w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none transition-all",
                   emailError && emailTouched 
@@ -258,10 +311,26 @@ const CotizaSection = () => {
                   {emailError}
                 </span>
               )}
-              {formData.email && !emailError && (
+              {formData.email && !emailError && !showEmailSuggestions && (
                 <span className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500">
                   <CheckCircle className="w-5 h-5" />
                 </span>
+              )}
+              
+              {/* Email Domain Suggestions */}
+              {showEmailSuggestions && getEmailSuggestions().length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border-2 border-[#a8c8d8] rounded-2xl shadow-lg z-50 overflow-hidden">
+                  {getEmailSuggestions().map((suggestion, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => handleEmailSuggestionClick(suggestion)}
+                      className="w-full px-4 py-2 text-left text-gray-700 hover:bg-[#a8c8d8]/30 transition-colors first:rounded-t-xl last:rounded-b-xl"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
               )}
             </div>
           </div>
