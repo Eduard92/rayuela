@@ -176,73 +176,57 @@ const CotizaSection = () => {
   };
 
   const validateAllFields = (): boolean => {
-    let isValid = true;
+    const missingFields: string[] = [];
     
     // Validate name
     if (formData.name.trim().length < 2) {
       setNameError(formData.name.trim() === "" ? "El nombre es requerido" : "Mínimo 2 caracteres");
       setNameTouched(true);
-      isValid = false;
+      missingFields.push("Nombre");
     }
     
     // Validate email
     if (!validateEmail(formData.email)) {
       setEmailError(formData.email === "" ? "El email es requerido" : "Ingresa un email válido");
       setEmailTouched(true);
-      isValid = false;
+      missingFields.push("Email");
     }
     
     // Validate date
     if (!selectedDate) {
-      toast({
-        title: "Fecha requerida",
-        description: "Por favor selecciona una fecha para tu evento.",
-        variant: "destructive",
-      });
-      isValid = false;
+      missingFields.push("Fecha");
     }
     
     // Validate time
     if (!selectedTime) {
-      toast({
-        title: "Hora requerida",
-        description: "Por favor selecciona una hora para tu evento.",
-        variant: "destructive",
-      });
-      isValid = false;
+      missingFields.push("Hora");
     }
     
     // Validate event type
     if (formData.tipo_evento.trim() === "") {
-      toast({
-        title: "Tipo de evento requerido",
-        description: "Por favor ingresa el tipo de evento.",
-        variant: "destructive",
-      });
-      isValid = false;
+      missingFields.push("Tipo de evento");
     }
     
     // Validate guests
     if (formData.invitados.trim() === "" || parseInt(formData.invitados) <= 0) {
-      toast({
-        title: "Número de invitados requerido",
-        description: "Por favor ingresa el número de invitados.",
-        variant: "destructive",
-      });
-      isValid = false;
+      missingFields.push("Número de invitados");
     }
     
     // Validate phone
     if (formData.phone.trim() === "") {
-      toast({
-        title: "Teléfono requerido",
-        description: "Por favor ingresa tu número de teléfono.",
-        variant: "destructive",
-      });
-      isValid = false;
+      missingFields.push("Teléfono");
     }
     
-    return isValid;
+    if (missingFields.length > 0) {
+      toast({
+        title: "Datos incompletos",
+        description: `Por favor completa: ${missingFields.join(", ")}`,
+        variant: "destructive",
+      });
+      return false;
+    }
+    
+    return true;
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -367,7 +351,6 @@ const CotizaSection = () => {
                       ? "ring-2 ring-green-500 focus:ring-green-500"
                       : "focus:ring-2 focus:ring-[#8fa832]"
                 )}
-                required
               />
               {nameError && nameTouched && (
                 <span className="absolute right-4 top-1/2 -translate-y-1/2 text-red-500 text-xs">
@@ -411,7 +394,6 @@ const CotizaSection = () => {
                       ? "ring-2 ring-green-500 focus:ring-green-500"
                       : "focus:ring-2 focus:ring-[#8fa832]"
                 )}
-                required
               />
               {emailError && emailTouched && (
                 <span className="absolute right-4 top-1/2 -translate-y-1/2 text-red-500 text-xs">
@@ -536,7 +518,6 @@ const CotizaSection = () => {
                 value={formData.tipo_evento}
                 onChange={handleChange}
                 className="w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
-                required
               />
             </div>
             <div className="relative">
@@ -549,7 +530,6 @@ const CotizaSection = () => {
                 value={formData.invitados}
                 onChange={handleChange}
                 className="w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
-                required
               />
             </div>
           </div>
@@ -566,7 +546,6 @@ const CotizaSection = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
-                required
               />
             </div>
             <div className="relative">
