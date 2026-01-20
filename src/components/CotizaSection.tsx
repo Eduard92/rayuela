@@ -104,6 +104,11 @@ const CotizaSection = () => {
   const [nameError, setNameError] = useState<string>("");
   const [nameTouched, setNameTouched] = useState(false);
   const [showEmailSuggestions, setShowEmailSuggestions] = useState(false);
+  const [dateError, setDateError] = useState(false);
+  const [timeError, setTimeError] = useState(false);
+  const [tipoEventoError, setTipoEventoError] = useState(false);
+  const [invitadosError, setInvitadosError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -194,27 +199,42 @@ const CotizaSection = () => {
     
     // Validate date
     if (!selectedDate) {
+      setDateError(true);
       missingFields.push("Fecha");
+    } else {
+      setDateError(false);
     }
     
     // Validate time
     if (!selectedTime) {
+      setTimeError(true);
       missingFields.push("Hora");
+    } else {
+      setTimeError(false);
     }
     
     // Validate event type
     if (formData.tipo_evento.trim() === "") {
+      setTipoEventoError(true);
       missingFields.push("Tipo de evento");
+    } else {
+      setTipoEventoError(false);
     }
     
     // Validate guests
     if (formData.invitados.trim() === "" || parseInt(formData.invitados) <= 0) {
+      setInvitadosError(true);
       missingFields.push("Número de invitados");
+    } else {
+      setInvitadosError(false);
     }
     
     // Validate phone
     if (formData.phone.trim() === "") {
+      setPhoneError(true);
       missingFields.push("Teléfono");
+    } else {
+      setPhoneError(false);
     }
     
     if (missingFields.length > 0) {
@@ -344,7 +364,7 @@ const CotizaSection = () => {
                 }}
                 onBlur={() => setNameTouched(true)}
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-[#e8855e]/80 rounded-full text-white placeholder-transparent focus:outline-none transition-all",
+                  "w-full h-14 pt-6 pb-2 px-4 bg-[#e8855e]/80 rounded-full text-black placeholder-gray-600 focus:outline-none transition-all",
                   nameError && nameTouched 
                     ? "ring-2 ring-red-500 focus:ring-red-500" 
                     : formData.name.trim().length >= 2 
@@ -387,7 +407,7 @@ const CotizaSection = () => {
                   }
                 }}
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none transition-all",
+                  "w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-black placeholder-gray-600 focus:outline-none transition-all",
                   emailError && emailTouched 
                     ? "ring-2 ring-red-500 focus:ring-red-500" 
                     : formData.email && !emailError 
@@ -426,21 +446,31 @@ const CotizaSection = () => {
 
           {/* Row 2 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-            <Popover open={isDateOpen} onOpenChange={setIsDateOpen}>
+            <Popover open={isDateOpen} onOpenChange={(open) => {
+              setIsDateOpen(open);
+              if (open) setDateError(false);
+            }}>
               <PopoverTrigger asChild>
                 <div className="relative cursor-pointer">
-                  <label className="absolute left-4 top-3 text-[#c85a8a] text-sm font-medium uppercase tracking-wide z-10">
+                  <label className={cn(
+                    "absolute left-4 top-3 text-sm font-medium uppercase tracking-wide z-10 transition-colors",
+                    dateError ? "text-red-500" : "text-[#c85a8a]"
+                  )}>
                     Fecha
                   </label>
                   <div
                     className={cn(
-                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#f5c6d6]/80 rounded-full text-gray-700 flex items-end focus:outline-none focus:ring-2 focus:ring-[#8fa832]",
-                      !selectedDate && "text-gray-400",
+                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#f5c6d6]/80 rounded-full text-black flex items-end focus:outline-none transition-all",
+                      !selectedDate && "text-gray-600",
+                      dateError ? "ring-2 ring-red-500" : "focus:ring-2 focus:ring-[#8fa832]",
                     )}
                   >
                     {selectedDate ? format(selectedDate, "dd/MM/yyyy", { locale: es }) : "Seleccionar fecha"}
                   </div>
-                  <CalendarIcon className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#c85a8a]" />
+                  <CalendarIcon className={cn(
+                    "absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 transition-colors",
+                    dateError ? "text-red-500" : "text-[#c85a8a]"
+                  )} />
                 </div>
               </PopoverTrigger>
               <PopoverContent
@@ -461,21 +491,31 @@ const CotizaSection = () => {
                 />
               </PopoverContent>
             </Popover>
-            <Popover open={isTimeOpen} onOpenChange={setIsTimeOpen}>
+            <Popover open={isTimeOpen} onOpenChange={(open) => {
+              setIsTimeOpen(open);
+              if (open) setTimeError(false);
+            }}>
               <PopoverTrigger asChild>
                 <div className="relative cursor-pointer">
-                  <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide z-10">
+                  <label className={cn(
+                    "absolute left-4 top-3 text-sm font-medium uppercase tracking-wide z-10 transition-colors",
+                    timeError ? "text-red-500" : "text-[#8faab8]"
+                  )}>
                     Hora
                   </label>
                   <div
                     className={cn(
-                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#a8c8d8]/80 rounded-full text-gray-700 flex items-end",
-                      !selectedTime && "text-gray-400",
+                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#a8c8d8]/80 rounded-full text-black flex items-end transition-all",
+                      !selectedTime && "text-gray-600",
+                      timeError ? "ring-2 ring-red-500" : "",
                     )}
                   >
                     {selectedTime || "Seleccionar hora"}
                   </div>
-                  <Clock className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-[#8faab8]" />
+                  <Clock className={cn(
+                    "absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 transition-colors",
+                    timeError ? "text-red-500" : "text-[#8faab8]"
+                  )} />
                 </div>
               </PopoverTrigger>
               <PopoverContent
@@ -509,27 +549,45 @@ const CotizaSection = () => {
           {/* Row 3 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div className="relative">
-              <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide">
+              <label className={cn(
+                "absolute left-4 top-3 text-sm font-medium uppercase tracking-wide transition-colors",
+                tipoEventoError ? "text-red-500" : "text-[#8faab8]"
+              )}>
                 Tipo de evento
               </label>
               <input
                 type="text"
                 name="tipo_evento"
                 value={formData.tipo_evento}
-                onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                onChange={(e) => {
+                  handleChange(e);
+                  if (e.target.value.trim() !== "") setTipoEventoError(false);
+                }}
+                className={cn(
+                  "w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-black placeholder-gray-600 focus:outline-none transition-all",
+                  tipoEventoError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-[#8fa832]"
+                )}
               />
             </div>
             <div className="relative">
-              <label className="absolute left-4 top-3 text-[#8fa832] text-sm font-medium uppercase tracking-wide">
+              <label className={cn(
+                "absolute left-4 top-3 text-sm font-medium uppercase tracking-wide transition-colors",
+                invitadosError ? "text-red-500" : "text-[#8fa832]"
+              )}>
                 Número de invitados
               </label>
               <input
                 type="number"
                 name="invitados"
                 value={formData.invitados}
-                onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                onChange={(e) => {
+                  handleChange(e);
+                  if (e.target.value.trim() !== "" && parseInt(e.target.value) > 0) setInvitadosError(false);
+                }}
+                className={cn(
+                  "w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-black placeholder-gray-600 focus:outline-none transition-all",
+                  invitadosError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-[#8fa832]"
+                )}
               />
             </div>
           </div>
@@ -537,15 +595,24 @@ const CotizaSection = () => {
           {/* Row 4 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div className="relative">
-              <label className="absolute left-4 top-3 text-[#8fa832] text-sm font-medium uppercase tracking-wide">
+              <label className={cn(
+                "absolute left-4 top-3 text-sm font-medium uppercase tracking-wide transition-colors",
+                phoneError ? "text-red-500" : "text-[#8fa832]"
+              )}>
                 Teléfono
               </label>
               <input
                 type="tel"
                 name="phone"
                 value={formData.phone}
-                onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                onChange={(e) => {
+                  handleChange(e);
+                  if (e.target.value.trim() !== "") setPhoneError(false);
+                }}
+                className={cn(
+                  "w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-black placeholder-gray-600 focus:outline-none transition-all",
+                  phoneError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-[#8fa832]"
+                )}
               />
             </div>
             <div className="relative">
@@ -557,7 +624,7 @@ const CotizaSection = () => {
                 name="street"
                 value={formData.street}
                 onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 bg-[#f5c6d6]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                className="w-full h-14 pt-6 pb-2 px-4 bg-[#f5c6d6]/80 rounded-full text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
               />
             </div>
           </div>
@@ -572,7 +639,7 @@ const CotizaSection = () => {
               value={formData.message}
               onChange={handleChange}
               rows={3}
-              className="w-full pt-8 pb-4 px-4 bg-[#a8c8d8]/60 rounded-3xl text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832] resize-none"
+              className="w-full pt-8 pb-4 px-4 bg-[#a8c8d8]/60 rounded-3xl text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#8fa832] resize-none"
             />
           </div>
 
