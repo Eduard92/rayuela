@@ -175,8 +175,83 @@ const CotizaSection = () => {
     }
   };
 
+  const validateAllFields = (): boolean => {
+    let isValid = true;
+    
+    // Validate name
+    if (formData.name.trim().length < 2) {
+      setNameError(formData.name.trim() === "" ? "El nombre es requerido" : "Mínimo 2 caracteres");
+      setNameTouched(true);
+      isValid = false;
+    }
+    
+    // Validate email
+    if (!validateEmail(formData.email)) {
+      setEmailError(formData.email === "" ? "El email es requerido" : "Ingresa un email válido");
+      setEmailTouched(true);
+      isValid = false;
+    }
+    
+    // Validate date
+    if (!selectedDate) {
+      toast({
+        title: "Fecha requerida",
+        description: "Por favor selecciona una fecha para tu evento.",
+        variant: "destructive",
+      });
+      isValid = false;
+    }
+    
+    // Validate time
+    if (!selectedTime) {
+      toast({
+        title: "Hora requerida",
+        description: "Por favor selecciona una hora para tu evento.",
+        variant: "destructive",
+      });
+      isValid = false;
+    }
+    
+    // Validate event type
+    if (formData.tipo_evento.trim() === "") {
+      toast({
+        title: "Tipo de evento requerido",
+        description: "Por favor ingresa el tipo de evento.",
+        variant: "destructive",
+      });
+      isValid = false;
+    }
+    
+    // Validate guests
+    if (formData.invitados.trim() === "" || parseInt(formData.invitados) <= 0) {
+      toast({
+        title: "Número de invitados requerido",
+        description: "Por favor ingresa el número de invitados.",
+        variant: "destructive",
+      });
+      isValid = false;
+    }
+    
+    // Validate phone
+    if (formData.phone.trim() === "") {
+      toast({
+        title: "Teléfono requerido",
+        description: "Por favor ingresa tu número de teléfono.",
+        variant: "destructive",
+      });
+      isValid = false;
+    }
+    
+    return isValid;
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    if (!validateAllFields()) {
+      return;
+    }
+    
     setIsSubmitting(true);
     setIsSuccess(false);
     setShowLoadingModal(true);
