@@ -119,7 +119,6 @@ const CotizaSection = () => {
     "yahoo.com",
     "icloud.com",
     "live.com",
-    "protonmail.com",
   ];
 
   const validateEmail = (email: string): boolean => {
