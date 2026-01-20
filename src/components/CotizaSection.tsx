@@ -99,6 +99,8 @@ const CotizaSection = () => {
   const [showLoadingModal, setShowLoadingModal] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [reservationId, setReservationId] = useState<string>("");
+  const [emailError, setEmailError] = useState<string>("");
+  const [emailTouched, setEmailTouched] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -109,9 +111,24 @@ const CotizaSection = () => {
     message: "",
   });
 
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    
+    if (name === "email") {
+      if (value === "") {
+        setEmailError("");
+      } else if (!validateEmail(value)) {
+        setEmailError("Ingresa un email válido");
+      } else {
+        setEmailError("");
+      }
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -214,7 +231,10 @@ const CotizaSection = () => {
               />
             </div>
             <div className="relative">
-              <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide">
+              <label className={cn(
+                "absolute left-4 top-3 text-sm font-medium uppercase tracking-wide transition-colors",
+                emailError && emailTouched ? "text-red-500" : "text-[#8faab8]"
+              )}>
                 Email
               </label>
               <input
@@ -222,9 +242,27 @@ const CotizaSection = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                onBlur={() => setEmailTouched(true)}
+                className={cn(
+                  "w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-gray-700 placeholder-transparent focus:outline-none transition-all",
+                  emailError && emailTouched 
+                    ? "ring-2 ring-red-500 focus:ring-red-500" 
+                    : formData.email && !emailError 
+                      ? "ring-2 ring-green-500 focus:ring-green-500"
+                      : "focus:ring-2 focus:ring-[#8fa832]"
+                )}
                 required
               />
+              {emailError && emailTouched && (
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-red-500 text-xs">
+                  {emailError}
+                </span>
+              )}
+              {formData.email && !emailError && (
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500">
+                  <CheckCircle className="w-5 h-5" />
+                </span>
+              )}
             </div>
           </div>
 
