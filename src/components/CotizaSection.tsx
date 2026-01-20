@@ -94,6 +94,8 @@ const CotizaSection = () => {
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [isDateOpen, setIsDateOpen] = useState(false);
+  const [isTimeOpen, setIsTimeOpen] = useState(false);
   const [showLoadingModal, setShowLoadingModal] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [reservationId, setReservationId] = useState<string>("");
@@ -228,7 +230,7 @@ const CotizaSection = () => {
 
           {/* Row 2 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-            <Popover>
+            <Popover open={isDateOpen} onOpenChange={setIsDateOpen}>
               <PopoverTrigger asChild>
                 <div className="relative cursor-pointer">
                   <label className="absolute left-4 top-3 text-[#c85a8a] text-sm font-medium uppercase tracking-wide z-10">
@@ -249,10 +251,20 @@ const CotizaSection = () => {
                 className="w-auto p-0 bg-white border-2 border-[#f5c6d6] rounded-2xl shadow-xl"
                 align="start"
               >
-                <Calendar mode="single" selected={selectedDate} onSelect={setSelectedDate} initialFocus locale={es} />
+                <Calendar 
+                  mode="single" 
+                  selected={selectedDate} 
+                  onSelect={(date) => {
+                    setSelectedDate(date);
+                    setIsDateOpen(false);
+                    setTimeout(() => setIsTimeOpen(true), 150);
+                  }} 
+                  initialFocus 
+                  locale={es} 
+                />
               </PopoverContent>
             </Popover>
-            <Popover>
+            <Popover open={isTimeOpen} onOpenChange={setIsTimeOpen}>
               <PopoverTrigger asChild>
                 <div className="relative cursor-pointer">
                   <label className="absolute left-4 top-3 text-[#8faab8] text-sm font-medium uppercase tracking-wide z-10">
@@ -278,7 +290,10 @@ const CotizaSection = () => {
                     <button
                       key={time}
                       type="button"
-                      onClick={() => setSelectedTime(time)}
+                      onClick={() => {
+                        setSelectedTime(time);
+                        setIsTimeOpen(false);
+                      }}
                       className={cn(
                         "px-3 py-2 text-sm rounded-lg transition-colors",
                         selectedTime === time
