@@ -4,7 +4,6 @@ import mascotaVerde from "@/assets/mascota-verde-pastel.png";
 import mascotaRosa from "@/assets/mascota-rosa-globo.png";
 import quieresMas from "@/assets/quieres-mas.png";
 import cotizaAqui from "@/assets/cotiza.png";
-
 const PaquetesSection = () => {
   const paqueteItems = {
     columna1: [
@@ -29,7 +28,6 @@ const PaquetesSection = () => {
       "Sanitización, limpieza y desinfección del lugar",
     ],
   };
-
   return (
     <section id="paquetes" className="relative min-h-screen w-full overflow-hidden">
       {/* Background Pattern */}
@@ -39,13 +37,10 @@ const PaquetesSection = () => {
           backgroundImage: `url(${backgroundPaquetes})`,
         }}
       />
-
       {/* Content */}
       <div className="relative z-10 min-h-screen w-full flex flex-col items-center justify-center px-4 py-12 lg:py-16">
-        
         {/* Main Container with Characters */}
         <div className="w-full max-w-7xl flex items-center justify-center relative">
-          
           {/* Left Character - Hidden on mobile */}
           <div className="hidden lg:block absolute -left-24 xl:-left-36 bottom-0 w-80 xl:w-[450px] z-20">
             <img 
@@ -54,10 +49,8 @@ const PaquetesSection = () => {
               className="w-full h-auto object-contain float-animation"
             />
           </div>
-
           {/* Center Content */}
           <div className="w-full lg:max-w-3xl xl:max-w-4xl flex flex-col items-center">
-            
             {/* Title Image */}
             <div className="mb-8 lg:mb-10 -mt-8 lg:-mt-12">
               <img 
@@ -66,57 +59,51 @@ const PaquetesSection = () => {
                 className="w-64 sm:w-80 md:w-96 lg:w-[450px] h-auto object-contain"
               />
             </div>
-
             {/* Description */}
-            <p className="text-center text-base sm:text-lg md:text-xl text-[#e8a0b5] font-semibold mb-8 lg:mb-10 max-w-2xl leading-relaxed px-4">
+            <p className="text-center font-black text-base sm:text-lg md:text-xl text-[#e8a0b5]  mb-8 lg:mb-10 max-w-2xl leading-relaxed px-4">
               En Rayuela hemos creado un paquete que combina diversión, creatividad y magia.
               <br />
               Aquí encontrarás todo lo necesario para celebrar en grande.
             </p>
-
             {/* Items Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full px-4 lg:px-8">
-              
               {/* Column 1 */}
               <div className="space-y-2">
                 {paqueteItems.columna1.map((item, index) => (
                   <div key={index} className="text-sm sm:text-base md:text-lg">
                     {typeof item === 'string' ? (
-                      <p className="text-[#6bc4c8]">{item}</p>
+                      <p className="text-[#6bc4c8] font-bold" >{item}</p>
                     ) : (
-                      <p className="text-[#6bc4c8]">
-                        {item.text} <span className="text-[#e8a0b5] text-xs sm:text-sm">{item.detail}</span>
+                      <p className="text-[#6bc4c8] font-bold">
+                        {item.text} <span className="text-[#e8a0b5]  font-semibold text-xs sm:text-sm">{item.detail}</span>
                       </p>
                     )}
                   </div>
                 ))}
               </div>
-
               {/* Column 2 */}
               <div className="space-y-2">
                 {paqueteItems.columna2.map((item, index) => (
                   <div key={index} className="text-sm sm:text-base md:text-lg">
                     {typeof item === 'string' ? (
-                      <p className="text-[#e8a0b5]">{item}</p>
+                      <p className="text-[#e8a0b5] font-bold">{item}</p>
                     ) : (
-                      <p className="text-[#d4a849]">
-                        {item.text} <span className="text-[#e8a0b5] text-xs sm:text-sm">{item.detail}</span>
+                      <p className="text-[#d4a849] font-bold">
+                        {item.text} <span className="text-[#e8a0b5] font-semibold text-xs sm:text-sm">{item.detail}</span>
                       </p>
                     )}
                   </div>
                 ))}
               </div>
-
               {/* Column 3 */}
               <div className="space-y-2">
                 {paqueteItems.columna3.map((item, index) => (
-                  <p key={index} className="text-sm sm:text-base md:text-lg text-[#e8855e]">
+                  <p key={index} className="text-sm sm:text-base md:text-lg text-[#e8855e] font-bold">
                     {item}
                   </p>
                 ))}
               </div>
             </div>
-
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-6 mt-16 lg:mt-20">
               <img 
@@ -131,7 +118,6 @@ const PaquetesSection = () => {
               />
             </div>
           </div>
-
           {/* Right Character - Hidden on mobile */}
           <div className="hidden lg:block absolute -right-24 xl:-right-36 bottom-0 w-[368px] xl:w-[520px] z-20">
             <img 
@@ -141,7 +127,6 @@ const PaquetesSection = () => {
             />
           </div>
         </div>
-
         {/* Mobile Characters */}
         <div className="flex lg:hidden justify-between w-full max-w-md mt-8 px-4">
           <img 
@@ -159,5 +144,4 @@ const PaquetesSection = () => {
     </section>
   );
 };
-
 export default PaquetesSection;

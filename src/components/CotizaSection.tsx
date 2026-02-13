@@ -10,7 +10,6 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-
 // Confetti piece component
 const ConfettiPiece = ({ index }: { index: number }) => {
   const colors = ['#e8855e', '#f5c6d6', '#8fa832', '#a8c8d8', '#c5c88a', '#c85a8a', '#ffd700', '#ff6b6b'];
@@ -20,7 +19,6 @@ const ConfettiPiece = ({ index }: { index: number }) => {
   const duration = 2 + Math.random() * 2;
   const size = 8 + Math.random() * 8;
   const rotation = Math.random() * 360;
-
   return (
     <div
       className="absolute animate-confetti-fall pointer-events-none"
@@ -38,11 +36,9 @@ const ConfettiPiece = ({ index }: { index: number }) => {
     />
   );
 };
-
 // Confetti container component
 const Confetti = ({ isActive }: { isActive: boolean }) => {
   const [pieces, setPieces] = useState<number[]>([]);
-
   useEffect(() => {
     if (isActive) {
       setPieces(Array.from({ length: 50 }, (_, i) => i));
@@ -50,9 +46,7 @@ const Confetti = ({ isActive }: { isActive: boolean }) => {
       return () => clearTimeout(timer);
     }
   }, [isActive]);
-
   if (!isActive || pieces.length === 0) return null;
-
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-50">
       {pieces.map((i) => (
@@ -61,7 +55,6 @@ const Confetti = ({ isActive }: { isActive: boolean }) => {
     </div>
   );
 };
-
 const timeSlots = [
   "09:00",
   "09:30",
@@ -87,7 +80,6 @@ const timeSlots = [
   "19:30",
   "20:00",
 ];
-
 const CotizaSection = () => {
   const { toast } = useToast();
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
@@ -119,7 +111,6 @@ const CotizaSection = () => {
     street: "",
     message: "",
   });
-
   const emailDomains = [
     "gmail.com",
     "hotmail.com",
@@ -128,34 +119,27 @@ const CotizaSection = () => {
     "icloud.com",
     "live.com",
   ];
-
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
-
   const getEmailSuggestions = (): string[] => {
     const email = formData.email;
     if (!email.includes("@")) return [];
-    
     const [localPart, domainPart] = email.split("@");
     if (!localPart) return [];
-    
     return emailDomains
       .filter(domain => domain.startsWith(domainPart.toLowerCase()))
       .map(domain => `${localPart}@${domain}`);
   };
-
   const handleEmailSuggestionClick = (suggestion: string) => {
     setFormData(prev => ({ ...prev, email: suggestion }));
     setShowEmailSuggestions(false);
     setEmailError("");
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    
     if (name === "email") {
       if (value === "") {
         setEmailError("");
@@ -164,7 +148,6 @@ const CotizaSection = () => {
         const [, domainPart] = value.split("@");
         const hasFullDomain = emailDomains.some(d => domainPart === d);
         setShowEmailSuggestions(!hasFullDomain && domainPart !== undefined);
-        
         if (!validateEmail(value)) {
           setEmailError("Ingresa un email válido");
         } else {
@@ -180,24 +163,20 @@ const CotizaSection = () => {
       }
     }
   };
-
   const validateAllFields = (): boolean => {
     const missingFields: string[] = [];
-    
     // Validate name
     if (formData.name.trim().length < 2) {
       setNameError(formData.name.trim() === "" ? "El nombre es requerido" : "Mínimo 2 caracteres");
       setNameTouched(true);
       missingFields.push("Nombre");
     }
-    
     // Validate email
     if (!validateEmail(formData.email)) {
       setEmailError(formData.email === "" ? "El email es requerido" : "Ingresa un email válido");
       setEmailTouched(true);
       missingFields.push("Email");
     }
-    
     // Validate date
     if (!selectedDate) {
       setDateError(true);
@@ -205,7 +184,6 @@ const CotizaSection = () => {
     } else {
       setDateError(false);
     }
-    
     // Validate time
     if (!selectedTime) {
       setTimeError(true);
@@ -213,7 +191,6 @@ const CotizaSection = () => {
     } else {
       setTimeError(false);
     }
-    
     // Validate event type
     if (formData.tipo_evento.trim() === "") {
       setTipoEventoError(true);
@@ -221,7 +198,6 @@ const CotizaSection = () => {
     } else {
       setTipoEventoError(false);
     }
-    
     // Validate guests
     if (formData.invitados.trim() === "" || parseInt(formData.invitados) <= 0) {
       setInvitadosError(true);
@@ -229,7 +205,6 @@ const CotizaSection = () => {
     } else {
       setInvitadosError(false);
     }
-    
     // Validate phone
     if (formData.phone.trim() === "") {
       setPhoneError(true);
@@ -237,7 +212,6 @@ const CotizaSection = () => {
     } else {
       setPhoneError(false);
     }
-    
     // Validate message/comments
     if (formData.message.trim() === "") {
       setMessageError(true);
@@ -245,7 +219,6 @@ const CotizaSection = () => {
     } else {
       setMessageError(false);
     }
-    
     if (missingFields.length > 0) {
       toast({
         title: "Datos incompletos",
@@ -254,32 +227,25 @@ const CotizaSection = () => {
       });
       return false;
     }
-    
     return true;
   };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
     if (!validateAllFields()) {
       return;
     }
-    
     setIsSubmitting(true);
     setIsSuccess(false);
     setShowLoadingModal(true);
-
     try {
       const form = e.currentTarget;
       const formDataToSend = new FormData(form);
-
       // Add date and time to form data
       if (selectedDate) {
         formDataToSend.append("date", format(selectedDate, "dd/MM/yyyy"));
       }
       formDataToSend.append("time", selectedTime);
       formDataToSend.append("date_submit", format(new Date(), "yyyy/MM/dd"));
-
       const resp = await fetch("https://rayuela.com.mx/reservas/store", {
         method: "POST",
         headers: {
@@ -287,15 +253,12 @@ const CotizaSection = () => {
         },
         body: formDataToSend,
       });
-
       const data = await resp.json();
-
       if (data.ok) {
         setReservationId(data.reservation_id);
         setIsSuccess(true);
         setShowConfirmModal(true);
         setShowLoadingModal(false);
-
         // Reset form
         setSelectedDate(undefined);
         setSelectedTime("");
@@ -327,7 +290,6 @@ const CotizaSection = () => {
       setIsSubmitting(false);
     }
   };
-
   return (
     <section id="cotiza" className="relative min-h-screen w-full overflow-hidden py-16 lg:py-24">
       {/* Background Pattern */}
@@ -337,14 +299,12 @@ const CotizaSection = () => {
           backgroundImage: `url(${backgroundPattern})`,
         }}
       />
-
       {/* Content */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="mb-10 lg:mb-14">
           <img src={cotizaTitulo} alt="Cotiza" className="w-48 sm:w-56 md:w-64 h-auto object-contain" />
         </div>
-
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
           {/* Row 1 */}
@@ -434,7 +394,6 @@ const CotizaSection = () => {
                   <CheckCircle className="w-5 h-5" />
                 </span>
               )}
-              
               {/* Email Domain Suggestions */}
               {showEmailSuggestions && getEmailSuggestions().length > 0 && (
                 <div className="absolute top-full left-0 right-0 mt-1 bg-white border-2 border-[#a8c8d8] rounded-2xl shadow-lg z-50 overflow-hidden">
@@ -452,7 +411,6 @@ const CotizaSection = () => {
               )}
             </div>
           </div>
-
           {/* Row 2 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <Popover open={isDateOpen} onOpenChange={(open) => {
@@ -554,7 +512,6 @@ const CotizaSection = () => {
               </PopoverContent>
             </Popover>
           </div>
-
           {/* Row 3 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div className="relative">
@@ -600,7 +557,6 @@ const CotizaSection = () => {
               />
             </div>
           </div>
-
           {/* Row 4 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div className="relative">
@@ -637,7 +593,6 @@ const CotizaSection = () => {
               />
             </div>
           </div>
-
           {/* Row 5 - Comentarios */}
           <div className="relative">
             <label className={cn(
@@ -660,22 +615,20 @@ const CotizaSection = () => {
               )}
             />
           </div>
-
           {/* Submit Button */}
           <div className="pt-4">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="relative px-12 py-4 bg-[#a8a832] rounded-full font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-[#8fa832] active:scale-95 active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 group"
+              className="relative px-12 py-4 bg-[#a8a832] rounded-full font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-[#8fa832] active:scale-95 active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 group"
             >
               {/* Dashed border inside */}
               <span className="absolute inset-[4px] border-2 border-dashed border-white rounded-full pointer-events-none transition-all duration-300 group-hover:inset-[6px] group-active:inset-[3px]" />
-              <span className="relative z-10">{isSubmitting ? "Enviando..." : "Enviar"}</span>
+              <span className="relative z-10 ">{isSubmitting ? "Enviando..." : "Enviar"}</span>
             </button>
           </div>
         </form>
       </div>
-
       {/* Loading Modal */}
       <Dialog open={showLoadingModal} onOpenChange={() => {}}>
         <DialogContent className="bg-white border-2 border-[#a8c8d8] rounded-3xl max-w-md overflow-hidden [&>button]:hidden">
@@ -688,7 +641,6 @@ const CotizaSection = () => {
                 className="w-32 h-auto object-contain"
               />
             </div>
-            
             <div className="flex justify-center mb-4">
               <div className="w-16 h-16 bg-[#a8c8d8]/30 rounded-full flex items-center justify-center">
                 <Loader2 className="w-10 h-10 text-[#a8c8d8] animate-spin" />
@@ -701,13 +653,11 @@ const CotizaSection = () => {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-
       {/* Confirmation Modal */}
       <Dialog open={showConfirmModal} onOpenChange={setShowConfirmModal}>
         <DialogContent className="bg-white border-2 border-[#8fa832] rounded-3xl max-w-md overflow-hidden">
           {/* Confetti Effect */}
           <Confetti isActive={isSuccess && showConfirmModal} />
-          
           <DialogHeader className="text-center relative z-10">
             {/* Logo de Rayuela */}
             <div className="flex justify-center mb-4">
@@ -717,7 +667,6 @@ const CotizaSection = () => {
                 className="w-32 h-auto object-contain animate-bounce-in"
               />
             </div>
-            
             <div className="flex justify-center mb-4">
               <div className="w-16 h-16 bg-[#c5c88a]/30 rounded-full flex items-center justify-center animate-scale-in">
                 <CheckCircle className="w-10 h-10 text-[#8fa832]" />
@@ -744,5 +693,4 @@ const CotizaSection = () => {
     </section>
   );
 };
-
 export default CotizaSection;
