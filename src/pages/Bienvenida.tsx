@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import letterR from "@/assets/letters/R.png";
 import letterA from "@/assets/letters/A.png";
 import letterY from "@/assets/letters/Y.png";
@@ -9,11 +8,10 @@ import letterE from "@/assets/letters/E.png";
 import letterL from "@/assets/letters/L.png";
 import letterAA from "@/assets/letters/AA.png";
 import cursorImg from "@/assets/cursor2.png";
-import backgroundWelcome from "@/assets/background-welcome.jpg";
 import backgroundPattern from "@/assets/background-pattern.jpg";
+import backgroundVideo from "@/assets/video.mp4";
 import rayuelaHorizontal from "@/assets/rayuela-horizontal.png";
 import textoSlogan from "@/assets/texto-slogan.png";
-
 // Letras apiladas en 3 filas: Ra, yu, ela
 const stackedLetters = [
   // Fila 1: R, a
@@ -33,7 +31,6 @@ const stackedLetters = [
     { src: letterAA, alt: "a", className: "w-24 md:w-40 lg:w-52" },
   ],
 ];
-
 // Transiciones diferentes para cada letra
 const letterTransitions = [
   "translate-y-12 scale-75", // R - desde abajo con escala
@@ -44,16 +41,13 @@ const letterTransitions = [
   "scale-50", // l - solo escala
   "-translate-y-12 rotate-6", // a - desde arriba con rotación
 ];
-
 const Bienvenida = () => {
   const navigate = useNavigate();
   const [phase, setPhase] = useState<"stacked" | "transition" | "final">("stacked");
   const [animatedLetters, setAnimatedLetters] = useState<number[]>([]);
   const [showFinal, setShowFinal] = useState(false);
-
   // Calcular total de letras
   const totalLetters = stackedLetters.flat().length;
-
   useEffect(() => {
     // Animar letras una por una
     let letterIndex = 0;
@@ -69,7 +63,6 @@ const Bienvenida = () => {
         letterIndex++;
       });
     });
-
     // Después de todas las letras, iniciar transición
     setTimeout(
       () => {
@@ -77,7 +70,6 @@ const Bienvenida = () => {
       },
       totalLetters * 150 + 1500,
     );
-
     // Mostrar pantalla final
     setTimeout(
       () => {
@@ -87,11 +79,9 @@ const Bienvenida = () => {
       totalLetters * 150 + 2000,
     );
   }, []);
-
   const handleEnter = () => {
     navigate("/home");
   };
-
   // Contar índice global de letra
   const getGlobalIndex = (rowIndex: number, colIndex: number) => {
     let index = 0;
@@ -100,7 +90,6 @@ const Bienvenida = () => {
     }
     return index + colIndex;
   };
-
   return (
     <div
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
@@ -119,19 +108,18 @@ const Bienvenida = () => {
           backgroundPosition: "center",
         }}
       />
-
-      {/* Fondo con imagen para fase final */}
-      <div
-        className={`absolute inset-0 transition-opacity duration-1000 ${
+      {/* Fondo con video para fase final */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
           phase === "final" ? "opacity-100" : "opacity-0"
         }`}
-        style={{
-          backgroundImage: `url(${backgroundWelcome})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-
+      >
+        <source src={backgroundVideo} type="video/mp4" />
+      </video>
       {/* Fase 1: Letras apiladas */}
       <div
         className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ${
@@ -160,7 +148,6 @@ const Bienvenida = () => {
           ))}
         </div>
       </div>
-
       {/* Fase 2: Pantalla final con caja */}
       <div
         className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-700 ${
@@ -171,14 +158,13 @@ const Bienvenida = () => {
         <img
           src={rayuelaHorizontal}
           alt="Rayuela"
-          className={`hidden md:block w-[80%] h-auto mb-[-8rem] z-10 transition-all duration-700 ${
+          className={`hidden md:block w-[50%] h-auto mb-[-6rem] z-10 transition-all duration-700 ${
             showFinal ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
           }`}
         />
-
         {/* Cuadro blanco con slogan y botón */}
         <div
-          className={`bg-white/90 rounded-xl shadow-2xl p-6 md:p-10 md:pt-16 mx-4 w-[95%] md:w-[85%] max-w-6xl flex flex-col items-center transition-all duration-700 ${
+          className={`bg-white/60 rounded-xl shadow-2xl p-6 md:p-10  mx-4 w-[90%] md:w-[70%] max-w-4xl flex flex-col items-center transition-all duration-700 ${
             showFinal ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
           }`}
         >
@@ -190,30 +176,29 @@ const Bienvenida = () => {
               showFinal ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
             }`}
           />
-
-          {/* Texto slogan - 55rem en desktop */}
+          {/* Texto slogan */}
           <img
             src={textoSlogan}
             alt="El lugar donde tus sueños se hacen fiesta"
-            className="w-full md:w-[55rem] max-w-full h-auto mb-6"
+            className="w-[85%] md:w-[35rem] max-w-full h-auto"
           />
-
-          {/* Botón entrar */}
-          <button
-            onClick={handleEnter}
-            className="px-10 py-3 bg-rayuela-pink text-white font-display text-xl rounded-full 
-              hover:bg-rayuela-pink/80 hover:scale-105 transition-all duration-300 
-              shadow-lg hover:shadow-xl"
-            style={{
-              cursor: `url(${cursorImg}) 16 16, pointer`,
-            }}
-          >
-            Entrar
-          </button>
         </div>
+        {/* Botón entrar - debajo del cuadro blanco */}
+        <button
+          onClick={handleEnter}
+          className={`mt-6 px-16 py-5 bg-rayuela-orange text-white font-display text-3xl rounded-full
+            hover:bg-rayuela-orange/80 hover:scale-110 transition-all duration-300
+            shadow-2xl hover:shadow-3xl font-black ${
+              showFinal ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
+            }`}
+          style={{
+            cursor: `url(${cursorImg}) 16 16, pointer`,
+          }}
+        >
+          Entrar
+        </button>
       </div>
     </div>
   );
 };
-
 export default Bienvenida;

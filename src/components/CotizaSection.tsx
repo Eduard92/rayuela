@@ -12,7 +12,8 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { cn } from "@/lib/utils";
 // Confetti piece component
 const ConfettiPiece = ({ index }: { index: number }) => {
-  const colors = ['#e8855e', '#f5c6d6', '#8fa832', '#a8c8d8', '#c5c88a', '#c85a8a', '#ffd700', '#ff6b6b'];
+  // Paleta oficial de Rayuela
+  const colors = ['#FF6C1F', '#FEBAED', '#76B3D0', '#AEA434', '#FDB52A'];
   const color = colors[index % colors.length];
   const left = Math.random() * 100;
   const delay = Math.random() * 0.5;
@@ -303,7 +304,7 @@ const CotizaSection = () => {
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="mb-10 lg:mb-14">
-          <img src={cotizaTitulo} alt="Cotiza" className="w-48 sm:w-56 md:w-64 h-auto object-contain" />
+          <img src={cotizaTitulo} alt="Cotiza" className="w-48 sm:w-56 md:w-64 h-auto object-contain float-animation cursor-pointer hover-buzz transition-all duration-300" />
         </div>
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
@@ -333,12 +334,12 @@ const CotizaSection = () => {
                 }}
                 onBlur={() => setNameTouched(true)}
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-[#e8855e]/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none transition-all",
+                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-orange/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none transition-all",
                   nameError && nameTouched 
                     ? "ring-2 ring-red-500 focus:ring-red-500" 
                     : formData.name.trim().length >= 2 
                       ? "ring-2 ring-green-500 focus:ring-green-500"
-                      : "focus:ring-2 focus:ring-[#8fa832]"
+                      : "focus:ring-2 focus:ring-rayuela-olive"
                 )}
               />
               {nameError && nameTouched && (
@@ -376,12 +377,12 @@ const CotizaSection = () => {
                   }
                 }}
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none transition-all",
+                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-blue/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none transition-all",
                   emailError && emailTouched 
                     ? "ring-2 ring-red-500 focus:ring-red-500" 
                     : formData.email && !emailError 
                       ? "ring-2 ring-green-500 focus:ring-green-500"
-                      : "focus:ring-2 focus:ring-[#8fa832]"
+                      : "focus:ring-2 focus:ring-rayuela-olive"
                 )}
               />
               {emailError && emailTouched && (
@@ -396,13 +397,13 @@ const CotizaSection = () => {
               )}
               {/* Email Domain Suggestions */}
               {showEmailSuggestions && getEmailSuggestions().length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border-2 border-[#a8c8d8] rounded-2xl shadow-lg z-50 overflow-hidden">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border-2 border-rayuela-blue rounded-2xl shadow-lg z-50 overflow-hidden">
                   {getEmailSuggestions().map((suggestion, index) => (
                     <button
                       key={index}
                       type="button"
                       onClick={() => handleEmailSuggestionClick(suggestion)}
-                      className="w-full px-4 py-2 text-left text-gray-700 hover:bg-[#a8c8d8]/30 transition-colors first:rounded-t-xl last:rounded-b-xl"
+                      className="w-full px-4 py-2 text-left text-gray-700 hover:bg-rayuela-blue/30 transition-colors first:rounded-t-xl last:rounded-b-xl"
                     >
                       {suggestion}
                     </button>
@@ -427,21 +428,21 @@ const CotizaSection = () => {
                   </label>
                   <div
                     className={cn(
-                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#f5c6d6]/80 rounded-full text-black font-bold flex items-end focus:outline-none transition-all",
+                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-rayuela-pink/80 rounded-full text-black font-bold flex items-end focus:outline-none transition-all",
                       !selectedDate && "text-gray-600 font-normal",
-                      dateError ? "ring-2 ring-red-500" : "focus:ring-2 focus:ring-[#8fa832]",
+                      dateError ? "ring-2 ring-red-500" : "focus:ring-2 focus:ring-rayuela-olive",
                     )}
                   >
                     {selectedDate ? format(selectedDate, "dd/MM/yyyy", { locale: es }) : "Seleccionar fecha"}
                   </div>
                   <CalendarIcon className={cn(
                     "absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 transition-colors",
-                    dateError ? "text-red-500" : "text-[#c85a8a]"
+                    dateError ? "text-red-500" : "text-rayuela-pink"
                   )} />
                 </div>
               </PopoverTrigger>
               <PopoverContent
-                className="w-auto p-0 bg-white border-2 border-[#f5c6d6] rounded-2xl shadow-xl"
+                className="w-auto p-0 bg-white border-2 border-rayuela-pink rounded-2xl shadow-xl"
                 align="start"
               >
                 <Calendar 
@@ -472,7 +473,7 @@ const CotizaSection = () => {
                   </label>
                   <div
                     className={cn(
-                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-[#a8c8d8]/80 rounded-full text-black font-bold flex items-end transition-all",
+                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-rayuela-blue/80 rounded-full text-black font-bold flex items-end transition-all",
                       !selectedTime && "text-gray-600 font-normal",
                       timeError ? "ring-2 ring-red-500" : "",
                     )}
@@ -481,12 +482,12 @@ const CotizaSection = () => {
                   </div>
                   <Clock className={cn(
                     "absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 transition-colors",
-                    timeError ? "text-red-500" : "text-[#8faab8]"
+                    timeError ? "text-red-500" : "text-rayuela-blue"
                   )} />
                 </div>
               </PopoverTrigger>
               <PopoverContent
-                className="w-48 p-2 bg-white border-2 border-[#a8c8d8] rounded-2xl shadow-xl max-h-64 overflow-y-auto"
+                className="w-48 p-2 bg-white border-2 border-rayuela-blue rounded-2xl shadow-xl max-h-64 overflow-y-auto"
                 align="start"
               >
                 <div className="grid grid-cols-2 gap-1">
@@ -501,8 +502,8 @@ const CotizaSection = () => {
                       className={cn(
                         "px-3 py-2 text-sm rounded-lg transition-colors",
                         selectedTime === time
-                          ? "bg-[#a8c8d8] text-white font-semibold"
-                          : "hover:bg-[#a8c8d8]/30 text-gray-700",
+                          ? "bg-rayuela-blue text-white font-semibold"
+                          : "hover:bg-rayuela-blue/30 text-gray-700",
                       )}
                     >
                       {time}
@@ -530,8 +531,8 @@ const CotizaSection = () => {
                   if (e.target.value.trim() !== "") setTipoEventoError(false);
                 }}
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-[#a8c8d8]/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none transition-all",
-                  tipoEventoError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-[#8fa832]"
+                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-blue/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none transition-all",
+                  tipoEventoError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-rayuela-olive"
                 )}
               />
             </div>
@@ -551,8 +552,8 @@ const CotizaSection = () => {
                   if (e.target.value.trim() !== "" && parseInt(e.target.value) > 0) setInvitadosError(false);
                 }}
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none transition-all",
-                  invitadosError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-[#8fa832]"
+                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-olive/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none transition-all",
+                  invitadosError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-rayuela-olive"
                 )}
               />
             </div>
@@ -582,8 +583,8 @@ const CotizaSection = () => {
                 inputMode="numeric"
                 pattern="[0-9]*"
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-[#c5c88a]/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none transition-all",
-                  phoneError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-[#8fa832]"
+                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-olive/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none transition-all",
+                  phoneError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-rayuela-olive"
                 )}
               />
             </div>
@@ -596,7 +597,7 @@ const CotizaSection = () => {
                 name="street"
                 value={formData.street}
                 onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 bg-[#f5c6d6]/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#8fa832]"
+                className="w-full h-14 pt-6 pb-2 px-4 bg-rayuela-pink/80 rounded-full text-black font-bold placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-rayuela-olive"
               />
             </div>
           </div>
@@ -617,8 +618,8 @@ const CotizaSection = () => {
               }}
               rows={3}
               className={cn(
-                "w-full pt-8 pb-4 px-4 bg-[#a8c8d8]/60 rounded-3xl text-black font-bold placeholder-gray-600 focus:outline-none transition-all resize-none",
-                messageError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-[#8fa832]"
+                "w-full pt-8 pb-4 px-4 bg-rayuela-blue/60 rounded-3xl text-black font-bold placeholder-gray-600 focus:outline-none transition-all resize-none",
+                messageError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-rayuela-olive"
               )}
             />
           </div>
@@ -627,7 +628,7 @@ const CotizaSection = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="relative px-12 py-4 bg-[#a8a832] rounded-full font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-[#8fa832] active:scale-95 active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 group"
+              className="relative px-12 py-4 bg-rayuela-olive rounded-full font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-rayuela-olive/90 active:scale-95 active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 group"
             >
               {/* Dashed border inside */}
               <span className="absolute inset-[4px] border-2 border-dashed border-white rounded-full pointer-events-none transition-all duration-300 group-hover:inset-[6px] group-active:inset-[3px]" />
@@ -638,7 +639,7 @@ const CotizaSection = () => {
       </div>
       {/* Loading Modal */}
       <Dialog open={showLoadingModal} onOpenChange={() => {}}>
-        <DialogContent className="bg-white border-2 border-[#a8c8d8] rounded-3xl max-w-md overflow-hidden [&>button]:hidden">
+        <DialogContent className="bg-white border-2 border-rayuela-blue rounded-3xl max-w-md overflow-hidden [&>button]:hidden">
           <DialogHeader className="text-center">
             {/* Logo de Rayuela */}
             <div className="flex justify-center mb-4">
@@ -649,11 +650,11 @@ const CotizaSection = () => {
               />
             </div>
             <div className="flex justify-center mb-4">
-              <div className="w-16 h-16 bg-[#a8c8d8]/30 rounded-full flex items-center justify-center">
-                <Loader2 className="w-10 h-10 text-[#a8c8d8] animate-spin" />
+              <div className="w-16 h-16 bg-rayuela-blue/30 rounded-full flex items-center justify-center">
+                <Loader2 className="w-10 h-10 text-rayuela-blue animate-spin" />
               </div>
             </div>
-            <DialogTitle className="text-2xl text-[#a8c8d8] font-bold">Enviando...</DialogTitle>
+            <DialogTitle className="text-2xl text-rayuela-blue font-bold">Enviando...</DialogTitle>
             <DialogDescription className="text-gray-600 text-base mt-2">
               Por favor espera mientras procesamos tu solicitud de reserva.
             </DialogDescription>
@@ -662,7 +663,7 @@ const CotizaSection = () => {
       </Dialog>
       {/* Confirmation Modal */}
       <Dialog open={showConfirmModal} onOpenChange={setShowConfirmModal}>
-        <DialogContent className="bg-white border-2 border-[#8fa832] rounded-3xl max-w-md overflow-hidden">
+        <DialogContent className="bg-white border-2 border-rayuela-olive rounded-3xl max-w-md overflow-hidden">
           {/* Confetti Effect */}
           <Confetti isActive={isSuccess && showConfirmModal} />
           <DialogHeader className="text-center relative z-10">
@@ -675,22 +676,22 @@ const CotizaSection = () => {
               />
             </div>
             <div className="flex justify-center mb-4">
-              <div className="w-16 h-16 bg-[#c5c88a]/30 rounded-full flex items-center justify-center animate-scale-in">
-                <CheckCircle className="w-10 h-10 text-[#8fa832]" />
+              <div className="w-16 h-16 bg-rayuela-olive/30 rounded-full flex items-center justify-center animate-scale-in">
+                <CheckCircle className="w-10 h-10 text-rayuela-olive" />
               </div>
             </div>
-            <DialogTitle className="text-2xl text-[#8fa832] font-bold">¡Reserva Enviada!</DialogTitle>
+            <DialogTitle className="text-2xl text-rayuela-olive font-bold">¡Reserva Enviada!</DialogTitle>
             <DialogDescription className="text-gray-600 text-base mt-2">
               Tu solicitud de reserva ha sido recibida exitosamente.
               {reservationId && (
-                <span className="block mt-2 font-semibold text-[#e8855e]">ID de Reserva: {reservationId}</span>
+                <span className="block mt-2 font-semibold text-rayuela-orange">ID de Reserva: {reservationId}</span>
               )}
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-center mt-4 relative z-10">
             <button
               onClick={() => setShowConfirmModal(false)}
-              className="px-8 py-3 bg-[#8fa832] text-white rounded-full font-semibold hover:bg-[#7d9429] transition-all duration-300 hover:scale-105"
+              className="px-8 py-3 bg-rayuela-olive text-white rounded-full font-semibold hover:bg-rayuela-olive/90 transition-all duration-300 hover:scale-105"
             >
               ¡Entendido!
             </button>

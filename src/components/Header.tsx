@@ -4,29 +4,26 @@ import logo from "@/assets/rayuela-logo.png";
 import menuIcon from "@/assets/menu-icon.png";
 import instagramIcon from "@/assets/instagram-icon.png";
 import facebookIcon from "@/assets/facebook-icon.png";
-
+import { useEmpresa } from "@/contexts/EmpresaContext";
 // Imágenes del menú modal
 import modalBackground from "@/assets/menu/modal_background.png";
 import cotizaModal from "@/assets/menu/cotiza_modal.png";
-import nosotrosModal from "@/assets/menu/nosotros_modal.png";
+import nosotrosModal from "@/assets/nosotros.png";
 import paquetesModal from "@/assets/menu/paquetes_modal.png";
 import calendarioModal from "@/assets/menu/calendario_modal.png";
 import fotosModal from "@/assets/menu/fotos_modal.png";
 import contactoModal from "@/assets/menu/contacto_modal.png";
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const { empresaData } = useEmpresa();
   const handleMenuClick = (href: string) => {
     setIsMenuOpen(false);
-    
     setTimeout(() => {
       const element = document.querySelector(href);
       if (element) {
         const headerOffset = 80;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth"
@@ -34,7 +31,6 @@ const Header = () => {
       }
     }, 100);
   };
-
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-white/95 backdrop-blur-sm shadow-sm">
@@ -47,7 +43,6 @@ const Header = () => {
             onClick={() => setIsMenuOpen(true)}
           />
         </div>
-
         {/* Logo */}
         <div className="absolute left-1/2 -translate-x-1/2">
           <img
@@ -57,34 +52,36 @@ const Header = () => {
             onClick={() => handleMenuClick("#inicio")}
           />
         </div>
-
         {/* Social Icons */}
         <div className="flex items-center gap-4">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform duration-300"
-            aria-label="Facebook"
-          >
-            <img src={facebookIcon} alt="Facebook" className="h-6 w-auto" />
-          </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:scale-110 transition-transform duration-300"
-            aria-label="Instagram"
-          >
-            <img src={instagramIcon} alt="Instagram" className="h-6 w-auto" />
-          </a>
+          {empresaData?.facebook && (
+            <a
+              href={empresaData.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition-transform duration-300"
+              aria-label="Facebook"
+            >
+              <img src={facebookIcon} alt="Facebook" className="h-6 w-auto" />
+            </a>
+          )}
+          {empresaData?.instagram && (
+            <a
+              href={empresaData.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition-transform duration-300"
+              aria-label="Instagram"
+            >
+              <img src={instagramIcon} alt="Instagram" className="h-6 w-auto" />
+            </a>
+          )}
         </div>
       </header>
-
       {/* Menu Overlay */}
       {isMenuOpen && (
-        <div 
-          className="fixed inset-0 z-[999] flex items-start justify-start"
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center"
           style={{ background: "rgb(179 175 175 / 80%)" }}
           onClick={(e) => {
             if (e.target === e.currentTarget) setIsMenuOpen(false);
@@ -98,10 +95,9 @@ const Header = () => {
           >
             <X size={32} />
           </button>
-          
           {/* Tablero del menú */}
-          <div 
-            className="grid grid-cols-2 grid-rows-3 mt-[5rem] md:mt-[10rem] ml-[1rem] md:ml-[5rem] w-[360px] md:w-[500px] h-[440px] md:h-[610px] justify-items-center items-center animate-scale-in"
+          <div
+            className="grid grid-cols-2 grid-rows-3 mx-2 w-[calc(100vw-2rem)] max-w-[360px] md:w-[500px] h-[440px] md:h-[610px] justify-items-center items-center animate-scale-in"
             style={{
               backgroundImage: `url(${modalBackground})`,
               backgroundSize: "cover",
@@ -118,7 +114,6 @@ const Header = () => {
                 <img src={cotizaModal} alt="Cotiza" />
               </a>
             </div>
-            
             {/* Nosotros */}
             <div className="w-full h-full flex items-center justify-center">
               <a 
@@ -129,7 +124,6 @@ const Header = () => {
                 <img src={nosotrosModal} alt="Nosotros" />
               </a>
             </div>
-            
             {/* Paquetes */}
             <div className="w-full h-full flex items-center justify-center">
               <a 
@@ -140,7 +134,6 @@ const Header = () => {
                 <img src={paquetesModal} alt="Paquetes" />
               </a>
             </div>
-            
             {/* Calendario */}
             <div className="w-full h-full flex items-center justify-center">
               <a 
@@ -151,7 +144,6 @@ const Header = () => {
                 <img src={calendarioModal} alt="Calendario" />
               </a>
             </div>
-            
             {/* Fotos */}
             <div className="w-full h-full flex items-center justify-center">
               <a 
@@ -162,7 +154,6 @@ const Header = () => {
                 <img src={fotosModal} alt="Fotos" />
               </a>
             </div>
-            
             {/* Contacto */}
             <div className="w-full h-full flex items-center justify-center">
               <a 
@@ -179,5 +170,4 @@ const Header = () => {
     </>
   );
 };
-
 export default Header;
