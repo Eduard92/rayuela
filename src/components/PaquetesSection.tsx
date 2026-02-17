@@ -76,10 +76,10 @@ const PaquetesSection = () => {
                   return (
                     <div key={index} className="text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg cursor-pointer">
                       {typeof item === 'string' ? (
-                        <p className={`${colorClass} font-bold`}>{item}</p>
+                        <p className={`${colorClass} font-black`}>{item}</p>
                       ) : (
-                        <p className={`${colorClass} font-bold`}>
-                          {item.text} <span className={`${colorClass} font-semibold text-xs sm:text-sm`}>{item.detail}</span>
+                        <p className={`${colorClass} font-black`}>
+                          {item.text} <span className={`${colorClass} font-black text-xs sm:text-sm`}>{item.detail}</span>
                         </p>
                       )}
                     </div>
@@ -93,10 +93,10 @@ const PaquetesSection = () => {
                   return (
                     <div key={index} className="text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg cursor-pointer">
                       {typeof item === 'string' ? (
-                        <p className={`${colorClass} font-bold`}>{item}</p>
+                        <p className={`${colorClass} font-black`}>{item}</p>
                       ) : (
-                        <p className={`${colorClass} font-bold`}>
-                          {item.text} <span className={`${colorClass} font-semibold text-xs sm:text-sm`}>{item.detail}</span>
+                        <p className={`${colorClass} font-black`}>
+                          {item.text} <span className={`${colorClass} font-black text-xs sm:text-sm`}>{item.detail}</span>
                         </p>
                       )}
                     </div>
@@ -108,7 +108,7 @@ const PaquetesSection = () => {
                 {paqueteItems.columna3.map((item, index) => {
                   const colorClass = colors[index % colors.length];
                   return (
-                    <p key={index} className={`text-sm sm:text-base md:text-lg ${colorClass} font-bold transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg cursor-pointer`}>
+                    <p key={index} className={`text-sm sm:text-base md:text-lg ${colorClass} font-black transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg cursor-pointer`}>
                       {item}
                     </p>
                   );
