@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Caviar Dreams", "Fredoka", "sans-serif"],
-        body: ["Caviar Dreams", "Quicksand", "sans-serif"],
+        display: ["Dazzle", "Caviar Dreams", "Fredoka", "sans-serif"],
+        body: ["Dazzle", "Caviar Dreams", "Quicksand", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

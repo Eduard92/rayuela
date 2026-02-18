@@ -10,17 +10,17 @@ const PaquetesSection = () => {
   const paqueteItems = {
     columna1: [
       "Uso de todas las áreas",
-      "Menú de adulto (a elegir)",
-      "Menú de niños (a elegir)",
-      { text: "Mesa de botanas", detail: "(crudités, papas y chicharrones de carrito)" },
-      "Ensalada (a elegir)",
+      "Menú de adulto",
+      "Menú de niños)",
+      { text: "Mesa de botanas", detail: "" },
+      "Ensalada",
     ],
     columna2: [
-      { text: "Pastel personalizado", detail: "(sabores a elegir: vainilla o chocolate. Relleno: nutella o mermelada de fresa)" },
+      { text: "Pastel personalizado", detail: "" },
       "Aguas de sabor y refresco",
       "Café Americano",
       "Piñata personalizada",
-      "Pinta caritas (1hr)",
+      "Pinta caritas",
     ],
     columna3: [
       "Personal de staff",
@@ -62,7 +62,7 @@ const PaquetesSection = () => {
               />
             </div>
             {/* Description */}
-            <p className="text-center font-black text-base sm:text-lg md:text-xl text-rayuela-pink mb-8 lg:mb-10 max-w-2xl leading-relaxed px-4 transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg cursor-pointer">
+            <p className="text-center font-medium uppercase text-base sm:text-lg md:text-xl text-rayuela-pink mb-8 lg:mb-10 max-w-2xl leading-relaxed px-4 transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg cursor-pointer">
               En Rayuela hemos creado un paquete que combina diversión, creatividad y magia.
               <br />
               Aquí encontrarás todo lo necesario para celebrar en grande.
@@ -76,10 +76,10 @@ const PaquetesSection = () => {
                   return (
                     <div key={index} className="text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg cursor-pointer">
                       {typeof item === 'string' ? (
-                        <p className={`${colorClass} font-black`}>{item}</p>
+                        <p className={`${colorClass} font-medium uppercase`}>{item}</p>
                       ) : (
-                        <p className={`${colorClass} font-black`}>
-                          {item.text} <span className={`${colorClass} font-black text-xs sm:text-sm`}>{item.detail}</span>
+                        <p className={`${colorClass} font-medium uppercase`}>
+                          {item.text} <span className={`${colorClass} font-medium uppercase text-xs sm:text-sm`}>{item.detail}</span>
                         </p>
                       )}
                     </div>
@@ -93,10 +93,10 @@ const PaquetesSection = () => {
                   return (
                     <div key={index} className="text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg cursor-pointer">
                       {typeof item === 'string' ? (
-                        <p className={`${colorClass} font-black`}>{item}</p>
+                        <p className={`${colorClass} font-medium uppercase`}>{item}</p>
                       ) : (
-                        <p className={`${colorClass} font-black`}>
-                          {item.text} <span className={`${colorClass} font-black text-xs sm:text-sm`}>{item.detail}</span>
+                        <p className={`${colorClass} font-medium uppercase`}>
+                          {item.text} <span className={`${colorClass} font-medium uppercase text-xs sm:text-sm`}>{item.detail}</span>
                         </p>
                       )}
                     </div>
@@ -108,7 +108,7 @@ const PaquetesSection = () => {
                 {paqueteItems.columna3.map((item, index) => {
                   const colorClass = colors[index % colors.length];
                   return (
-                    <p key={index} className={`text-sm sm:text-base md:text-lg ${colorClass} font-black transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg cursor-pointer`}>
+                    <p key={index} className={`text-sm sm:text-base md:text-lg ${colorClass} font-medium uppercase transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg cursor-pointer`}>
                       {item}
                     </p>
                   );
