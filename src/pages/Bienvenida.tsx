@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import letterR from "@/assets/letters/R.png";
 import letterA from "@/assets/letters/A.png";
@@ -9,7 +9,7 @@ import letterL from "@/assets/letters/L.png";
 import letterAA from "@/assets/letters/AA.png";
 import cursorImg from "@/assets/cursor2.png";
 import backgroundPattern from "@/assets/background-pattern.jpg";
-import backgroundVideo from "@/assets/video.mp4";
+import backgroundVideo from "@/assets/Rayuela3.0.webm";
 import rayuelaHorizontal from "@/assets/rayuela-horizontal.png";
 import textoSlogan from "@/assets/texto-slogan.png";
 // Letras apiladas en 3 filas: Ra, yu, ela
@@ -22,13 +22,13 @@ const stackedLetters = [
   // Fila 2: y, u
   [
     { src: letterY, alt: "y", className: "w-32 md:w-52 lg:w-64" },
-    { src: letterU, alt: "u", className: "w-24 md:w-40 lg:w-52" },
+    { src: letterU, alt: "u", className: "w-32 md:w-40 lg:w-52" },
   ],
   // Fila 3: e, l, a
   [
-    { src: letterE, alt: "e", className: "w-28 md:w-48 lg:w-60" },
+    { src: letterE, alt: "e", className: "w-40 md:w-48 lg:w-60" },
     { src: letterL, alt: "l", className: "w-12 md:w-20 lg:w-24" },
-    { src: letterAA, alt: "a", className: "w-24 md:w-40 lg:w-52" },
+    { src: letterAA, alt: "a", className: "w-32 md:w-40 lg:w-52" },
   ],
 ];
 // Transiciones diferentes para cada letra
@@ -118,7 +118,7 @@ const Bienvenida = () => {
           phase === "final" ? "opacity-100" : "opacity-0"
         }`}
       >
-        <source src={backgroundVideo} type="video/mp4" />
+        <source src={backgroundVideo} type="video/webm" />
       </video>
       {/* Fase 1: Letras apiladas */}
       <div
