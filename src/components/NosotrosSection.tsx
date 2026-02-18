@@ -47,7 +47,7 @@ const NosotrosSection = () => {
         <div className="w-full lg:w-1/2 flex flex-col items-center justify-center gap-6">
           {/* Card con texto */}
           <div
-            className="bg-rayuela-pink/60 p-8 md:p-12 max-w-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-xl"
+            className="bg-white/80 p-8 md:p-12 max-w-3xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-xl"
             style={{ clipPath: "polygon(4% 0, 100% 0, 96% 100%, 0% 100%)" }}
           >
             <p className="text-center text-base sm:text-lg md:text-xl text-rayuela-blue font-black leading-relaxed uppercase">
