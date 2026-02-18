@@ -15,7 +15,7 @@ const ContactoSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${backgroundContacto})` }}
       />
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="w-full max-w-[1600px] mx-auto px-6 relative z-10">
         {/* Título CONTACTO */}
         <div className="flex justify-center mb-5">
           <img
@@ -24,7 +24,7 @@ const ContactoSection = () => {
             className="w-80 md:w-[28rem] h-auto cursor-pointer hover-buzz transition-all duration-300"
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 items-end">
           {/* Columna 1 - Dirección */}
           <div className="flex flex-col items-center self-start">
             <div className="relative mb-4 -mt-12 md:-mt-28">
@@ -41,7 +41,7 @@ const ContactoSection = () => {
                 rel="noopener noreferrer"
                 className="text-center transition-all duration-300 hover:scale-105 hover:brightness-110"
               >
-                <p className="text-[#769fbc] font-black text-base md:text-lg uppercase tracking-wide whitespace-pre-line">
+                <p className="text-[#769fbc] font-normal text-base md:text-lg uppercase tracking-wide whitespace-pre-line">
                   {empresaData.direccion}
                 </p>
               </a>
@@ -73,24 +73,24 @@ const ContactoSection = () => {
                 />
                 <a
                   href={`tel+:${empresaData.telefono}`}
-                  className="text-[#6b9ac4] text-xl md:text-2xl font-black tracking-wider transition-all duration-300 hover:scale-110 hover:brightness-110 hover:drop-shadow-lg"
+                  className="text-[#6b9ac4] text-xl md:text-2xl font-normal tracking-wider transition-all duration-300 hover:scale-110 hover:brightness-110 hover:drop-shadow-lg"
                 >
                   {empresaData.telefono}
                 </a>
               </>
             )}
             {empresaData?.contacto && (
-              <div className="mt-6 flex flex-col items-center">
+              <div className="mt-6 mb-6 flex flex-col items-center">
                 <div className="relative mb-2">
                   <div className="bg-[#8b9a6b] px-10 py-4 transform -skew-x-3 transition-all duration-300 hover:scale-105 hover:brightness-110 cursor-pointer">
-                    <span className="text-white text-2xl md:text-3xl font-black tracking-wide skew-x-3 inline-block">
+                    <span className="text-white text-2xl md:text-3xl font-normal tracking-wide skew-x-3 inline-block">
                       E-MAIL
                     </span>
                   </div>
                 </div>
                 <a
                   href={`mailto:${empresaData.contacto}`}
-                  className="text-[#6b9ac4] text-lg md:text-xl font-black tracking-wide transition-all duration-300 hover:scale-110 hover:brightness-110 hover:drop-shadow-lg"
+                  className="text-[#6b9ac4] text-lg md:text-xl font-normal tracking-wide transition-all duration-300 hover:scale-110 hover:brightness-110 hover:drop-shadow-lg"
                 >
                   {empresaData.contacto}
                 </a>
@@ -114,13 +114,13 @@ const ContactoSection = () => {
                   alt="Horarios"
                   className="w-64 md:w-72 h-auto mb-4 cursor-pointer transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg"
                 />
-                <div className="text-center space-y-2">
+                <div className="space-y-2 inline-flex flex-col mb-6">
                   {empresaData.horarios.map((horario, index) => (
-                    <div key={index} className="flex gap-4 justify-center transition-all duration-300 hover:scale-105 hover:brightness-110 cursor-pointer">
-                      <span className="text-[#6bc4c8] font-black text-base md:text-lg">
+                    <div key={index} className="flex gap-4 transition-all duration-300 hover:scale-105 hover:brightness-110 cursor-pointer">
+                      <span className="text-[#6bc4c8] font-normal text-base md:text-sm text-left w-44 md:w-52 shrink-0">
                         {horario.label.toUpperCase()}
                       </span>
-                      <span className={`font-black text-base md:text-lg ${
+                      <span className={`font-normal text-base md:text-sm text-center ${
                         horario.cerrado == 1 ? 'text-[#e74c3c]' : 'text-[#6bc4c8]'
                       }`}>
                         {horario.cerrado == 1 || horario.hora ==''? 'CERRADO' : horario.hora}

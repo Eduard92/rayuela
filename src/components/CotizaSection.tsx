@@ -312,7 +312,7 @@ const CotizaSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div className="relative">
               <label className={cn(
-                "absolute left-4 top-3 text-sm font-black uppercase tracking-wide transition-colors z-10",
+                "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors z-10",
                 nameError && nameTouched ? "text-red-500" : "text-gray-600"
               )}>
                 Nombre
@@ -334,7 +334,7 @@ const CotizaSection = () => {
                 }}
                 onBlur={() => setNameTouched(true)}
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-orange/80 rounded-full text-black font-black placeholder-gray-600 focus:outline-none transition-all",
+                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-orange/80 rounded-full text-black font-light placeholder-gray-600 focus:outline-none transition-all",
                   nameError && nameTouched 
                     ? "ring-2 ring-red-500 focus:ring-red-500" 
                     : formData.name.trim().length >= 2 
@@ -355,7 +355,7 @@ const CotizaSection = () => {
             </div>
             <div className="relative">
               <label className={cn(
-                "absolute left-4 top-3 text-sm font-black uppercase tracking-wide transition-colors z-10",
+                "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors z-10",
                 emailError && emailTouched ? "text-red-500" : "text-gray-600"
               )}>
                 Email
@@ -377,7 +377,7 @@ const CotizaSection = () => {
                   }
                 }}
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-blue/80 rounded-full text-black font-black placeholder-gray-600 focus:outline-none transition-all",
+                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-blue/80 rounded-full text-black font-light placeholder-gray-600 focus:outline-none transition-all",
                   emailError && emailTouched 
                     ? "ring-2 ring-red-500 focus:ring-red-500" 
                     : formData.email && !emailError 
@@ -421,15 +421,15 @@ const CotizaSection = () => {
               <PopoverTrigger asChild>
                 <div className="relative cursor-pointer">
                   <label className={cn(
-                    "absolute left-4 top-3 text-sm font-black uppercase tracking-wide z-10 transition-colors",
+                    "absolute left-4 top-3 text-sm font-light uppercase tracking-wide z-10 transition-colors",
                     dateError ? "text-red-500" : "text-gray-600"
                   )}>
                     Fecha
                   </label>
                   <div
                     className={cn(
-                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-rayuela-pink/80 rounded-full text-black font-black flex items-end focus:outline-none transition-all",
-                      !selectedDate && "text-gray-600 font-black",
+                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-rayuela-pink/80 rounded-full text-black font-light flex items-end focus:outline-none transition-all",
+                      !selectedDate && "text-gray-600 font-light",
                       dateError ? "ring-2 ring-red-500" : "focus:ring-2 focus:ring-rayuela-olive",
                     )}
                   >
@@ -466,15 +466,15 @@ const CotizaSection = () => {
               <PopoverTrigger asChild>
                 <div className="relative cursor-pointer">
                   <label className={cn(
-                    "absolute left-4 top-3 text-sm font-black uppercase tracking-wide z-10 transition-colors",
+                    "absolute left-4 top-3 text-sm font-light uppercase tracking-wide z-10 transition-colors",
                     timeError ? "text-red-500" : "text-gray-600"
                   )}>
                     Hora
                   </label>
                   <div
                     className={cn(
-                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-rayuela-blue/80 rounded-full text-black font-black flex items-end transition-all",
-                      !selectedTime && "text-gray-600 font-black",
+                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-rayuela-blue/80 rounded-full text-black font-light flex items-end transition-all",
+                      !selectedTime && "text-gray-600 font-light",
                       timeError ? "ring-2 ring-red-500" : "",
                     )}
                   >
@@ -502,7 +502,7 @@ const CotizaSection = () => {
                       className={cn(
                         "px-3 py-2 text-sm rounded-lg transition-colors",
                         selectedTime === time
-                          ? "bg-rayuela-blue text-white font-black"
+                          ? "bg-rayuela-blue text-white font-light"
                           : "hover:bg-rayuela-blue/30 text-gray-700",
                       )}
                     >
@@ -517,7 +517,7 @@ const CotizaSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div className="relative">
               <label className={cn(
-                "absolute left-4 top-3 text-sm font-black uppercase tracking-wide transition-colors",
+                "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors",
                 tipoEventoError ? "text-red-500" : "text-gray-600"
               )}>
                 Tipo de evento
@@ -531,14 +531,14 @@ const CotizaSection = () => {
                   if (e.target.value.trim() !== "") setTipoEventoError(false);
                 }}
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-blue/80 rounded-full text-black font-black placeholder-gray-600 focus:outline-none transition-all",
+                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-blue/80 rounded-full text-black font-light placeholder-gray-600 focus:outline-none transition-all",
                   tipoEventoError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-rayuela-olive"
                 )}
               />
             </div>
             <div className="relative">
               <label className={cn(
-                "absolute left-4 top-3 text-sm font-black uppercase tracking-wide transition-colors",
+                "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors",
                 invitadosError ? "text-red-500" : "text-gray-600"
               )}>
                 Número de invitados
@@ -552,7 +552,7 @@ const CotizaSection = () => {
                   if (e.target.value.trim() !== "" && parseInt(e.target.value) > 0) setInvitadosError(false);
                 }}
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-olive/80 rounded-full text-black font-black placeholder-gray-600 focus:outline-none transition-all",
+                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-olive/80 rounded-full text-black font-light placeholder-gray-600 focus:outline-none transition-all",
                   invitadosError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-rayuela-olive"
                 )}
               />
@@ -562,7 +562,7 @@ const CotizaSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div className="relative">
               <label className={cn(
-                "absolute left-4 top-3 text-sm font-black uppercase tracking-wide transition-colors",
+                "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors",
                 phoneError ? "text-red-500" : "text-gray-600"
               )}>
                 Teléfono
@@ -583,13 +583,13 @@ const CotizaSection = () => {
                 inputMode="numeric"
                 pattern="[0-9]*"
                 className={cn(
-                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-olive/80 rounded-full text-black font-black placeholder-gray-600 focus:outline-none transition-all",
+                  "w-full h-14 pt-6 pb-2 px-4 bg-rayuela-olive/80 rounded-full text-black font-light placeholder-gray-600 focus:outline-none transition-all",
                   phoneError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-rayuela-olive"
                 )}
               />
             </div>
             <div className="relative">
-              <label className="absolute left-4 top-3 text-gray-600 text-sm font-black uppercase tracking-wide">
+              <label className="absolute left-4 top-3 text-gray-600 text-sm font-light uppercase tracking-wide">
                 Dirección / Calle
               </label>
               <input
@@ -597,14 +597,14 @@ const CotizaSection = () => {
                 name="street"
                 value={formData.street}
                 onChange={handleChange}
-                className="w-full h-14 pt-6 pb-2 px-4 bg-rayuela-pink/80 rounded-full text-black font-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-rayuela-olive"
+                className="w-full h-14 pt-6 pb-2 px-4 bg-rayuela-pink/80 rounded-full text-black font-light placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-rayuela-olive"
               />
             </div>
           </div>
           {/* Row 5 - Comentarios */}
           <div className="relative">
             <label className={cn(
-              "absolute left-4 top-3 text-sm font-black uppercase tracking-wide transition-colors",
+              "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors",
               messageError ? "text-red-500" : "text-gray-600"
             )}>
               Comentarios
@@ -618,7 +618,7 @@ const CotizaSection = () => {
               }}
               rows={3}
               className={cn(
-                "w-full pt-8 pb-4 px-4 bg-rayuela-blue/60 rounded-3xl text-black font-black placeholder-gray-600 focus:outline-none transition-all resize-none",
+                "w-full pt-8 pb-4 px-4 bg-rayuela-blue/60 rounded-3xl text-black font-light placeholder-gray-600 focus:outline-none transition-all resize-none",
                 messageError ? "ring-2 ring-red-500 focus:ring-red-500" : "focus:ring-2 focus:ring-rayuela-olive"
               )}
             />
@@ -628,7 +628,7 @@ const CotizaSection = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="relative px-12 py-4 bg-rayuela-olive rounded-full font-black text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-rayuela-olive/90 active:scale-95 active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 group"
+              className="relative px-12 py-4 bg-rayuela-olive rounded-full font-light text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-rayuela-olive/90 active:scale-95 active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:active:scale-100 group"
             >
               {/* Dashed border inside */}
               <span className="absolute inset-[4px] border-2 border-dashed border-white rounded-full pointer-events-none transition-all duration-300 group-hover:inset-[6px] group-active:inset-[3px]" />
@@ -654,7 +654,7 @@ const CotizaSection = () => {
                 <Loader2 className="w-10 h-10 text-rayuela-blue animate-spin" />
               </div>
             </div>
-            <DialogTitle className="text-2xl text-rayuela-blue font-black">Enviando...</DialogTitle>
+            <DialogTitle className="text-2xl text-rayuela-blue font-light">Enviando...</DialogTitle>
             <DialogDescription className="text-gray-600 text-base mt-2">
               Por favor espera mientras procesamos tu solicitud de reserva.
             </DialogDescription>
@@ -680,18 +680,18 @@ const CotizaSection = () => {
                 <CheckCircle className="w-10 h-10 text-rayuela-olive" />
               </div>
             </div>
-            <DialogTitle className="text-2xl text-rayuela-olive font-black">¡Reserva Enviada!</DialogTitle>
+            <DialogTitle className="text-2xl text-rayuela-olive font-light">¡Reserva Enviada!</DialogTitle>
             <DialogDescription className="text-gray-600 text-base mt-2">
               Tu solicitud de reserva ha sido recibida exitosamente.
               {reservationId && (
-                <span className="block mt-2 font-black text-rayuela-orange">ID de Reserva: {reservationId}</span>
+                <span className="block mt-2 font-light text-rayuela-orange">ID de Reserva: {reservationId}</span>
               )}
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-center mt-4 relative z-10">
             <button
               onClick={() => setShowConfirmModal(false)}
-              className="px-8 py-3 bg-rayuela-olive text-white rounded-full font-black hover:bg-rayuela-olive/90 transition-all duration-300 hover:scale-105"
+              className="px-8 py-3 bg-rayuela-olive text-white rounded-full font-light hover:bg-rayuela-olive/90 transition-all duration-300 hover:scale-105"
             >
               ¡Entendido!
             </button>
