@@ -11,7 +11,7 @@ const PaquetesSection = () => {
     columna1: [
       "Uso de todas las áreas",
       "Menú de adulto",
-      "Menú de niños)",
+      "Menú de niños",
       { text: "Mesa de botanas", detail: "" },
       "Ensalada",
     ],
