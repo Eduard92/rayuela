@@ -9,6 +9,7 @@ import CotizaSection from "@/components/CotizaSection";
 import ContactoSection from "@/components/ContactoSection";
 import AudioPlayer from "@/components/AudioPlayer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SectionReveal from "@/components/SectionReveal";
 import { useEmpresaData } from "@/hooks/useEmpresaData";
 import { EmpresaProvider } from "@/contexts/EmpresaContext";
 import logo from "@/assets/rayuela-logo.png";
@@ -62,12 +63,24 @@ const Index = () => {
         <WhatsAppButton />
         <main>
           <HeroSection />
-          <NosotrosSection />
-          <CalendarioSection />
-          <PaquetesSection />
-          <CotizaSection />
-          <FotosSection />
-          <ContactoSection />
+          <SectionReveal direction="left">
+            <NosotrosSection />
+          </SectionReveal>
+          <SectionReveal direction="up">
+            <CalendarioSection />
+          </SectionReveal>
+          <SectionReveal direction="right">
+            <PaquetesSection />
+          </SectionReveal>
+          <SectionReveal direction="up">
+            <CotizaSection />
+          </SectionReveal>
+          <SectionReveal direction="left">
+            <FotosSection />
+          </SectionReveal>
+          <SectionReveal direction="up">
+            <ContactoSection />
+          </SectionReveal>
         </main>
       </div>
     </EmpresaProvider>
