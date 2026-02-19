@@ -71,14 +71,12 @@ const PaquetesSection = () => {
           className={`text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg ${clickable ? "cursor-pointer" : "cursor-default"}`}
         >
           <p className={`${colorClass} font-medium uppercase flex items-center gap-2`}>
+            <img
+              src={logmins[globalIndex % logmins.length]}
+              alt=""
+              className="w-5 h-5 object-contain shrink-0 opacity-80"
+            />
             {item.text}
-            {clickable && (
-              <img
-                src={logmins[globalIndex % logmins.length]}
-                alt=""
-                className="w-5 h-5 object-contain inline-block opacity-80 hover:opacity-100 transition-opacity"
-              />
-            )}
           </p>
         </div>
       );
