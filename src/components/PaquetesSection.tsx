@@ -17,7 +17,7 @@ const PaquetesSection = () => {
     ],
     columna2: [
       { text: "Pastel personalizado", detail: "" },
-      "Aguas de sabor y refresco",
+      "Aguas de sabor y refrescos",
       "Café Americano",
       "Piñata personalizada",
       "Pinta caritas",
