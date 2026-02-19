@@ -188,7 +188,7 @@ const Bienvenida = () => {
           onClick={handleEnter}
           className={`mt-6 px-16 py-5 bg-rayuela-orange text-white font-display text-3xl rounded-full
             hover:bg-rayuela-orange/80 hover:scale-110 transition-all duration-300
-            shadow-2xl hover:shadow-3xl font-black ${
+            shadow-2xl hover:shadow-3xl font-light ${
               showFinal ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
             }`}
           style={{

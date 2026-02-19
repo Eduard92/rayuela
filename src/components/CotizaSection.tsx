@@ -428,7 +428,7 @@ const CotizaSection = () => {
                   </label>
                   <div
                     className={cn(
-                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-rayuela-pink/80 rounded-full text-black font-light flex items-end focus:outline-none transition-all",
+                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-rayuela-pink/80 rounded-full text-black text-xs font-light flex items-end focus:outline-none transition-all",
                       !selectedDate && "text-gray-600 font-light",
                       dateError ? "ring-2 ring-red-500" : "focus:ring-2 focus:ring-rayuela-olive",
                     )}
@@ -473,7 +473,7 @@ const CotizaSection = () => {
                   </label>
                   <div
                     className={cn(
-                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-rayuela-blue/80 rounded-full text-black font-light flex items-end transition-all",
+                      "w-full h-14 pt-6 pb-2 px-4 pr-12 bg-rayuela-blue/80 rounded-full text-black text-xs font-light flex items-end transition-all",
                       !selectedTime && "text-gray-600 font-light",
                       timeError ? "ring-2 ring-red-500" : "",
                     )}
