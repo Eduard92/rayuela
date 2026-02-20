@@ -24,28 +24,23 @@ const FotosSection = () => {
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const isManualChange = useRef(false);
-
   const handleImageChange = (index: number) => {
     if (index === selectedImage) return;
     isManualChange.current = true;
     setSelectedImage(index);
   };
-
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
     document.body.style.overflow = 'hidden';
   };
-
   const closeLightbox = useCallback(() => {
     setLightboxOpen(false);
     document.body.style.overflow = 'unset';
   }, []);
-
   const goToPrevious = useCallback(() => {
     setLightboxIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   }, [images.length]);
-
   const goToNext = useCallback(() => {
     setLightboxIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }, [images.length]);
@@ -57,21 +52,17 @@ const FotosSection = () => {
     }, 4000);
     return () => clearInterval(interval);
   }, [images.length, lightboxOpen]);
-
   // Keyboard navigation for lightbox
   useEffect(() => {
     if (!lightboxOpen) return;
-
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') goToPrevious();
       if (e.key === 'ArrowRight') goToNext();
     };
-
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [lightboxOpen, closeLightbox, goToPrevious, goToNext]);
-
   // Sync carousel position with selected image (only for autoplay, not manual clicks)
   useEffect(() => {
     if (carouselApi && images.length > 0 && !isManualChange.current) {
@@ -80,26 +71,22 @@ const FotosSection = () => {
       isManualChange.current = false;
     }
   }, [selectedImage, carouselApi, images.length]);
-
   // Preload next and previous images for smoother transitions
   useEffect(() => {
     if (images.length === 0) return;
-
     const preloadImage = (index: number) => {
       const img = new Image();
       img.src = images[index].url;
     };
-
     const nextIndex = (selectedImage + 1) % images.length;
     const prevIndex = selectedImage === 0 ? images.length - 1 : selectedImage - 1;
-
     preloadImage(nextIndex);
     preloadImage(prevIndex);
   }, [selectedImage, images]);
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await fetch("https://rayuela.com.mx/slider/1/photos");
+        const response = await fetch("https://admin.rayuela.com.mx/slider/1/photos");
         const data = await response.json();
         if (data.ok && data.images) {
           setImages(data.images.sort((a: GalleryImage, b: GalleryImage) => a.sort_order - b.sort_order));
@@ -148,9 +135,7 @@ const FotosSection = () => {
                   const isPrev = selectedImage === 0 ? index === images.length - 1 : index === selectedImage - 1;
                   const isNext = selectedImage === images.length - 1 ? index === 0 : index === selectedImage + 1;
                   const shouldRender = isActive || isPrev || isNext;
-
                   if (!shouldRender) return null;
-
                   return (
                     <img
                       key={index}
@@ -232,7 +217,6 @@ const FotosSection = () => {
           className="w-32 h-auto float-animation cursor-pointer"
         />
       </div>
-
       {/* Lightbox Modal */}
       {lightboxOpen && images.length > 0 && (
         <div
@@ -247,12 +231,10 @@ const FotosSection = () => {
           >
             <X size={32} />
           </button>
-
           {/* Image Counter */}
           <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 text-white bg-black/50 px-4 py-2 rounded-full text-sm font-bold">
             {lightboxIndex + 1} / {images.length}
           </div>
-
           {/* Previous Button */}
           <button
             onClick={(e) => {
@@ -264,7 +246,6 @@ const FotosSection = () => {
           >
             <ChevronLeft size={40} />
           </button>
-
           {/* Next Button */}
           <button
             onClick={(e) => {
@@ -276,7 +257,6 @@ const FotosSection = () => {
           >
             <ChevronRight size={40} />
           </button>
-
           {/* Main Image */}
           <div
             className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center"
@@ -290,7 +270,6 @@ const FotosSection = () => {
               className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
             />
           </div>
-
           {/* Image Description */}
           {images[lightboxIndex].alt && (
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 text-white bg-black/50 px-6 py-3 rounded-full text-sm max-w-2xl text-center">

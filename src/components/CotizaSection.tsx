@@ -247,7 +247,7 @@ const CotizaSection = () => {
       }
       formDataToSend.append("time", selectedTime);
       formDataToSend.append("date_submit", format(new Date(), "yyyy/MM/dd"));
-      const resp = await fetch("https://rayuela.com.mx/reservas/store", {
+      const resp = await fetch("https://admin.rayuela.com.mx/reservas/store", {
         method: "POST",
         headers: {
           Accept: "application/json",

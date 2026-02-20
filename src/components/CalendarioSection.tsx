@@ -43,7 +43,7 @@ const CalendarioSection = () => {
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth() + 1;
       try {
-        const response = await fetch(`https://rayuela.com.mx/getReservas/${year}/${month}`);
+        const response = await fetch(`https://admin.rayuela.com.mx/getReservas/${year}/${month}`);
         if (response.ok) {
           const data = await response.json();
           // La API devuelve un objeto con fechas como claves, convertir a array

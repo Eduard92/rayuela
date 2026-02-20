@@ -16,7 +16,6 @@ import logmin7 from "@/assets/logmins/rayuela_logomin7.png";
 import logmin8 from "@/assets/logmins/rayuela_logomin8.png";
 import logmin9 from "@/assets/logmins/rayuela_logomin9.png";
 import logmin10 from "@/assets/logmins/rayuela_logomin10.png";
-
 const logmins = [logmin1, logmin2, logmin3, logmin4, logmin5, logmin6, logmin7, logmin8, logmin9, logmin10];
 import {
   Dialog,
@@ -24,41 +23,34 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-
 interface ServicioItem {
   text: string;
   descripcion?: string;
   imagen?: string;
   galeria?: string[];
 }
-
 interface ServiciosData {
   columna1: ServicioItem[];
   columna2: ServicioItem[];
   columna3: ServicioItem[];
 }
-
 const hasDetail = (item: ServicioItem) =>
   !!(item.descripcion || item.imagen || item.galeria?.length);
-
 const PaquetesSection = () => {
   const colors = ["text-rayuela-orange", "text-rayuela-yellow", "text-rayuela-blue", "text-rayuela-olive"];
   const [selected, setSelected] = useState<ServicioItem | null>(null);
   const [slideIndex, setSlideIndex] = useState(0);
-
   useEffect(() => {
     setSlideIndex(0);
   }, [selected]);
-
   const { data: servicios } = useQuery<ServiciosData>({
     queryKey: ["servicios"],
     queryFn: async () => {
-      const res = await fetch("https://rayuela.com.mx/api/servicios");
+      const res = await fetch("https://admin.rayuela.com.mx/api/servicios");
       if (!res.ok) throw new Error("Error al cargar servicios");
       return res.json();
     },
   });
-
   const renderColumn = (items: ServicioItem[], globalOffset: number) =>
     items.map((item, index) => {
       const globalIndex = globalOffset + index;
@@ -81,11 +73,9 @@ const PaquetesSection = () => {
         </div>
       );
     });
-
   const columns = servicios
     ? [servicios.columna1, servicios.columna2, servicios.columna3]
     : [[], [], []];
-
   return (
     <section id="paquetes" className="relative min-h-screen w-full overflow-hidden">
       {/* Background Pattern */}
@@ -171,7 +161,6 @@ const PaquetesSection = () => {
           />
         </div>
       </div>
-
       {/* Modal */}
       <Dialog open={!!selected} onOpenChange={(open) => !open && setSelected(null)}>
         <DialogContent className="max-w-2xl w-[95vw] rounded-2xl p-0 overflow-hidden">
@@ -180,7 +169,6 @@ const PaquetesSection = () => {
               {selected?.text}
             </DialogTitle>
           </DialogHeader>
-
           {/* Slider: galería + imagen */}
           {(() => {
             const slides: string[] = [
@@ -222,7 +210,6 @@ const PaquetesSection = () => {
               </div>
             );
           })()}
-
           {selected?.descripcion && (
             <p className="px-6 pb-6 pt-3 text-sm text-gray-700 leading-relaxed">{selected.descripcion}</p>
           )}
@@ -231,5 +218,4 @@ const PaquetesSection = () => {
     </section>
   );
 };
-
 export default PaquetesSection;
