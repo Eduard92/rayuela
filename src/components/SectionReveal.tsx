@@ -20,13 +20,18 @@ const SectionReveal = ({ children, direction = "up", delay = 0 }: SectionRevealP
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
       },
       { threshold: 0.08 },
     );
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
