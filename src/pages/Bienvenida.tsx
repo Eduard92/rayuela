@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import letterR from "@/assets/letters/R.png";
 import letterA from "@/assets/letters/A.png";
 import letterY from "@/assets/letters/Y.png";
@@ -91,6 +92,13 @@ const Bienvenida = () => {
     return index + colIndex;
   };
   return (
+    <>
+    <Helmet>
+      <title>Bienvenido a Rayuela - Fiestas Infantiles y Eventos Creativos</title>
+      <meta name="description" content="Bienvenido a Rayuela, el lugar donde tus sueños se hacen fiesta. Fiestas infantiles, eventos creativos y celebraciones inolvidables en México." />
+      <link rel="canonical" href="https://rayuela.com.mx/" />
+      <meta property="og:url" content="https://rayuela.com.mx/" />
+    </Helmet>
     <div
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
       style={{
@@ -199,6 +207,7 @@ const Bienvenida = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 export default Bienvenida;

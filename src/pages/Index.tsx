@@ -10,13 +10,12 @@ import ContactoSection from "@/components/ContactoSection";
 import AudioPlayer from "@/components/AudioPlayer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SectionReveal from "@/components/SectionReveal";
+import JsonLdSchema from "@/components/JsonLdSchema";
 import { useEmpresaData } from "@/hooks/useEmpresaData";
 import { EmpresaProvider } from "@/contexts/EmpresaContext";
 import logo from "@/assets/rayuela-logo.png";
-
 const Index = () => {
   const { data, isLoading, error } = useEmpresaData();
-
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-8">
@@ -31,13 +30,10 @@ const Index = () => {
       </div>
     );
   }
-
   if (error) {
     console.error("Error al cargar datos de la empresa:", error);
   }
-
   const empresaData = data?.data;
-
   return (
     <EmpresaProvider
       empresaData={empresaData}
@@ -45,18 +41,19 @@ const Index = () => {
       error={error}
     >
       <Helmet>
-        <title>Rayuela - Fiestas Infantiles y Eventos Creativos</title>
+        <title>Rayuela - Fiestas Infantiles y Eventos Creativos en CDMX</title>
         <meta
           name="description"
-          content="Rayuela organiza fiestas infantiles únicas y eventos creativos llenos de color, diversión y magia. Conoce nuestros paquetes y cotiza tu evento especial."
+          content="Rayuela organiza fiestas infantiles únicas y eventos creativos llenos de color, diversión y magia. Conoce nuestros paquetes, cotiza tu evento y reserva tu fecha."
         />
         <meta
           name="keywords"
-          content="fiestas infantiles, eventos creativos, decoración de fiestas, animación infantil, paquetes de fiestas"
+          content="fiestas infantiles cdmx, salón de fiestas infantiles, eventos creativos para niños, paquetes de fiestas infantiles, animación infantil, decoración de fiestas, Rayuela fiestas"
         />
-        <link rel="canonical" href="https://rayuela.com" />
+        <link rel="canonical" href="https://rayuela.com.mx/home" />
+        <meta property="og:url" content="https://rayuela.com.mx/home" />
       </Helmet>
-
+      <JsonLdSchema />
       <div className="min-h-screen bg-background">
         <Header />
         <AudioPlayer />
@@ -81,10 +78,14 @@ const Index = () => {
           <SectionReveal direction="up">
             <ContactoSection />
           </SectionReveal>
+          <footer className="bg-white/90 py-6 text-center text-sm text-gray-500">
+            <p>
+              &copy; {new Date().getFullYear()} Rayuela. Todos los derechos reservados.
+            </p>
+          </footer>
         </main>
       </div>
     </EmpresaProvider>
   );
 };
-
 export default Index;

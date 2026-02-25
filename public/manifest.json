@@ -1,0 +1,22 @@
+{
+  "name": "Rayuela - Fiestas Infantiles",
+  "short_name": "Rayuela",
+  "description": "Fiestas infantiles y eventos creativos en CDMX. El lugar donde tus sueños se hacen fiesta.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FF6C1F",
+  "lang": "es-MX",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "any",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
