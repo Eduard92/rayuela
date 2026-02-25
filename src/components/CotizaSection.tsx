@@ -419,9 +419,9 @@ const CotizaSection = () => {
               if (open) setDateError(false);
             }}>
               <PopoverTrigger asChild>
-                <div className="relative cursor-pointer">
+                <button type="button" className="relative cursor-pointer w-full text-left">
                   <label className={cn(
-                    "absolute left-4 top-3 text-sm font-light uppercase tracking-wide z-10 transition-colors",
+                    "absolute left-4 top-3 text-sm font-light uppercase tracking-wide z-10 transition-colors pointer-events-none",
                     dateError ? "text-red-500" : "text-gray-600"
                   )}>
                     Fecha
@@ -439,7 +439,7 @@ const CotizaSection = () => {
                     "absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 transition-colors",
                     dateError ? "text-red-500" : "text-rayuela-pink"
                   )} />
-                </div>
+                </button>
               </PopoverTrigger>
               <PopoverContent
                 className="w-auto p-0 bg-white border-2 border-rayuela-pink rounded-2xl shadow-xl"
@@ -464,9 +464,9 @@ const CotizaSection = () => {
               if (open) setTimeError(false);
             }}>
               <PopoverTrigger asChild>
-                <div className="relative cursor-pointer">
+                <button type="button" className="relative cursor-pointer w-full text-left">
                   <label className={cn(
-                    "absolute left-4 top-3 text-sm font-light uppercase tracking-wide z-10 transition-colors",
+                    "absolute left-4 top-3 text-sm font-light uppercase tracking-wide z-10 transition-colors pointer-events-none",
                     timeError ? "text-red-500" : "text-gray-600"
                   )}>
                     Hora
@@ -484,7 +484,7 @@ const CotizaSection = () => {
                     "absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 transition-colors",
                     timeError ? "text-red-500" : "text-rayuela-blue"
                   )} />
-                </div>
+                </button>
               </PopoverTrigger>
               <PopoverContent
                 className="w-48 p-2 bg-white border-2 border-rayuela-blue rounded-2xl shadow-xl max-h-64 overflow-y-auto"
