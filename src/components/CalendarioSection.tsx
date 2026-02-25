@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import calendarioTitulo from "@/assets/calendario-titulo.png";
-import rosaCalendario from "@/assets/rosa-calendario.png";
+import rosaCalendario from "@/assets/rosa-calendario.webp";
 import backgroundNosotros from "@/assets/background-nosotros.jpg";
 import pinReservado from "@/assets/pin-reservado.png";
 interface Reserva {

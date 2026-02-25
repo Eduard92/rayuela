@@ -1,40 +1,30 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 const AudioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  useEffect(() => {
+  const togglePlay = useCallback(() => {
     const audio = audioRef.current;
-    if (audio) {
-      audio.volume = 0.5;
-      // Intentar reproducir automáticamente
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Autoplay fue bloqueado, mostrar como pausado
-          setIsPlaying(false);
-        });
-      }
-    }
-  }, []);
+    if (!audio) return;
 
-  const togglePlay = () => {
-    const audio = audioRef.current;
-    if (audio) {
-      if (isPlaying) {
-        audio.pause();
-      } else {
-        audio.play();
-      }
-      setIsPlaying(!isPlaying);
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.volume = 0.5;
+      audio.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        setIsPlaying(false);
+      });
     }
-  };
+  }, [isPlaying]);
 
   return (
     <>
-      <audio ref={audioRef} loop>
+      <audio ref={audioRef} loop preload="none">
         <source src="/audio/La_Fiesta_en_Rayuela_V2.mp3" type="audio/mpeg" />
       </audio>
       <button

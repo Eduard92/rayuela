@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import mascotasImage from "@/assets/mascotas-nosotros.png";
+import mascotasImage from "@/assets/mascotas-nosotros.webp";
 import tituloImage from "@/assets/nosotros-titulo.png";
 import logo from "@/assets/rayuela-logo.png";
 import backgroundNosotros from "@/assets/background-nosotros.jpg";

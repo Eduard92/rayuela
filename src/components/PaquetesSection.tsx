@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import backgroundPaquetes from "@/assets/background-paquetes.jpg";
 import paquetesEncabezado from "@/assets/paquetes-encabezado.png";
-import mascotaVerde from "@/assets/mascota-verde-pastel.png";
+import mascotaVerde from "@/assets/mascota-verde-pastel.webp";
 import mascotaRosa from "@/assets/mascota-rosa-globo.png";
 import quieresMas from "@/assets/quieres-mas.png";
 import cotizaAqui from "@/assets/cotiza.png";

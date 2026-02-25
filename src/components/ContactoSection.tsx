@@ -1,10 +1,10 @@
 import contactoTitulo from "@/assets/contacto-titulo.png";
 import mascotaVerdeDireccion from "@/assets/mascota-verde-direccion.png";
 import telefonoTitulo from "@/assets/telefono-titulo.png";
-import mascotaRosaPatines from "@/assets/mascota-rosa-patines.png";
+import mascotaRosaPatines from "@/assets/mascota-rosa-patines.webp";
 import horariosTitulo from "@/assets/horarios-titulo.png";
 import backgroundContacto from "@/assets/background-contacto.jpg";
-import mapaImage from "@/assets/mapa.png";
+import mapaImage from "@/assets/mapa.webp";
 import { useEmpresa } from "@/contexts/EmpresaContext";
 const ContactoSection = () => {
   const { empresaData } = useEmpresa();
