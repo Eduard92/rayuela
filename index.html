@@ -30,9 +30,18 @@
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#FF6C1F" />
 
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://admin.rayuela.com.mx" crossorigin />
+
+    <!-- Google Fonts (non-blocking) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+
     <!-- Preload fuentes críticas -->
+    <link rel="preload" href="/fonts/dazzle-unicase/Dazzle_Unicase_Bold.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/CaviarDreams.woff" as="font" type="font/woff" crossorigin />
-    <link rel="preload" href="/fonts/CaviarDreams_Bold.woff" as="font" type="font/woff" crossorigin />
   </head>
   <body>
     <div id="root"></div>

@@ -30,13 +30,14 @@ const HeroSection = () => {
             animationClass="float-animation"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
             hoverEffect="scale"
+            priority
           />
         </div>
 
         <div className="flex items-center justify-center sm:items-end sm:justify-start animate-fade-in-up-2 relative overflow-visible">
-          <img 
-            src={smilePaquetes} 
-            alt="Smile" 
+          <img
+            src={smilePaquetes}
+            alt="Smile"
             className="absolute top-[25%] -translate-y-1/2 right-0 w-[25%] max-w-[180px] sm:max-w-[280px] md:max-w-[60%] z-10 wiggle-animation"
           />
           <NavigationButton
@@ -46,6 +47,7 @@ const HeroSection = () => {
             animationClass="float-animation-delayed"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
             hoverEffect="rotate"
+            priority
           />
         </div>
 
@@ -57,6 +59,7 @@ const HeroSection = () => {
             animationClass="float-animation"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
             hoverEffect="bounce"
+            priority
           />
         </div>
 

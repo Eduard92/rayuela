@@ -7,6 +7,7 @@ interface NavigationButtonProps {
   className?: string;
   animationClass?: string;
   hoverEffect?: HoverEffect;
+  priority?: boolean;
 }
 
 const NavigationButton = ({
@@ -16,16 +17,17 @@ const NavigationButton = ({
   className = "",
   animationClass = "",
   hoverEffect = 'scale',
+  priority = false,
 }: NavigationButtonProps) => {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    
+
     const element = document.querySelector(to);
     if (element) {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
@@ -42,7 +44,8 @@ const NavigationButton = ({
         src={image}
         alt={alt}
         className={`nav-button-image w-full h-auto object-contain hover-${hoverEffect}`}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
+        {...(priority ? { fetchPriority: "high" as const } : {})}
       />
     </button>
   );
