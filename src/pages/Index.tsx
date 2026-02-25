@@ -1,19 +1,21 @@
+import { lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import NosotrosSection from "@/components/NosotrosSection";
-import CalendarioSection from "@/components/CalendarioSection";
-import PaquetesSection from "@/components/PaquetesSection";
-import FotosSection from "@/components/FotosSection";
-import CotizaSection from "@/components/CotizaSection";
-import ContactoSection from "@/components/ContactoSection";
-import AudioPlayer from "@/components/AudioPlayer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import SectionReveal from "@/components/SectionReveal";
 import JsonLdSchema from "@/components/JsonLdSchema";
+import AudioPlayer from "@/components/AudioPlayer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { useEmpresaData } from "@/hooks/useEmpresaData";
 import { EmpresaProvider } from "@/contexts/EmpresaContext";
 import logo from "@/assets/rayuela-logo.png";
+
+const NosotrosSection = lazy(() => import("@/components/NosotrosSection"));
+const CalendarioSection = lazy(() => import("@/components/CalendarioSection"));
+const PaquetesSection = lazy(() => import("@/components/PaquetesSection"));
+const FotosSection = lazy(() => import("@/components/FotosSection"));
+const CotizaSection = lazy(() => import("@/components/CotizaSection"));
+const ContactoSection = lazy(() => import("@/components/ContactoSection"));
 const Index = () => {
   const { data, isLoading, error } = useEmpresaData();
   if (isLoading) {
@@ -60,24 +62,26 @@ const Index = () => {
         <WhatsAppButton />
         <main>
           <HeroSection />
-          <SectionReveal direction="left">
-            <NosotrosSection />
-          </SectionReveal>
-          <SectionReveal direction="up">
-            <CalendarioSection />
-          </SectionReveal>
-          <SectionReveal direction="right">
-            <PaquetesSection />
-          </SectionReveal>
-          <SectionReveal direction="up">
-            <CotizaSection />
-          </SectionReveal>
-          <SectionReveal direction="left">
-            <FotosSection />
-          </SectionReveal>
-          <SectionReveal direction="up">
-            <ContactoSection />
-          </SectionReveal>
+          <Suspense fallback={null}>
+            <SectionReveal direction="left">
+              <NosotrosSection />
+            </SectionReveal>
+            <SectionReveal direction="up">
+              <CalendarioSection />
+            </SectionReveal>
+            <SectionReveal direction="right">
+              <PaquetesSection />
+            </SectionReveal>
+            <SectionReveal direction="up">
+              <CotizaSection />
+            </SectionReveal>
+            <SectionReveal direction="left">
+              <FotosSection />
+            </SectionReveal>
+            <SectionReveal direction="up">
+              <ContactoSection />
+            </SectionReveal>
+          </Suspense>
           <footer className="bg-white/90 py-6 text-center text-sm text-gray-500">
             <p>
               &copy; {new Date().getFullYear()} Rayuela. Todos los derechos reservados.
