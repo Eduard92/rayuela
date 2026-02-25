@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import { createPortal } from "react-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import type { CarouselApi } from "@/components/ui/carousel";
 import fotosTitulo from "@/assets/fotos-titulo.png";
@@ -11,39 +12,94 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+
 interface GalleryImage {
   url: string;
+  thumb: string;
+  medium: string;
   alt: string;
   sort_order: number;
 }
+
+const GALLERY_CACHE_KEY = "gallery_cache";
+const GALLERY_CACHE_TTL = 1000 * 60 * 30; // 30 minutos
+
+const getCachedGallery = (): GalleryImage[] | null => {
+  try {
+    const raw = localStorage.getItem(GALLERY_CACHE_KEY);
+    if (!raw) return null;
+    const { images, timestamp } = JSON.parse(raw);
+    if (Date.now() - timestamp > GALLERY_CACHE_TTL) {
+      localStorage.removeItem(GALLERY_CACHE_KEY);
+      return null;
+    }
+    return images;
+  } catch {
+    return null;
+  }
+};
+
+const setCachedGallery = (images: GalleryImage[]) => {
+  try {
+    localStorage.setItem(GALLERY_CACHE_KEY, JSON.stringify({ images, timestamp: Date.now() }));
+  } catch {
+    // localStorage lleno
+  }
+};
+
 const FotosSection = () => {
   const [selectedImage, setSelectedImage] = useState(0);
-  const [images, setImages] = useState<GalleryImage[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [images, setImages] = useState<GalleryImage[]>(() => getCachedGallery() || []);
+  const [loading, setLoading] = useState(() => !getCachedGallery());
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const isManualChange = useRef(false);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
   const handleImageChange = (index: number) => {
     if (index === selectedImage) return;
     isManualChange.current = true;
     setSelectedImage(index);
   };
+
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
+
   const closeLightbox = useCallback(() => {
     setLightboxOpen(false);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = "unset";
   }, []);
+
   const goToPrevious = useCallback(() => {
     setLightboxIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   }, [images.length]);
+
   const goToNext = useCallback(() => {
     setLightboxIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }, [images.length]);
+
+  // Swipe handlers para lightbox móvil
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  }, []);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  }, []);
+
+  const handleTouchEnd = useCallback(() => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goToNext();
+      else goToPrevious();
+    }
+  }, [goToNext, goToPrevious]);
+
   // Auto-play effect
   useEffect(() => {
     if (images.length === 0 || lightboxOpen) return;
@@ -52,18 +108,20 @@ const FotosSection = () => {
     }, 4000);
     return () => clearInterval(interval);
   }, [images.length, lightboxOpen]);
+
   // Keyboard navigation for lightbox
   useEffect(() => {
     if (!lightboxOpen) return;
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') goToPrevious();
-      if (e.key === 'ArrowRight') goToNext();
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") goToPrevious();
+      if (e.key === "ArrowRight") goToNext();
     };
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
   }, [lightboxOpen, closeLightbox, goToPrevious, goToNext]);
-  // Sync carousel position with selected image (only for autoplay, not manual clicks)
+
+  // Sync carousel position with selected image
   useEffect(() => {
     if (carouselApi && images.length > 0 && !isManualChange.current) {
       carouselApi.scrollTo(selectedImage);
@@ -71,25 +129,47 @@ const FotosSection = () => {
       isManualChange.current = false;
     }
   }, [selectedImage, carouselApi, images.length]);
-  // Preload next and previous images for smoother transitions
+
+  // Preload next and previous images (medium for slider)
   useEffect(() => {
     if (images.length === 0) return;
     const preloadImage = (index: number) => {
       const img = new Image();
-      img.src = images[index].url;
+      img.src = images[index].medium || images[index].url;
     };
     const nextIndex = (selectedImage + 1) % images.length;
     const prevIndex = selectedImage === 0 ? images.length - 1 : selectedImage - 1;
     preloadImage(nextIndex);
     preloadImage(prevIndex);
   }, [selectedImage, images]);
+
+  // Preload lightbox adjacent images
   useEffect(() => {
+    if (!lightboxOpen || images.length === 0) return;
+    const preload = (index: number) => {
+      const img = new Image();
+      img.src = images[index].url;
+    };
+    preload((lightboxIndex + 1) % images.length);
+    preload(lightboxIndex === 0 ? images.length - 1 : lightboxIndex - 1);
+  }, [lightboxIndex, lightboxOpen, images]);
+
+  // Fetch images con cache
+  useEffect(() => {
+    const cached = getCachedGallery();
+    if (cached) {
+      setImages(cached);
+      setLoading(false);
+      return;
+    }
     const fetchImages = async () => {
       try {
         const response = await fetch("https://admin.rayuela.com.mx/slider/1/photos");
         const data = await response.json();
         if (data.ok && data.images) {
-          setImages(data.images.sort((a: GalleryImage, b: GalleryImage) => a.sort_order - b.sort_order));
+          const sorted = data.images.sort((a: GalleryImage, b: GalleryImage) => a.sort_order - b.sort_order);
+          setImages(sorted);
+          setCachedGallery(sorted);
         }
       } catch (error) {
         console.error("Error fetching gallery images:", error);
@@ -99,15 +179,17 @@ const FotosSection = () => {
     };
     fetchImages();
   }, []);
+
   return (
+    <>
     <section id="fotos" className="relative py-16 md:py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="relative flex flex-col lg:flex-row items-center justify-center gap-8">
           {/* Mascota verde a la izquierda */}
           <div className="hidden lg:block absolute left-0 bottom-0 z-30 float-animation-delayed mascotas-slide cursor-pointer">
-            <img 
-              src={mascotaVerde} 
-              alt="Mascota verde con globo" 
+            <img
+              src={mascotaVerde}
+              alt="Mascota verde con globo"
               className="w-96 xl:w-[30rem] h-auto"
             />
           </div>
@@ -115,9 +197,9 @@ const FotosSection = () => {
           <div className="relative w-full max-w-4xl mx-auto lg:ml-48 xl:ml-64">
             {/* Título FOTOS */}
             <div className="absolute -top-12 right-0 md:-right-32 z-20">
-              <img 
-                src={fotosTitulo} 
-                alt="Fotos" 
+              <img
+                src={fotosTitulo}
+                alt="Fotos"
                 className="w-40 md:w-80 h-auto"
               />
             </div>
@@ -129,7 +211,6 @@ const FotosSection = () => {
                 className="relative rounded-lg overflow-hidden shadow-xl mb-4 h-[300px] md:h-[450px] cursor-pointer group"
                 onClick={() => openLightbox(selectedImage)}
               >
-                {/* Solo renderizar imagen actual y adyacentes para mejor rendimiento */}
                 {images.map((image, index) => {
                   const isActive = selectedImage === index;
                   const isPrev = selectedImage === 0 ? index === images.length - 1 : index === selectedImage - 1;
@@ -139,7 +220,7 @@ const FotosSection = () => {
                   return (
                     <img
                       key={index}
-                      src={image.url}
+                      src={image.medium || image.url}
                       alt={image.alt || `Foto ${index + 1}`}
                       loading="eager"
                       decoding="async"
@@ -148,7 +229,7 @@ const FotosSection = () => {
                           ? "opacity-100 z-10 group-hover:scale-105 transition-transform will-change-transform"
                           : "opacity-0 z-0 pointer-events-none"
                       }`}
-                      style={{ willChange: isActive ? 'transform' : 'auto' }}
+                      style={{ willChange: isActive ? "transform" : "auto" }}
                     />
                   );
                 })}
@@ -184,7 +265,7 @@ const FotosSection = () => {
                         }`}
                       >
                         <img
-                          src={image.url}
+                          src={image.thumb || image.url}
                           alt={image.alt || `Thumbnail ${index + 1}`}
                           loading="lazy"
                           decoding="async"
@@ -202,7 +283,7 @@ const FotosSection = () => {
         </div>
       </div>
       {/* Background wave pattern at bottom */}
-      <div 
+      <div
         className="absolute bottom-0 left-0 right-0 h-24 md:h-32 bg-repeat-x bg-bottom"
         style={{
           backgroundImage: `url(${backgroundFotos})`,
@@ -217,68 +298,66 @@ const FotosSection = () => {
           className="w-32 h-auto float-animation cursor-pointer"
         />
       </div>
-      {/* Lightbox Modal */}
-      {lightboxOpen && images.length > 0 && (
-        <div
-          className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center"
-          onClick={closeLightbox}
-        >
-          {/* Close Button */}
-          <button
-            onClick={closeLightbox}
-            className="absolute top-4 right-4 z-50 text-white hover:text-rayuela-orange transition-colors p-2 hover:scale-110"
-            aria-label="Cerrar"
-          >
-            <X size={32} />
-          </button>
-          {/* Image Counter */}
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 text-white bg-black/50 px-4 py-2 rounded-full text-sm font-bold">
-            {lightboxIndex + 1} / {images.length}
-          </div>
-          {/* Previous Button */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              goToPrevious();
-            }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-white hover:text-rayuela-orange transition-colors p-3 hover:scale-110 bg-black/30 rounded-full"
-            aria-label="Anterior"
-          >
-            <ChevronLeft size={40} />
-          </button>
-          {/* Next Button */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              goToNext();
-            }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-white hover:text-rayuela-orange transition-colors p-3 hover:scale-110 bg-black/30 rounded-full"
-            aria-label="Siguiente"
-          >
-            <ChevronRight size={40} />
-          </button>
-          {/* Main Image */}
-          <div
-            className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={images[lightboxIndex].url}
-              alt={images[lightboxIndex].alt || `Foto ${lightboxIndex + 1}`}
-              loading="eager"
-              decoding="async"
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
-            />
-          </div>
-          {/* Image Description */}
-          {images[lightboxIndex].alt && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 text-white bg-black/50 px-6 py-3 rounded-full text-sm max-w-2xl text-center">
-              {images[lightboxIndex].alt}
-            </div>
-          )}
-        </div>
-      )}
     </section>
+    {lightboxOpen && images.length > 0 && createPortal(
+      <div
+        className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center"
+        onClick={closeLightbox}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <button
+          onClick={closeLightbox}
+          className="absolute top-4 right-4 z-50 text-white hover:text-rayuela-orange transition-colors p-2 hover:scale-110"
+          aria-label="Cerrar"
+        >
+          <X size={32} />
+        </button>
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 text-white bg-black/50 px-4 py-2 rounded-full text-sm font-bold">
+          {lightboxIndex + 1} / {images.length}
+        </div>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            goToPrevious();
+          }}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-white hover:text-rayuela-orange transition-colors p-3 hover:scale-110 bg-black/30 rounded-full"
+          aria-label="Anterior"
+        >
+          <ChevronLeft size={40} />
+        </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            goToNext();
+          }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-white hover:text-rayuela-orange transition-colors p-3 hover:scale-110 bg-black/30 rounded-full"
+          aria-label="Siguiente"
+        >
+          <ChevronRight size={40} />
+        </button>
+        <div
+          className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <img
+            src={images[lightboxIndex].url}
+            alt={images[lightboxIndex].alt || `Foto ${lightboxIndex + 1}`}
+            loading="eager"
+            decoding="async"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+          />
+        </div>
+        {images[lightboxIndex].alt && (
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-50 text-white bg-black/50 px-6 py-3 rounded-full text-sm max-w-2xl text-center">
+            {images[lightboxIndex].alt}
+          </div>
+        )}
+      </div>,
+      document.body
+    )}
+    </>
   );
 };
 export default FotosSection;
