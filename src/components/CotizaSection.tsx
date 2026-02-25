@@ -311,13 +311,14 @@ const CotizaSection = () => {
           {/* Row 1 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div className="relative">
-              <label className={cn(
+              <label htmlFor="name" className={cn(
                 "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors z-10",
                 nameError && nameTouched ? "text-red-500" : "text-gray-600"
               )}>
                 Nombre
               </label>
               <input
+                id="name"
                 type="text"
                 name="name"
                 value={formData.name}
@@ -354,13 +355,14 @@ const CotizaSection = () => {
               )}
             </div>
             <div className="relative">
-              <label className={cn(
+              <label htmlFor="email" className={cn(
                 "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors z-10",
                 emailError && emailTouched ? "text-red-500" : "text-gray-600"
               )}>
                 Email
               </label>
               <input
+                id="email"
                 type="email"
                 name="email"
                 value={formData.email}
@@ -516,13 +518,14 @@ const CotizaSection = () => {
           {/* Row 3 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div className="relative">
-              <label className={cn(
+              <label htmlFor="tipo_evento" className={cn(
                 "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors",
                 tipoEventoError ? "text-red-500" : "text-gray-600"
               )}>
                 Tipo de evento
               </label>
               <input
+                id="tipo_evento"
                 type="text"
                 name="tipo_evento"
                 value={formData.tipo_evento}
@@ -537,13 +540,14 @@ const CotizaSection = () => {
               />
             </div>
             <div className="relative">
-              <label className={cn(
+              <label htmlFor="invitados" className={cn(
                 "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors",
                 invitadosError ? "text-red-500" : "text-gray-600"
               )}>
                 Número de invitados
               </label>
               <input
+                id="invitados"
                 type="number"
                 name="invitados"
                 value={formData.invitados}
@@ -561,13 +565,14 @@ const CotizaSection = () => {
           {/* Row 4 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
             <div className="relative">
-              <label className={cn(
+              <label htmlFor="phone" className={cn(
                 "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors",
                 phoneError ? "text-red-500" : "text-gray-600"
               )}>
                 Teléfono
               </label>
               <input
+                id="phone"
                 type="tel"
                 name="phone"
                 value={formData.phone}
@@ -589,10 +594,11 @@ const CotizaSection = () => {
               />
             </div>
             <div className="relative">
-              <label className="absolute left-4 top-3 text-gray-600 text-sm font-light uppercase tracking-wide">
+              <label htmlFor="street" className="absolute left-4 top-3 text-gray-600 text-sm font-light uppercase tracking-wide">
                 Dirección / Calle
               </label>
               <input
+                id="street"
                 type="text"
                 name="street"
                 value={formData.street}
@@ -603,13 +609,14 @@ const CotizaSection = () => {
           </div>
           {/* Row 5 - Comentarios */}
           <div className="relative">
-            <label className={cn(
+            <label htmlFor="message" className={cn(
               "absolute left-4 top-3 text-sm font-light uppercase tracking-wide transition-colors",
               messageError ? "text-red-500" : "text-gray-600"
             )}>
               Comentarios
             </label>
             <textarea
+              id="message"
               name="message"
               value={formData.message}
               onChange={(e) => {
