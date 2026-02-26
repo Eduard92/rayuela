@@ -7,14 +7,25 @@ const AudioPlayer = () => {
 
   useEffect(() => {
     const audio = audioRef.current;
-    if (audio) {
-      audio.volume = 0.5;
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          setIsPlaying(false);
-        });
-      }
+    if (!audio) return;
+
+    audio.volume = 0.5;
+
+    // Intentar autoplay directo
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay bloqueado — esperar primera interacción del usuario
+        setIsPlaying(false);
+        const events = ["mousemove", "click", "touchstart", "scroll", "keydown"];
+        const playOnInteraction = () => {
+          audio.play().then(() => {
+            setIsPlaying(true);
+          }).catch(() => {});
+          events.forEach(e => document.removeEventListener(e, playOnInteraction));
+        };
+        events.forEach(e => document.addEventListener(e, playOnInteraction, { once: true }));
+      });
     }
   }, []);
 
