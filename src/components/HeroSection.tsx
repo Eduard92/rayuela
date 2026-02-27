@@ -64,6 +64,7 @@ const HeroSection = () => {
             priority
             width={685}
             height={337}
+            fetchPriority="high"
           />
         </div>
         {/* Row 2: Calendario, Cotiza, Contacto */}

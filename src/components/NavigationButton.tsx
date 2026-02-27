@@ -9,6 +9,7 @@ interface NavigationButtonProps {
   priority?: boolean;
   width?: number;
   height?: number;
+  fetchPriority?: 'high' | 'low' | 'auto';
 }
 const NavigationButton = ({
   to,
@@ -20,6 +21,7 @@ const NavigationButton = ({
   priority = false,
   width,
   height,
+  fetchPriority,
 }: NavigationButtonProps) => {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -46,7 +48,7 @@ const NavigationButton = ({
         height={height}
         className={`nav-button-image w-full h-auto object-contain hover-${hoverEffect}`}
         loading={priority ? "eager" : "lazy"}
-        {...(priority ? { fetchPriority: "high" as const } : {})}
+        {...(priority ? { fetchPriority: fetchPriority || "high" } : {})}
       />
     </button>
   );
