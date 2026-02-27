@@ -34,8 +34,7 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
     <!-- Preload fuentes críticas -->
-    <link rel="preload" href="/fonts/dazzle-unicase/Dazzle_Unicase_Bold.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/CaviarDreams.woff" as="font" type="font/woff" crossorigin />
+    <!-- Removed: preload blocks rendering with font-display:swap. Let fonts load asynchronously -->
     <!-- Font display swap to prevent blocking render -->
     <style>
       @font-face {
