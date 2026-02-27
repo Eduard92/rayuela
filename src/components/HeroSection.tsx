@@ -22,7 +22,7 @@ const HeroSection = () => {
       {/* Content Overlay - Full Screen Grid */}
       <div className="relative z-10 min-h-screen w-full grid grid-cols-1 grid-rows-6 sm:grid-cols-2 sm:grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-2 sm:gap-4 p-2 sm:p-6 pt-20 sm:pt-28">
         {/* Row 1: Nosotros, Paquetes, Fotos */}
-        <div className="flex items-center justify-center animate-fade-in-up-1 overflow-visible">
+        <div className="flex items-center justify-center animate-fade-in-up-1 overflow-hidden">
           <NavigationButton
             to="#nosotros"
             image={nosotrosImage}
@@ -34,7 +34,7 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="flex items-center justify-center sm:items-end sm:justify-start animate-fade-in-up-2 relative overflow-visible">
+        <div className="flex items-center justify-center sm:items-end sm:justify-start animate-fade-in-up-2 relative overflow-hidden">
           <img
             src={smilePaquetes}
             alt="Smile"
@@ -51,7 +51,7 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="flex items-center justify-center sm:items-start animate-fade-in-up-3 overflow-visible">
+        <div className="flex items-center justify-center sm:items-start animate-fade-in-up-3 overflow-hidden">
           <NavigationButton
             to="#fotos"
             image={fotosImage}
@@ -64,7 +64,7 @@ const HeroSection = () => {
         </div>
 
         {/* Row 2: Calendario, Cotiza, Contacto */}
-        <div className="flex items-center justify-center sm:items-start animate-fade-in-up-4 overflow-visible">
+        <div className="flex items-center justify-center sm:items-start animate-fade-in-up-4 overflow-hidden">
           <NavigationButton
             to="#calendario"
             image={calendarioImage}
@@ -75,7 +75,7 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="flex items-center justify-center animate-fade-in-up-5 overflow-visible">
+        <div className="flex items-center justify-center animate-fade-in-up-5 overflow-hidden">
           <NavigationButton
             to="#cotiza"
             image={cotizaImage}
@@ -86,7 +86,7 @@ const HeroSection = () => {
           />
         </div>
 
-        <div className="flex items-center justify-center sm:items-start sm:justify-start animate-fade-in-up-6 overflow-visible">
+        <div className="flex items-center justify-center sm:items-start sm:justify-start animate-fade-in-up-6 overflow-hidden">
           <NavigationButton
             to="#contacto"
             image={contactoImage}

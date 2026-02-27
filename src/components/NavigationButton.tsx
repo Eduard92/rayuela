@@ -38,7 +38,7 @@ const NavigationButton = ({
   return (
     <button
       onClick={handleClick}
-      className={`nav-button block overflow-visible ${animationClass} ${className} cursor-pointer`}
+      className={`nav-button block overflow-hidden ${animationClass} ${className} cursor-pointer`}
     >
       <img
         src={image}
