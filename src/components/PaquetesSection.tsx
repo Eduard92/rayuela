@@ -66,6 +66,8 @@ const PaquetesSection = () => {
             <img
               src={logmins[globalIndex % logmins.length]}
               alt=""
+              width={136}
+              height={144}
               className="w-5 h-5 object-contain shrink-0 opacity-80"
             />
             {item.text}
@@ -94,6 +96,8 @@ const PaquetesSection = () => {
             <img
               src={mascotaVerde}
               alt="Mascota verde con pastel"
+              width={499}
+              height={609}
               className="w-full h-auto object-contain float-animation cursor-pointer"
             />
           </div>
@@ -104,6 +108,8 @@ const PaquetesSection = () => {
               <img
                 src={paquetesEncabezado}
                 alt="Paquete Rayuela Mágica"
+                width={779}
+                height={269}
                 className="w-64 sm:w-80 md:w-96 lg:w-[450px] h-auto object-contain cursor-pointer hover-buzz transition-all duration-300"
               />
             </div>
@@ -129,11 +135,15 @@ const PaquetesSection = () => {
               <img
                 src={quieresMas}
                 alt="¿Quieres más?"
+                width={261}
+                height={101}
                 className="h-20 sm:h-24 md:h-32 w-auto object-contain cursor-pointer hover:scale-110 hover:rotate-2 hover:drop-shadow-xl transition-all duration-300"
               />
               <img
                 src={cotizaAqui}
                 alt="Cotiza aquí"
+                width={261}
+                height={101}
                 className="hidden md:block h-20 sm:h-24 md:h-32 w-auto object-contain cursor-pointer hover:scale-110 hover:-rotate-2 hover:drop-shadow-xl transition-all duration-300"
               />
             </div>
@@ -143,6 +153,8 @@ const PaquetesSection = () => {
             <img
               src={mascotaRosa}
               alt="Mascota rosa con globo"
+              width={446}
+              height={643}
               className="w-full h-auto object-contain float-animation-delayed cursor-pointer"
             />
           </div>
@@ -152,11 +164,15 @@ const PaquetesSection = () => {
           <img
             src={mascotaVerde}
             alt="Mascota verde con pastel"
+            width={499}
+            height={609}
             className="w-28 sm:w-36 h-auto object-contain float-animation cursor-pointer"
           />
           <img
             src={mascotaRosa}
             alt="Mascota rosa con globo"
+            width={446}
+            height={643}
             className="w-24 sm:w-32 h-auto object-contain float-animation-delayed cursor-pointer"
           />
         </div>

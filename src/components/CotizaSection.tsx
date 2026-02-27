@@ -304,7 +304,7 @@ const CotizaSection = () => {
       <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <div className="mb-10 lg:mb-14">
-          <img src={cotizaTitulo} alt="Cotiza" className="w-48 sm:w-56 md:w-64 h-auto object-contain float-animation cursor-pointer hover-buzz transition-all duration-300" />
+          <img src={cotizaTitulo} alt="Cotiza" width={735} height={281} className="w-48 sm:w-56 md:w-64 h-auto object-contain float-animation cursor-pointer hover-buzz transition-all duration-300" />
         </div>
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
@@ -650,9 +650,11 @@ const CotizaSection = () => {
           <DialogHeader className="text-center">
             {/* Logo de Rayuela */}
             <div className="flex justify-center mb-4">
-              <img 
-                src={rayuelaLogo} 
-                alt="Rayuela Logo" 
+              <img
+                src={rayuelaLogo}
+                alt="Rayuela Logo"
+                width={599}
+                height={141}
                 className="w-32 h-auto object-contain"
               />
             </div>
@@ -676,9 +678,11 @@ const CotizaSection = () => {
           <DialogHeader className="text-center relative z-10">
             {/* Logo de Rayuela */}
             <div className="flex justify-center mb-4">
-              <img 
-                src={rayuelaLogo} 
-                alt="Rayuela Logo" 
+              <img
+                src={rayuelaLogo}
+                alt="Rayuela Logo"
+                width={599}
+                height={141}
                 className="w-32 h-auto object-contain animate-bounce-in"
               />
             </div>

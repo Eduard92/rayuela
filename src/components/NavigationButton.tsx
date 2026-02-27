@@ -1,5 +1,4 @@
 type HoverEffect = 'scale' | 'rotate' | 'shake' | 'pulse' | 'bounce' | 'tilt';
-
 interface NavigationButtonProps {
   to: string;
   image: string;
@@ -8,8 +7,9 @@ interface NavigationButtonProps {
   animationClass?: string;
   hoverEffect?: HoverEffect;
   priority?: boolean;
+  width?: number;
+  height?: number;
 }
-
 const NavigationButton = ({
   to,
   image,
@@ -18,23 +18,22 @@ const NavigationButton = ({
   animationClass = "",
   hoverEffect = 'scale',
   priority = false,
+  width,
+  height,
 }: NavigationButtonProps) => {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-
     const element = document.querySelector(to);
     if (element) {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
       });
     }
   };
-
   return (
     <button
       onClick={handleClick}
@@ -43,6 +42,8 @@ const NavigationButton = ({
       <img
         src={image}
         alt={alt}
+        width={width}
+        height={height}
         className={`nav-button-image w-full h-auto object-contain hover-${hoverEffect}`}
         loading={priority ? "eager" : "lazy"}
         {...(priority ? { fetchPriority: "high" as const } : {})}
@@ -50,5 +51,4 @@ const NavigationButton = ({
     </button>
   );
 };
-
 export default NavigationButton;

@@ -7,7 +7,6 @@ import calendarioImage from "@/assets/calendario.png";
 import cotizaImage from "@/assets/cotiza-titulo.png";
 import smilePaquetes from "@/assets/smile-paquetes.png";
 import NavigationButton from "./NavigationButton";
-
 const HeroSection = () => {
   return (
     <section id="inicio" className="relative min-h-screen w-full overflow-hidden">
@@ -18,7 +17,6 @@ const HeroSection = () => {
           backgroundImage: `url(${backgroundPattern})`,
         }}
       />
-
       {/* Content Overlay - Full Screen Grid */}
       <div className="relative z-10 min-h-screen w-full grid grid-cols-1 grid-rows-6 sm:grid-cols-2 sm:grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-2 sm:gap-4 p-2 sm:p-6 pt-20 sm:pt-28">
         {/* Row 1: Nosotros, Paquetes, Fotos */}
@@ -31,13 +29,16 @@ const HeroSection = () => {
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
             hoverEffect="scale"
             priority
+            width={665}
+            height={217}
           />
         </div>
-
         <div className="flex items-center justify-center sm:items-end sm:justify-start animate-fade-in-up-2 relative overflow-hidden">
           <img
             src={smilePaquetes}
             alt="Smile"
+            width={379}
+            height={363}
             className="absolute top-[25%] -translate-y-1/2 right-0 w-[25%] max-w-[180px] sm:max-w-[280px] md:max-w-[60%] z-10 wiggle-animation"
           />
           <NavigationButton
@@ -48,9 +49,10 @@ const HeroSection = () => {
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
             hoverEffect="rotate"
             priority
+            width={678}
+            height={336}
           />
         </div>
-
         <div className="flex items-center justify-center sm:items-start animate-fade-in-up-3 overflow-hidden">
           <NavigationButton
             to="#fotos"
@@ -60,9 +62,10 @@ const HeroSection = () => {
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
             hoverEffect="bounce"
             priority
+            width={685}
+            height={337}
           />
         </div>
-
         {/* Row 2: Calendario, Cotiza, Contacto */}
         <div className="flex items-center justify-center sm:items-start animate-fade-in-up-4 overflow-hidden">
           <NavigationButton
@@ -72,9 +75,10 @@ const HeroSection = () => {
             animationClass="float-animation-delayed"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
             hoverEffect="tilt"
+            width={705}
+            height={276}
           />
         </div>
-
         <div className="flex items-center justify-center animate-fade-in-up-5 overflow-hidden">
           <NavigationButton
             to="#cotiza"
@@ -83,9 +87,10 @@ const HeroSection = () => {
             animationClass="float-animation"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
             hoverEffect="pulse"
+            width={735}
+            height={281}
           />
         </div>
-
         <div className="flex items-center justify-center sm:items-start sm:justify-start animate-fade-in-up-6 overflow-hidden">
           <NavigationButton
             to="#contacto"
@@ -94,11 +99,12 @@ const HeroSection = () => {
             animationClass="float-animation-delayed"
             className="w-full max-w-[180px] sm:max-w-[280px] md:max-w-[80%]"
             hoverEffect="shake"
+            width={725}
+            height={335}
           />
         </div>
       </div>
     </section>
   );
 };
-
 export default HeroSection;

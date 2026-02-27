@@ -115,9 +115,11 @@ const CalendarioSection = () => {
       <div className="container mx-auto px-4 pb-8 lg:pb-16">
         {/* Título Calendario - arriba en móvil, antes del mes */}
         <div className="flex justify-end lg:hidden mb-4">
-          <img 
-            src={calendarioTitulo} 
-            alt="Calendario" 
+          <img
+            src={calendarioTitulo}
+            alt="Calendario"
+            width={705}
+            height={276}
             className="w-56 h-auto object-contain"
           />
         </div>
@@ -188,9 +190,11 @@ const CalendarioSection = () => {
                     {day}
                   </span>
                   {reservado && (
-                    <img 
-                      src={pinReservado} 
-                      alt="Reservado" 
+                    <img
+                      src={pinReservado}
+                      alt="Reservado"
+                      width={300}
+                      height={300}
                       className="absolute inset-0 w-full h-full object-contain p-1 lg:p-2"
                     />
                   )}
@@ -207,6 +211,8 @@ const CalendarioSection = () => {
             <img
               src={rosaCalendario}
               alt="Ela - Mascota de Rayuela"
+              width={974}
+              height={1920}
               className="w-full h-auto object-contain cursor-pointer transition-transform hover:scale-105"
             />
             {/* Confeti */}
@@ -240,9 +246,11 @@ const CalendarioSection = () => {
           </div>
           {/* Título Calendario - solo desktop */}
           <div className="hidden lg:block absolute -right-[48%] -bottom-12 w-[50%] z-20">
-            <img 
-              src={calendarioTitulo} 
-              alt="Calendario" 
+            <img
+              src={calendarioTitulo}
+              alt="Calendario"
+              width={705}
+              height={276}
               className="w-full h-auto object-contain"
             />
           </div>
@@ -256,6 +264,8 @@ const CalendarioSection = () => {
           <img
             src={rosaCalendario}
             alt="Ela - Mascota de Rayuela"
+            width={974}
+            height={1920}
             className="w-48 h-auto object-contain cursor-pointer transition-transform hover:scale-105"
           />
           {/* Confeti */}

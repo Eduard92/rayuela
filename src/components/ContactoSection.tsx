@@ -21,6 +21,8 @@ const ContactoSection = () => {
           <img
             src={contactoTitulo}
             alt="Contacto"
+            width={725}
+            height={335}
             className="w-80 md:w-[28rem] h-auto cursor-pointer hover-buzz transition-all duration-300"
           />
         </div>
@@ -31,6 +33,8 @@ const ContactoSection = () => {
               <img
                 src={mascotaVerdeDireccion}
                 alt="Mascota verde con dirección"
+                width={310}
+                height={440}
                 className="w-64 max-w-[16rem] md:w-96 md:max-w-none h-auto float-animation cursor-pointer"
               />
             </div>
@@ -57,6 +61,8 @@ const ContactoSection = () => {
                 <img
                   src={mapaImage}
                   alt="Mapa de ubicación Terraza Pedregal"
+                  width={646}
+                  height={432}
                   className="w-64 md:w-80 h-auto rounded-lg shadow-md"
                 />
               </a>
@@ -69,6 +75,8 @@ const ContactoSection = () => {
                 <img
                   src={telefonoTitulo}
                   alt="Teléfono"
+                  width={1162}
+                  height={512}
                   className="w-64 md:w-80 h-auto mb-2 cursor-pointer transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg"
                 />
                 <a
@@ -102,6 +110,8 @@ const ContactoSection = () => {
             <img
               src={mascotaRosaPatines}
               alt="Mascota rosa con patines"
+              width={974}
+              height={1920}
               className="w-44 md:w-80 h-auto float-animation-delayed cursor-pointer"
             />
           </div>
@@ -112,6 +122,8 @@ const ContactoSection = () => {
                 <img
                   src={horariosTitulo}
                   alt="Horarios"
+                  width={1042}
+                  height={545}
                   className="w-64 md:w-72 h-auto mb-4 cursor-pointer transition-all duration-300 hover:scale-105 hover:brightness-110 hover:drop-shadow-lg"
                 />
                 <div className="space-y-2 inline-flex flex-col mb-6">

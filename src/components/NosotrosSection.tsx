@@ -29,7 +29,7 @@ const NosotrosSection = () => {
     >
       {/* Título - Top Right */}
       <div className="absolute top-6 right-4 md:right-12 z-10">
-        <img src={tituloImage} alt="Nosotros" className="w-[160px] md:w-[300px] lg:w-[350px] object-contain" />
+        <img src={tituloImage} alt="Nosotros" className="w-[160px] md:w-[300px] lg:w-[350px] object-contain" width={665} height={217} />
       </div>
       {/* Content */}
       <div className="flex flex-col lg:absolute lg:bottom-4 lg:left-12 lg:right-12 lg:top-20 lg:flex-row items-center gap-6 lg:gap-12">
@@ -41,6 +41,8 @@ const NosotrosSection = () => {
             className={`h-[35vh] lg:h-[70vh] w-auto object-contain transition-transform mascotas-slide ${
               isVisible ? "scale-105" : "scale-100"
             }`}
+            width={800}
+            height={799}
           />
         </div>
         {/* Content - Right Side */}
@@ -61,7 +63,7 @@ const NosotrosSection = () => {
             </p>
             {/* Logo y slogan */}
             <div className="mt-6 flex flex-col items-center">
-              <img src={logo} alt="Rayuela" className="h-12 md:h-16 w-auto object-contain" />
+              <img src={logo} alt="Rayuela" className="h-12 md:h-16 w-auto object-contain" width={599} height={141} />
               <p className="text-xs md:text-sm mt-2 text-center font-medium uppercase" style={{ color: '#76B3D0' }}>
                 ! El lugar donde tus sueños se hacen fiesta !
               </p>

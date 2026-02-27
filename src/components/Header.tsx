@@ -36,10 +36,12 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-white/95 backdrop-blur-sm shadow-sm">
         {/* Menu icon */}
         <div>
-          <img 
-            src={menuIcon} 
-            alt="Menu" 
-            className="h-8 w-auto cursor-pointer hover:scale-105 transition-transform" 
+          <img
+            src={menuIcon}
+            alt="Menu"
+            width="100"
+            height="62"
+            className="h-8 w-auto cursor-pointer hover:scale-105 transition-transform"
             onClick={() => setIsMenuOpen(true)}
           />
         </div>
@@ -48,6 +50,8 @@ const Header = () => {
           <img
             src={logo}
             alt="Rayuela"
+            width="599"
+            height="141"
             className="h-10 md:h-14 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
             onClick={() => handleMenuClick("#inicio")}
           />
@@ -62,7 +66,7 @@ const Header = () => {
               className="hover:scale-110 transition-transform duration-300"
               aria-label="Facebook"
             >
-              <img src={facebookIcon} alt="Facebook" className="h-6 w-auto" />
+              <img src={facebookIcon} alt="Facebook" width="100" height="100" className="h-6 w-auto" />
             </a>
           )}
           {empresaData?.instagram && (
@@ -73,7 +77,7 @@ const Header = () => {
               className="hover:scale-110 transition-transform duration-300"
               aria-label="Instagram"
             >
-              <img src={instagramIcon} alt="Instagram" className="h-6 w-auto" />
+              <img src={instagramIcon} alt="Instagram" width="100" height="100" className="h-6 w-auto" />
             </a>
           )}
         </div>

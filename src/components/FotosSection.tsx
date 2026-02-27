@@ -190,6 +190,8 @@ const FotosSection = () => {
             <img
               src={mascotaVerde}
               alt="Mascota verde con globo"
+              width="328"
+              height="431"
               className="w-96 xl:w-[30rem] h-auto"
             />
           </div>
@@ -200,6 +202,8 @@ const FotosSection = () => {
               <img
                 src={fotosTitulo}
                 alt="Fotos"
+                width="685"
+                height="337"
                 className="w-40 md:w-80 h-auto"
               />
             </div>
@@ -208,7 +212,7 @@ const FotosSection = () => {
               <div className="w-full h-[300px] md:h-[450px] bg-muted animate-pulse rounded-lg mb-4" />
             ) : images.length > 0 ? (
               <div
-                className="relative rounded-lg overflow-hidden shadow-xl mb-4 h-[300px] md:h-[450px] cursor-pointer group"
+                className="relative rounded-lg overflow-hidden shadow-xl mb-4 h-[300px] md:h-[450px] cursor-pointer group aspect-video"
                 onClick={() => openLightbox(selectedImage)}
               >
                 {images.map((image, index) => {
@@ -264,13 +268,15 @@ const FotosSection = () => {
                             : "opacity-70 hover:opacity-100"
                         }`}
                       >
-                        <img
-                          src={image.thumb || image.url}
-                          alt={image.alt || `Thumbnail ${index + 1}`}
-                          loading="lazy"
-                          decoding="async"
-                          className="w-full h-full object-cover"
-                        />
+                        <div className="w-full h-full aspect-square">
+                          <img
+                            src={image.thumb || image.url}
+                            alt={image.alt || `Thumbnail ${index + 1}`}
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                       </button>
                     </CarouselItem>
                   ))}
@@ -295,6 +301,8 @@ const FotosSection = () => {
         <img
           src={mascotaVerde}
           alt="Mascota verde con globo"
+          width="328"
+          height="431"
           className="w-32 h-auto float-animation cursor-pointer"
         />
       </div>
@@ -338,7 +346,7 @@ const FotosSection = () => {
           <ChevronRight size={40} />
         </button>
         <div
-          className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center"
+          className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center aspect-video"
           onClick={(e) => e.stopPropagation()}
         >
           <img
