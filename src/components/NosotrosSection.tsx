@@ -43,6 +43,7 @@ const NosotrosSection = () => {
             }`}
             width={800}
             height={799}
+            fetchPriority="high"
           />
         </div>
         {/* Content - Right Side */}
